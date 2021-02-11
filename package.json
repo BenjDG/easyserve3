@@ -18,7 +18,8 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build",
     "install": "concurrently \"cd client && npm install\" \"cd server && npm install\"",
-    "start:old": "nodemon ./server/server.js"
+    "start:old": "nodemon ./server/server.js",
+    "test": "cd server && npm run lint"
   },
   "nodemonConfig": {
     "delay": "2500",
@@ -34,5 +35,10 @@
   "dependencies": {
     "express-handlebars": "^5.2.0",
     "if-env": "^1.0.4"
+  },
+  "semistandard": {
+    "globals": [
+      "$"
+    ]
   }
 }
