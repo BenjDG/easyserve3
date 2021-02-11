@@ -32,13 +32,12 @@ app.use(express.json());
 app.use(express.static('public'));
 // ########
 
-app.use(helmet({contentSecurityPolicy: false}));
+app.use(helmet({ contentSecurityPolicy: false }));
 app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors(corsOptions));
 app.use(morgan('dev'));
-
 
 // for Reactjs ##################
 // Serve up static assets (usually on heroku)
@@ -47,10 +46,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 // #################################################
 
-
 // Add routes, API
 app.use(routes);
-
 
 // for Reactjs #############################
 // The "catchall" handler: for any request that doesn't
@@ -62,8 +59,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 // #################################################
-
-
 
 // Dynamically force schema refresh only for 'test'
 const FORCE_SCHEMA = process.env.NODE_ENV === 'test' || 'development';
