@@ -1,0 +1,53 @@
+INSERT INTO Tables (tableNumber, drinks, sides, icecream, createdAt, updatedAt)
+VALUES ("1","Pepsi","fries", "vanilla", "2018-08-18 03:44:46", "2018-08-18 03:44:46");
+
+INSERT INTO Hotdogs (hotdogName, bun, toppings, meat, sauce, TableId, createdAt, updatedAt)
+VALUES ("Chihuahua", 1, 1, 1, 1, 1, "2018-08-18 03:44:46", "2018-08-18 03:44:46");
+
+INSERT INTO (flavor)
+VALUES ("strawberry");
+
+DROP DATABASE IF EXISTS easy_serve_db;
+CREATE DATABASE easy_serve_db;
+
+
+CREATE TABLE IF NOT EXISTS `Tables` (
+  `id` INTEGER NOT NULL auto_increment , 
+  `tableNumber` VARCHAR(255) NOT NULL UNIQUE, 
+  `drinks` VARCHAR(255) NOT NULL, 
+  `sides` VARCHAR(255) NOT NULL, 
+  `icecream` VARCHAR(255) NOT NULL, 
+  `createdAt` DATETIME NOT NULL, 
+  `updatedAt` DATETIME NOT NULL, 
+  PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS `Hotdogs` 
+(`id` INTEGER NOT NULL auto_increment , 
+`hotdogName` VARCHAR(255), 
+`bun` TINYINT(1) NOT NULL DEFAULT true, 
+`toppings` TINYINT(1) NOT NULL, 
+`meat` TINYINT(1) NOT NULL, 
+`sauce` TINYINT(1) NOT NULL, 
+`createdAt` DATETIME NOT NULL, 
+`updatedAt` DATETIME NOT NULL, 
+`TableId` INTEGER NOT NULL, 
+PRIMARY KEY (`id`), 
+FOREIGN KEY (`TableId`) REFERENCES `Tables` (`id`) ON DELETE NO ACTION ON 
+
+ CREATE TABLE IF NOT EXISTS `Users` 
+ (`id` INTEGER NOT NULL auto_increment , 
+ `email` VARCHAR(255) NOT NULL UNIQUE, 
+ `password` VARCHAR(255) NOT NULL, 
+ `createdAt` DATETIME NOT NULL, 
+ `updatedAt` DATETIME NOT NULL, 
+ PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+
+  bun: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
+        validate: {
+          isBoolean: true
+        }
+      },
