@@ -21,6 +21,7 @@ router.get('/', (_req, res) => {
 });
 
 router.get('/table1', (_req, res) => {
+  console.log('Table 1 - GET');
   res.sendFile(path.join(__dirname, '../../public/html/views', 'table1.html'));
 });
 
