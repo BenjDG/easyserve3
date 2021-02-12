@@ -19,7 +19,7 @@
     "heroku-postbuild": "npm run build",
     "install": "concurrently \"cd client && npm install\" \"cd server && npm install\"",
     "start:old": "nodemon ./server/server.js",
-    "test": "cd server && npm run lint",
+    "test": "concurrently \"cd server && npm run lint\" \"cd client && npm run lint\"",
     "lint:fix": "cd server && npm run lint:fix"
   },
   "nodemonConfig": {
