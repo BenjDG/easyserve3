@@ -1,0 +1,27 @@
+body{
+  background-color: #bdbdbd;
+  width: auto;
+}
+.btn{
+  background-color: #4db6ac;
+}
+.card{
+  background-color: antiquewhite;
+  width: auto;
+}
+.order{
+  background-color: #02be76;
+}
+.tableStatusOpen{
+  background-color: #00ff89;
+}
+.tableStatusClosed{
+  background-color: #e7646d;
+}
+.modal{
+  background-color: #9e9e9e;
+}
+#navbarNav{
+  background-color: #e57373
+}
+
