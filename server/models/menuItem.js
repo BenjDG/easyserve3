@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   menuItem.init({
     title: DataTypes.STRING,
-    price: DataTypes.INTEGER
+    price: DataTypes.DECIMAL(19, 4)
   }, {
     sequelize,
     modelName: 'menuItem'
