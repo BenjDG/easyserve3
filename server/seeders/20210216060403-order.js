@@ -3,11 +3,11 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('orders', [{
-      employeeId: 1,
+      employee_id: 1,
       status: 1,
       notes: 'Extra mayo',
-      createdAt: new Date(),
-      updatedAt: new Date()
+      created_at: new Date(),
+      updated_at: new Date()
     }]);
   },
 
