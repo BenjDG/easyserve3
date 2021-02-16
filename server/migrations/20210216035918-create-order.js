@@ -11,9 +11,6 @@ module.exports = {
       employeeId: {
         type: Sequelize.INTEGER
       },
-      createdAt: {
-        type: Sequelize.DATE
-      },
       status: {
         type: Sequelize.INTEGER
       },

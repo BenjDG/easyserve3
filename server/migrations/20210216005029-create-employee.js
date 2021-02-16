@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       pin: {
-        type: Sequelize.INTEGER.UNSIGNED.ZEROFILL
+        type: Sequelize.INTEGER(4).UNSIGNED.ZEROFILL
       },
       createdAt: {
         allowNull: false,
