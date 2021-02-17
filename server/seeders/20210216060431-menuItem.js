@@ -7,6 +7,12 @@ module.exports = {
       price: 1.99,
       createdAt: new Date(),
       updatedAt: new Date()
+    },
+    {
+      title: 'Original Du',
+      price: 1.99,
+      createdAt: new Date(),
+      updatedAt: new Date()
     }]);
   },
 
