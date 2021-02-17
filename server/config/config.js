@@ -11,7 +11,8 @@ module.exports = {
       charset: 'utf8',
       timestamps: true,
       underscored: true
-    }
+    },
+    logging: true
   },
   test: {
     username: process.env.LOCAL_TEST_USERNAME,

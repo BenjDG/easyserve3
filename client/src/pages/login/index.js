@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import './style.css';
 
-class Form extends Component {
+class Login extends Component {
   // Setting the component's initial state
   state = {
     password: ''
@@ -51,4 +51,4 @@ class Form extends Component {
   }
 }
 
-export default Form;
+export default Login;
