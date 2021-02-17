@@ -19,6 +19,7 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build",
     "install": "concurrently \"cd client && npm install\" \"cd server && npm install\"",
+    "prune": "concurrently \"cd client && npm prune\" \"cd server && npm prune\"",
     "start:old": "nodemon ./server/server.js",
     "test": "concurrently \"cd server && npm run lint\" \"cd client && npm run lint\"",
     "lint:fix": "cd server && npm run lint:fix"
