@@ -66,14 +66,15 @@ const FORCE_SCHEMA = process.env.NODE_ENV === 'test' || 'development';
 db.sequelize
   .authenticate()
   .then(() => {
-    db.sequelize.sync({ force: FORCE_SCHEMA }).then(() => {
-      app.listen(PORT, (err) => {
-        if (err) throw err;
-        console.log(
-          `🌎 Server is Ready and Listening on http://localhost:${PORT}`
-        ); // eslint-disable-line no-console
+    db.sequelize.sync({ force: FORCE_SCHEMA })
+      .then(() => {
+        app.listen(PORT, (err) => {
+          if (err) throw err;
+          console.log(
+            `🌎 Server is Ready and Listening on http://localhost:${PORT}`
+          ); // eslint-disable-line no-console
+        });
       });
-    });
   })
   .catch(console.error); // eslint-disable-line no-console
 

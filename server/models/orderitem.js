@@ -3,6 +3,9 @@ module.exports = (sequelize, DataTypes) => {
     employeeId: DataTypes.INTEGER,
     status: DataTypes.INTEGER,
     notes: DataTypes.TEXT
+  },
+  {
+    underscored: false
   });
   return orderItem;
 };
