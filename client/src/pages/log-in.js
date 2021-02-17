@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import "./style.css";
+/* global alert */
+import React, { Component } from 'react';
+import './style.css';
 
 class Form extends Component {
   // Setting the component's initial state
   state = {
-    password: "",
+    password: ''
   };
 
   handleInputChange = (event) => {
@@ -12,12 +13,12 @@ class Form extends Component {
     let value = event.target.value;
     const key = event.target.name;
 
-    if (key === "password") {
+    if (key === 'password') {
       value = value.substring(0, 4);
     }
     // Updating the input's state
     this.setState({
-      [key]: value,
+      [key]: value
     });
   };
 
@@ -25,23 +26,23 @@ class Form extends Component {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
     if (this.state.password.length < 4) {
-      alert(`Enter four digit code.`);
+      alert('Enter four digit code.');
     }
     this.setState({
-      password: "",
+      password: ''
     });
   };
 
-  render() {
+  render () {
     return (
       <div>
-        <form className="form">
+        <form className='form'>
           <input
             value={this.state.password}
-            name="password"
+            name='password'
             onChange={this.handleInputChange}
-            type="password"
-            placeholder="Password"
+            type='password'
+            placeholder='Password'
           />
           <button onClick={this.handleFormSubmit}>Submit</button>
         </form>
