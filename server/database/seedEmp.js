@@ -26,5 +26,4 @@ function seedEmp () {
   }
 }
 
-
 module.exports = seedEmp;
