@@ -11,9 +11,12 @@ const db = require('./models');
 const routes = require('./routes');
 const passport = require('./config/passport');
 const corsOptions = require('./config/cors.js');
+
 const seedEmp = require('./database/seedEmp.js');
 const seedMenuItem = require('./database/seedMenuItem.js');
 const seedOrder = require('./database/seedOrder.js');
+const seedStatus = require('./database/seedStatus.js');
+const seedOrderItem = require('./database/seedOrderItem');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -63,9 +66,11 @@ db.sequelize
     db.sequelize.sync({ force: FORCE_SCHEMA })
       .then(() => {
         if (FORCE_SCHEMA) {
+          seedStatus();
           seedEmp();
           seedMenuItem();
           seedOrder();
+          seedOrderItem();
         }
       })
       .then(() => {

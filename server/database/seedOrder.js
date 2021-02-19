@@ -1,5 +1,4 @@
 const db = require('../models');
-const seedOrderItem = require('./seedOrderItem');
 
 const SeedData = [
   {
@@ -18,7 +17,6 @@ function seedOrder () {
   // console.log(db);
   try {
     db.order.bulkCreate(SeedData);
-    seedOrderItem();
   } catch (error) {
     console.log(error);
   }
