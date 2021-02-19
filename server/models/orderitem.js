@@ -1,8 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const OrderItem = sequelize.define('orderItem', {
-    employeeId: DataTypes.INTEGER,
-    status: DataTypes.INTEGER,
-    notes: DataTypes.TEXT
+    order_number: DataTypes.INTEGER,
+    itemId: DataTypes.INTEGER
   },
   {
     underscored: false
