@@ -4,7 +4,6 @@
     "lint:fix": "semistandard --fix",
     "format": "prettier-semi --write '**/*.js'",
     "seed:all": "npx sequelize-cli db:seed:all",
-    "db:drop": "npx sequelize-cli db:drop",
     "db:create": "npx sequelize-cli db:create"
   },
   "devDependencies": {
