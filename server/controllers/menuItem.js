@@ -14,7 +14,7 @@ module.exports = {
   findAllDrinks: function (_req, res) {
     db.menuItem.findAll({
       where: {
-        category: { [Op.eq]: 'drink'}
+        category: { [Op.eq]: 'drink' }
       }
     })
       .then(result => res.json(result))
