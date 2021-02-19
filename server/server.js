@@ -4,9 +4,6 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 const session = require('express-session');
-// to be removed later ########
-const exphbs = require('express-handlebars');
-// ############################
 
 const morgan = require('morgan');
 
@@ -17,12 +14,6 @@ const corsOptions = require('./config/cors.js');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
-
-// to be removed later ########
-// handlebars
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
-// ########
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
