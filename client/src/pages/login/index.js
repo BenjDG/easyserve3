@@ -1,23 +1,23 @@
 /* global alert */
-import React, { Component } from "react";
-import "./style.css";
+import React, { Component } from 'react';
+import './style.css';
 
 class Login extends Component {
   // Setting the component's initial state
   state = {
-    password: "",
+    password: ''
   };
 
   handleInputChange = (event) => {
     let value = event.target.value;
     const key = event.target.name;
 
-    if (key === "password") {
+    if (key === 'password') {
       value = value.substring(0, 4);
     }
 
     this.setState({
-      [key]: value,
+      [key]: value
     });
   };
 
@@ -25,23 +25,23 @@ class Login extends Component {
     event.preventDefault();
 
     if (this.state.password.length < 4) {
-      alert("Enter four digit code.");
+      alert('Enter four digit code.');
     }
     this.setState({
-      password: "",
+      password: ''
     });
   };
 
-  render() {
+  render () {
     return (
       <div>
-        <form className="form">
+        <form className='form'>
           <input
             value={this.state.password}
-            name="password"
+            name='password'
             onChange={this.handleInputChange}
-            type="password"
-            placeholder="Password"
+            type='password'
+            placeholder='Password'
           />
           <button onClick={this.handleFormSubmit}>Submit</button>
         </form>
