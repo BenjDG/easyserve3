@@ -174,7 +174,7 @@ const seedData = [
 function seedMenuItem () {
   // console.log(db);
   try {
-    db.seedMenuItem.bulkCreate(seedData);
+    db.menuItem.bulkCreate(seedData);
   } catch (error) {
     console.log(error);
   }
