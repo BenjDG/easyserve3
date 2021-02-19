@@ -43,6 +43,8 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
+    "prettier-semi-cli": "^1.0.0",
+    "semistandard": "^16.0.0",
     "snazzy": "^9.0.0"
   }
 }
