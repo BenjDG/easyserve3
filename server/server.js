@@ -5,7 +5,6 @@ const helmet = require('helmet');
 const cors = require('cors');
 const session = require('express-session');
 
-
 const morgan = require('morgan');
 
 const db = require('./models');
