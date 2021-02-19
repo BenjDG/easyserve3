@@ -4,6 +4,6 @@ const menuItem = require('../../../controllers/menuItem');
 router.route('/hotdogs').get(menuItem.findAllHotdogs);
 router.route('/drinks').get(menuItem.findAllDrinks);
 router.route('/sides').get(menuItem.findAllSides);
-router.route('/icecream').get(menuItem.findAllIcecream);
+router.route('/icecreams').get(menuItem.findAllIcecream);
 
 module.exports = router;

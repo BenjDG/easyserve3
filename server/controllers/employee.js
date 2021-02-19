@@ -1,9 +1,9 @@
 const db = require('../models');
 
 module.exports = {
-  findAllEmployees: function () {
+  findAllEmployees: function (_req, res) {
     db.employee.findAll({})
-      .then(result => result)
-      .catch((err) => console.error(err));
+      .then(result => res.json(result))
+      .catch(err => res.status(500).json(err));
   }
 };

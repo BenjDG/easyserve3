@@ -1,40 +1,41 @@
+const { Op } = require('sequelize');
 const db = require('../models');
 
 module.exports = {
-  findAllHotdogs: function () {
-    db.menuitem.findAll({
+  findAllHotdogs: function (_req, res) {
+    db.menuItem.findAll({
       where: {
-        category: 'hotdog'
+        category: { [Op.eq]: 'hotdog' }
       }
     })
-      .then(result => result)
-      .catch((err) => console.error(err));
+      .then(result => res.json(result))
+      .catch(err => res.status(500).json(err));
   },
-  findAllDrinks: function () {
-    db.menuitem.findAll({
+  findAllDrinks: function (_req, res) {
+    db.menuItem.findAll({
       where: {
-        category: 'drink'
+        category: { [Op.eq]: 'drink'}
       }
     })
-      .then(result => result)
-      .catch((err) => console.error(err));
+      .then(result => res.json(result))
+      .catch(err => res.status(500).json(err));
   },
-  findAllSides: function () {
-    db.menuitem.findAll({
+  findAllSides: function (_req, res) {
+    db.menuItem.findAll({
       where: {
-        category: 'side'
+        category: { [Op.eq]: 'side' }
       }
     })
-      .then(result => result)
-      .catch((err) => console.error(err));
+      .then(result => res.json(result))
+      .catch(err => res.status(500).json(err));
   },
-  findAllIcecream: function () {
-    db.menuitem.findAll({
+  findAllIcecream: function (_req, res) {
+    db.menuItem.findAll({
       where: {
-        category: 'icecream'
+        category: { [Op.eq]: 'icecream' }
       }
     })
-      .then(result => result)
-      .catch((err) => console.error(err));
+      .then(result => res.json(result))
+      .catch(err => res.status(500).json(err));
   }
 };
