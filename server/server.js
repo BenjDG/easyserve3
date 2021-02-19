@@ -13,6 +13,7 @@ const passport = require('./config/passport');
 const corsOptions = require('./config/cors.js');
 const seedEmp = require('./database/seedEmp.js');
 const seedMenuItem = require('./database/seedMenuItem.js');
+const seedOrder = require('./database/seedOrder.js');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -64,6 +65,7 @@ db.sequelize
         if (FORCE_SCHEMA) {
           seedEmp();
           seedMenuItem();
+          seedOrder();
         }
       })
       .then(() => {
