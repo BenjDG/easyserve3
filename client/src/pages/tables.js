@@ -1,20 +1,20 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
+    textAlign: 'center',
+    color: theme.palette.text.secondary
+  }
 }));
 
-export default function CenteredGrid() {
+export default function CenteredGrid () {
   const classes = useStyles();
 
   return (
@@ -43,16 +43,16 @@ export default function CenteredGrid() {
   );
 }
 
-const openedTable = document.querySelector("#table-open");
-const takenTable = document.querySelector("#table-taken");
-const mode = "red";
+// const openedTable = document.querySelector('#table-open');
+// const takenTable = document.querySelector('#table-taken');
+// const mode = 'red';
 
-themeSwitcher.addEventlistner("click", function () {
-  if (mode === "red") {
-    mode = "green";
-    container.SetAttribute("class", "green");
-  } else {
-    mode = "red";
-    container.SetAttribute("class", "red");
-  }
-});
+// themeSwitcher.addEventlistner('click', function () {
+//   if (mode === 'red') {
+//     mode = 'green';
+//     container.SetAttribute('class', 'green');
+//   } else {
+//     mode = 'red';
+//     container.SetAttribute('class', 'red');
+//   }
+// });

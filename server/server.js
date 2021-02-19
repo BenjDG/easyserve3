@@ -11,6 +11,8 @@ const db = require('./models');
 const routes = require('./routes');
 const passport = require('./config/passport');
 const corsOptions = require('./config/cors.js');
+const seedEmp = require('./database/seedEmp.js');
+const seedMenuItem = require('./database/seedMenuItem.js');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -58,6 +60,12 @@ db.sequelize
   .authenticate()
   .then(() => {
     db.sequelize.sync({ force: FORCE_SCHEMA })
+      .then(() => {
+        if (FORCE_SCHEMA) {
+          seedEmp();
+          seedMenuItem();
+        }
+      })
       .then(() => {
         app.listen(PORT, (err) => {
           if (err) throw err;

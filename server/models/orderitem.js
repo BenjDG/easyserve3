@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const orderItem = sequelize.define('orderItem', {
+  const OrderItem = sequelize.define('orderItem', {
     employeeId: DataTypes.INTEGER,
     status: DataTypes.INTEGER,
     notes: DataTypes.TEXT
@@ -7,5 +7,5 @@ module.exports = (sequelize, DataTypes) => {
   {
     underscored: false
   });
-  return orderItem;
+  return OrderItem;
 };
