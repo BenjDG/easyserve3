@@ -12,6 +12,10 @@ const seedData = [
   {
     statusId: 3,
     name: 'ready'
+  },
+  {
+    statusId: 4,
+    name: 'completed'
   }
 ];
 
