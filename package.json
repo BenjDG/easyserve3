@@ -11,7 +11,7 @@
   },
   "homepage": "TBD",
   "scripts": {
-    "prestart":"cd server && npm run db:create",
+    "prestart": "cd server && npm run db:create",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node ./server/server.js",
     "start:dev": "concurrently \"nodemon ./server/server.js\" \"npm run client\"",
