@@ -11,4 +11,14 @@ module.exports = {
       .then(result => res.json(result))
       .catch(err => res.status(500).json(err));
   }
+  // ,
+  // findOrderByIdWithItems: function (req, res) {
+  //   db.order.findAll({
+  //     include : [
+  //       model: db.orderItem
+  //     ]
+  //   })
+  //     .then(result => res.json(result))
+  //     .catch(err => res.status(500).json(err));
+  // }
 };

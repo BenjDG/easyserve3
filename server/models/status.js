@@ -9,5 +9,8 @@ module.exports = (sequelize, DataTypes) => {
   {
     timestamps: false
   });
+  Status.associate = function (models) {
+    Status.belongsTo(models.order);
+  };
   return Status;
 };
