@@ -4,5 +4,6 @@ const order = require('../../../controllers/order');
 // route path 'api/order/'
 router.route('/all').get(order.findAllOrders);
 router.route('/:id').get(order.findOrderById);
+router.route('/:id/items').get(order.findOrderByIdWithItems);
 
 module.exports = router;

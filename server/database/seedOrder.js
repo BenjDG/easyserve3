@@ -3,12 +3,12 @@ const db = require('../models');
 const SeedData = [
   {
     employeeId: 1,
-    status: 1,
+    statusId: 1,
     notes: 'Extra ketchup on all hotdogs.'
   },
   {
     employeeId: 2,
-    status: 2,
+    statusId: 2,
     notes: 'Extra mustard on all hotdogs.'
   }
 ];
