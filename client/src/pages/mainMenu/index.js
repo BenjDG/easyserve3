@@ -1,18 +1,18 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Link from "@material-ui/core/Link";
-import Typography from "@material-ui/core/Typography";
-import { Grid } from "@material-ui/core";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
+import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    "& > * + *": {
-      marginLeft: theme.spacing(2),
-    },
-  },
+    '& > * + *': {
+      marginLeft: theme.spacing(2)
+    }
+  }
 }));
 
-function MainMenu() {
+function MainMenu () {
   const classes = useStyles();
   return (
     <Grid container>
@@ -21,22 +21,22 @@ function MainMenu() {
         <Typography className={classes.root}>
           <ul>
             <li>
-              <Link href="/hotdogs" color="inherit">
+              <Link href='/hotdogs' color='inherit'>
                 Hot Dogs
               </Link>
             </li>
             <li>
-              <Link href="/sides" color="inherit">
+              <Link href='/sides' color='inherit'>
                 Sides
               </Link>
             </li>
             <li>
-              <Link href="/drinks" color="inherit">
+              <Link href='/drinks' color='inherit'>
                 Drinks
               </Link>
             </li>
             <li>
-              <Link href="/icecream" color="inherit">
+              <Link href='/icecream' color='inherit'>
                 Ice Cream
               </Link>
             </li>

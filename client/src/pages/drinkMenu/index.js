@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Link from "@material-ui/core/Link";
-import Typography from "@material-ui/core/Typography";
-import { Grid } from "@material-ui/core";
-import API from "../../services/API";
+import React, { useEffect, useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
+import { Grid } from '@material-ui/core';
+import API from '../../services/API';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    "& > * + *": {
-      marginLeft: theme.spacing(2),
-    },
-  },
+    '& > * + *': {
+      marginLeft: theme.spacing(2)
+    }
+  }
 }));
 
-function Drinks() {
+function Drinks () {
   const classes = useStyles();
   const [data, setdata] = useState([]);
 
@@ -37,10 +37,10 @@ function Drinks() {
         <Grid item xs={2} />
         <Grid item xs={8}>
           <Typography className={classes.root}>
-            <Link href="/" color="inherit">
+            <Link href='/' color='inherit'>
               Home
             </Link>
-            <Link href="/test" color="inherit">
+            <Link href='/test' color='inherit'>
               McTesty
             </Link>
           </Typography>
