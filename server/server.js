@@ -63,8 +63,8 @@ const FORCE_SCHEMA = process.env.NODE_ENV === 'test' || 'development';
 
 db.sequelize
   .authenticate()
-  .then(() => {
-    db.sequelize.sync({ force: FORCE_SCHEMA })
+  .then(async () => {
+    await db.sequelize.sync({ force: FORCE_SCHEMA })
       .then(async () => {
         if (FORCE_SCHEMA) {
           await seedEmp();
