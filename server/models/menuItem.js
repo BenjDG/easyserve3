@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
   {
     underscored: false
   });
-  // MenuItem.associate = function (models) {
-  // };
+  MenuItem.associate = function (models) {
+    MenuItem.hasMany(models.orderItem, { targetKey: 'menu_itemId', foreignKey: 'id' });
+  };
   return MenuItem;
 };

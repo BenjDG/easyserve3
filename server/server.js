@@ -68,9 +68,9 @@ db.sequelize
         if (FORCE_SCHEMA) {
           seedEmp();
           seedStatus();
+          seedMenuItem();
           seedOrder();
           seedOrderItem();
-          seedMenuItem();
         }
       })
       .then(() => {
