@@ -63,16 +63,16 @@ const FORCE_SCHEMA = process.env.NODE_ENV === 'test' || 'development';
 
 db.sequelize
   .authenticate()
-  .then(() => {
-    db.sequelize.sync({ force: FORCE_SCHEMA })
-      .then(() => {
+  .then(async () => {
+    await db.sequelize.sync({ force: FORCE_SCHEMA })
+      .then(async () => {
         if (FORCE_SCHEMA) {
-          seedEmp();
-          seedStatus();
-          seedRestTable();
-          seedMenuItem();
-          seedOrderItem();
-          seedOrder();
+          await seedEmp();
+          await seedStatus();
+          await seedRestTable();
+          await seedMenuItem();
+          await seedOrder();
+          await seedOrderItem();
         }
       })
       .then(() => {
