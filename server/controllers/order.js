@@ -12,8 +12,8 @@ module.exports = {
       .catch(err => res.status(500).json(err));
   },
   findOrderByIdWithItems: function (req, res) {
-    console.log(req.params.id);
-    db.order.findAll({
+    console.log(`req.params.id >>>> ${req.params.id}`);
+    db.order.findByPk(req.params.id, {
       include: [
         {
           model: db.orderItem,
