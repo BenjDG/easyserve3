@@ -4,19 +4,21 @@ const SeedData = [
   {
     employeeId: 1,
     statusId: 1,
+    restTableId: 1,
     notes: 'Extra ketchup on all hotdogs.'
   },
   {
     employeeId: 2,
     statusId: 2,
+    restTableId: 2,
     notes: 'Extra mustard on all hotdogs.'
   }
 ];
 
-function seedOrder () {
+async function seedOrder () {
   // console.log(db);
   try {
-    db.order.bulkCreate(SeedData);
+    await db.order.bulkCreate(SeedData);
   } catch (error) {
     console.log(error);
   }

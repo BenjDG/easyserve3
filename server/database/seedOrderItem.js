@@ -35,10 +35,10 @@ const seedData = [
   }
 ];
 
-function seedOrderItem () {
+async function seedOrderItem () {
   // console.log(db);
   try {
-    db.orderItem.bulkCreate(seedData);
+    await db.orderItem.bulkCreate(seedData);
   } catch (error) {
     console.log(error);
   }

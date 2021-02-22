@@ -17,6 +17,7 @@ const seedMenuItem = require('./database/seedMenuItem.js');
 const seedOrder = require('./database/seedOrder.js');
 const seedStatus = require('./database/seedStatus.js');
 const seedOrderItem = require('./database/seedOrderItem');
+const seedRestTable = require('./database/seedRestTable');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -68,8 +69,9 @@ db.sequelize
         if (FORCE_SCHEMA) {
           seedEmp();
           seedStatus();
-          seedMenuItem();
+          seedRestTable();
           seedOrder();
+          seedMenuItem();
           seedOrderItem();
         }
       })
