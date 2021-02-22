@@ -22,8 +22,8 @@ function Landing () {
           <Link href='/' color='inherit'>
             Home
           </Link>
-          <Link href='/test' color='inherit'>
-            McTesty
+          <Link href='/tablestatus' color='inherit'>
+            TableStatus
           </Link>
         </Typography>
       </Grid>

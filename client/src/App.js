@@ -2,6 +2,12 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Landing from './pages/Landing';
+import TableStatus from './pages/TableStatus';
+import MainMenu from './pages/MainMenu';
+import HotDogMenu from './pages/HotDogMenu';
+import IceCreamMenu from './pages/IceCreamMenu';
+import SidesMenu from './pages/SidesMenu';
+import DrinkMenu from './pages/DrinkMenu';
 import McTestFace from './McTesty/McTestFace';
 
 const theme = createMuiTheme({
@@ -18,6 +24,24 @@ function App () {
           </Route>
           <Route exact strict path='/test'>
             <McTestFace />
+          </Route>
+          <Route exact strict path='/tablestatus'>
+            <TableStatus />
+          </Route>
+          <Route exact strict path='/mainmenu'>
+            <MainMenu />
+          </Route>
+          <Route exact strict path='/hotdogs'>
+            <HotDogMenu />
+          </Route>
+          <Route exact strict path='/sides'>
+            <SidesMenu />
+          </Route>
+          <Route exact strict path='/icecream'>
+            <IceCreamMenu />
+          </Route>
+          <Route exact strict path='/drinks'>
+            <DrinkMenu />
           </Route>
         </BrowserRouter>
       </ThemeProvider>
