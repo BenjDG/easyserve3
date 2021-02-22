@@ -66,11 +66,11 @@ db.sequelize
     db.sequelize.sync({ force: FORCE_SCHEMA })
       .then(() => {
         if (FORCE_SCHEMA) {
-          seedStatus();
           seedEmp();
-          seedMenuItem();
+          seedStatus();
           seedOrder();
           seedOrderItem();
+          seedMenuItem();
         }
       })
       .then(() => {

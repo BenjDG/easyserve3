@@ -3,35 +3,35 @@ const db = require('../models');
 const seedData = [
   {
     order_numberId: 1,
-    order_itemId: 1
+    menu_itemId: 1
   },
   {
     order_numberId: 1,
-    order_itemId: 6
+    menu_itemId: 6
   },
   {
     order_numberId: 1,
-    order_itemId: 11
+    menu_itemId: 11
   },
   {
     order_numberId: 1,
-    order_itemId: 19
+    menu_itemId: 19
   },
   {
     order_numberId: 2,
-    order_itemId: 7
+    menu_itemId: 7
   },
   {
     order_numberId: 2,
-    order_itemId: 10
+    menu_itemId: 10
   },
   {
     order_numberId: 2,
-    order_itemId: 20
+    menu_itemId: 20
   },
   {
     order_numberId: 2,
-    order_itemId: 23
+    menu_itemId: 23
   }
 ];
 

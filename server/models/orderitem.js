@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     underscored: false
   });
   OrderItem.associate = function (models) {
-    OrderItem.belongsTo(models.order);
-    OrderItem.belongsTo(models.menuItem);
+    OrderItem.belongsTo(models.order, { targetKey: 'id', foreignKey: 'order_numberId' });
+    // OrderItem.belongsTo(models.menuItem);
   };
   return OrderItem;
 };
