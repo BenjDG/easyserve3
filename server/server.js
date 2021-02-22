@@ -70,9 +70,9 @@ db.sequelize
           seedEmp();
           seedStatus();
           seedRestTable();
-          seedOrder();
           seedMenuItem();
           seedOrderItem();
+          seedOrder();
         }
       })
       .then(() => {
