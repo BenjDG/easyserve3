@@ -15,7 +15,7 @@ const seedData = [
   }
 ];
 
-async function status () {
+async function seedStatus () {
   // console.log(db);
   try {
     await db.status.bulkCreate(seedData);
@@ -24,4 +24,4 @@ async function status () {
   }
 }
 
-module.exports = status;
+module.exports = seedStatus;

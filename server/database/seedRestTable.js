@@ -27,7 +27,7 @@ const seedData = [
   }
 ];
 
-async function restTable () {
+async function seedRestTable () {
   // console.log(db);
   try {
     await db.restTable.bulkCreate(seedData);
@@ -36,4 +36,4 @@ async function restTable () {
   }
 }
 
-module.exports = restTable;
+module.exports = seedRestTable;
