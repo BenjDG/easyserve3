@@ -11,7 +11,6 @@ module.exports = {
       .then(result => res.json(result))
       .catch(err => res.status(500).json(err));
   },
-  // start here 02/20 ##################################
   findOrderByIdWithItems: function (req, res) {
     db.order.findAll({
       include: [
