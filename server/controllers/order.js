@@ -26,9 +26,18 @@ module.exports = {
     })
       .then(result => res.json(result))
       .catch(err => res.status(500).json(err));
+  },
+  createNewOrder: async function (req, res) {
+    console.log(req.body);
+    console.log('#########################');
+    const { empId, tableId, statusId, notes } = req.body;
+    db.order.create({
+      employeeId: empId,
+      resTableId: tableId,
+      statusId: statusId,
+      notes: notes
+    })
+      .then(result => res.json(result))
+      .catch(err => res.status(500).json(err));
   }
-  // ,
-  // createNewOrder: function (req, res) {
-  //   db.order.
-  // }
 };
