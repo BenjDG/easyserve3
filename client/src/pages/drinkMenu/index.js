@@ -49,8 +49,8 @@ function Drinks () {
       </Grid>
       <Grid item container>
         <ul>
-          {data.map((item) => {
-            return <li>{item.title}</li>;
+          {data.map((item, idx) => {
+            return <li key={idx}>{item.title}</li>;
           })}
         </ul>
       </Grid>
