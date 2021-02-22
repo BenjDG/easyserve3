@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     Order.hasMany(models.orderItem, { sourceKey: 'id', foreignKey: 'order_numberId' });
     Order.belongsTo(models.status);
     Order.belongsTo(models.restTable);
+    Order.belongsTo(models.employee);
   };
   return Order;
 };
