@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   Employee.associate = function (models) {
     Employee.hasMany(models.order, {
       targetKey: 'employeeId',
-      foreignKey: 'id'
+      foreignKey: 'employeeId'
     });
   };
   return Employee;
