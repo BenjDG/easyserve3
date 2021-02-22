@@ -1,11 +1,15 @@
+
 module.exports = (sequelize, DataTypes) => {
   const OrderItem = sequelize.define('orderItem', {
-    employeeId: DataTypes.INTEGER,
-    status: DataTypes.INTEGER,
-    notes: DataTypes.TEXT
+    order_numberId: DataTypes.INTEGER,
+    menu_itemId: DataTypes.INTEGER
   },
   {
     underscored: false
   });
+  OrderItem.associate = function (models) {
+    OrderItem.belongsTo(models.order, { targetKey: 'id', foreignKey: 'order_numberId' });
+    OrderItem.belongsTo(models.menuItem, { targetKey: 'id', foreignKey: 'menu_itemId' });
+  };
   return OrderItem;
 };

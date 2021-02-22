@@ -171,10 +171,10 @@ const seedData = [
   }
 ];
 
-function seedMenuItem () {
+async function seedMenuItem () {
   // console.log(db);
   try {
-    db.menuItem.bulkCreate(seedData);
+    await db.menuItem.bulkCreate(seedData);
   } catch (error) {
     console.log(error);
   }

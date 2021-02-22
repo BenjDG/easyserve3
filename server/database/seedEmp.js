@@ -17,10 +17,10 @@ const empSeedData = [
   }
 ];
 
-function seedEmp () {
+async function seedEmp () {
   // console.log(db);
   try {
-    db.employee.bulkCreate(empSeedData);
+    await db.employee.bulkCreate(empSeedData);
   } catch (error) {
     console.log(error);
   }
