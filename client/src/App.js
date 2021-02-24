@@ -10,7 +10,7 @@ import SidesMenu from './pages/sidesMenu';
 import DrinkMenu from './pages/drinkMenu';
 import McTestFace from './mcTesty/mcTestFace';
 import Tables from './pages/tables';
-import Nav from './components/Navttt';
+import Nav from './components/nav';
 
 const theme = createMuiTheme({
   spacing: 12
