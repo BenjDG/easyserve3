@@ -22,7 +22,13 @@ function Landing () {
           <Link href='/' color='inherit'>
             Home
           </Link>
-          <Link href='/tablestatus' color='inherit'>
+          <Link href='/login' color='inherit'>
+            Login
+          </Link>
+          <Link href='/mainMenu' color='inherit'>
+            MainMenu
+          </Link>
+          <Link href='/tableStatus' color='inherit'>
             TableStatus
           </Link>
           <Link href='/tables' color='inherit'>
