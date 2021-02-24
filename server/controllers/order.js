@@ -28,7 +28,6 @@ module.exports = {
       .catch(err => res.status(500).json(err));
   },
   createNewOrder: async function (req, res) {
-    // example { empId: '2', tableId: '2', statusId: '2', notes: 'I like tacos' }
     const { userId, tableId, statusId, notes } = req.body;
     db.order.create({
       userId: userId,
