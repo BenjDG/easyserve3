@@ -38,5 +38,20 @@ module.exports = {
     })
       .then(result => res.json(result))
       .catch(err => res.status(500).json(err));
+  },
+  updateOrderInfo: async function (req, res) {
+    const { orderId, empId, tableId, statusId, notes } = req.body;
+    db.order.update({
+      employeeId: empId,
+      restTableId: tableId,
+      statusId: statusId,
+      notes: notes
+    }, {
+      where: {
+        id: orderId
+      }
+    })
+      .then(result => res.json(result))
+      .catch(err => res.status(500).json(err));
   }
 };

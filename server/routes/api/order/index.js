@@ -8,6 +8,7 @@ router.route('/:id').get(order.findOrderById);
 router.route('/:id/items').get(order.findOrderByIdWithItems);
 router.route('/create').post(order.createNewOrder);
 router.route('/add/:orderId/:itemId').post(orderItem.createNewOrderItem);
+router.route('/update').put(order.updateOrderInfo);
 router.route('/delete/:orderItemRecId').delete(orderItem.deleteOneOrderItem);
 
 module.exports = router;
