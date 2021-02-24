@@ -27,6 +27,11 @@ function Landing() {
           </Link>
           <Link href="/tables" color="inherit">
             Tables
+          <Link href="/test" color="inherit">
+            McTesty
+          </Link>
+          <Link href="/tables" color="inherit">
+            Tables
           </Link>
         </Typography>
       </Grid>
