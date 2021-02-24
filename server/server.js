@@ -12,7 +12,7 @@ const routes = require('./routes');
 const passport = require('./config/passport');
 const corsOptions = require('./config/cors.js');
 
-const seedEmp = require('./database/seedEmp.js');
+const seedUser = require('./database/seedUser.js');
 const seedMenuItem = require('./database/seedMenuItem.js');
 const seedOrder = require('./database/seedOrder.js');
 const seedStatus = require('./database/seedStatus.js');
@@ -67,7 +67,7 @@ db.sequelize
     await db.sequelize.sync({ force: FORCE_SCHEMA })
       .then(async () => {
         if (FORCE_SCHEMA) {
-          await seedEmp();
+          await seedUser();
           await seedStatus();
           await seedRestTable();
           await seedMenuItem();
