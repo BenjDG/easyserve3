@@ -1,9 +1,13 @@
-const db = require('../models');
+const db = require('../../models');
 
 module.exports = {
   findAllEmployees: function (_req, res) {
     db.employee.findAll({})
-      .then(result => res.json(result))
+      .then(result => {
+        const obj = delete result.password;
+        console.log(obj);
+        res.json(obj);
+      })
       .catch(err => res.status(500).json(err));
   },
   findEmployeeById: function (req, res) {

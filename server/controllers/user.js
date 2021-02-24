@@ -2,12 +2,18 @@ const db = require('../models');
 
 module.exports = {
   findAllUsers: function (_req, res) {
-    db.user.findAll({})
-      .then(result => res.json(result))
+    db.user.findAll({
+      attributes: ['id', 'email', 'first_name', 'last_name', 'role']
+    })
+      .then(result => {
+        res.json(result);
+      })
       .catch(err => res.status(500).json(err));
   },
   findUserById: function (req, res) {
-    db.user.findByPk(req.params.id)
+    db.user.findByPk(req.params.id, {
+      attributes: ['id', 'email', 'first_name', 'last_name', 'role']
+    })
       .then(result => res.json(result))
       .catch(err => res.status(500).json(err));
   },
@@ -20,7 +26,12 @@ module.exports = {
       last_name: lName,
       role: role
     })
-      .then(result => res.json(result))
+      .then(result => {
+        console.log(result);
+        const { id, email, first_name, last_name, role } = result; // eslint-disable-line
+        const sendBack = { id, email, first_name, last_name, role };
+        res.json(sendBack);
+      })
       .catch(err => res.status(500).json(err));
   },
   updateUser: async function (req, res) {
