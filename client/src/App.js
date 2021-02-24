@@ -9,6 +9,7 @@ import IceCreamMenu from './pages/IceCreamMenu';
 import SidesMenu from './pages/SidesMenu';
 import DrinkMenu from './pages/DrinkMenu';
 import McTestFace from './McTesty/McTestFace';
+import Tables from './pages/tables';
 
 const theme = createMuiTheme({
   spacing: 12
@@ -42,6 +43,9 @@ function App () {
           </Route>
           <Route exact strict path='/drinks'>
             <DrinkMenu />
+          </Route>
+          <Route exact strict path='/tables'>
+            <Tables />
           </Route>
         </BrowserRouter>
       </ThemeProvider>
