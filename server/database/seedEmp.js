@@ -18,7 +18,6 @@ const empSeedData = [
 ];
 
 async function seedEmp () {
-  // console.log(db);
   try {
     await db.employee.bulkCreate(empSeedData);
   } catch (error) {

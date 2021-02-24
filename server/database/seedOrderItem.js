@@ -36,7 +36,6 @@ const seedData = [
 ];
 
 async function seedOrderItem () {
-  // console.log(db);
   try {
     await db.orderItem.bulkCreate(seedData);
   } catch (error) {
