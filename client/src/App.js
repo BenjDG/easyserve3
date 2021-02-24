@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import Landing from './pages/landing';
+import Home from './pages/home';
 import TableStatus from './pages/tableStatus';
 import MainMenu from './pages/mainMenu';
 import HotDogMenu from './pages/hotDogMenu';
@@ -23,7 +23,7 @@ function App () {
         <Nav />
         <BrowserRouter>
           <Route exact strict path='/'>
-            <Landing />
+            <Home />
           </Route>
           <Route exact strict path='/test'>
             <McTestFace />

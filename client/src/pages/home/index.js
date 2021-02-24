@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Landing () {
+function Home () {
   const classes = useStyles();
   return (
     <Grid
@@ -35,4 +35,4 @@ function Landing () {
   );
 }
 
-export default Landing;
+export default Home;
