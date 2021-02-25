@@ -7,7 +7,6 @@ router.use(passport.authenticate('local'));
 
 // Matches with '/api/auth'
 router.route('/login').post(authController.login);
-router.route('/logout').get(authController.logout);
 router.use('/status', status);
 
 module.exports = router;
