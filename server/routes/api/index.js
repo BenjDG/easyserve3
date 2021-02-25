@@ -4,8 +4,9 @@ const authRoutes = require('./auth');
 const user = require('./user');
 const menuItem = require('./menuItem');
 const order = require('./order');
-const status = require('./auth/status');
+const status = require('./status');
 
+// path '/api
 router.use('/auth', authRoutes);
 router.use('/user', user);
 router.use('/menuitems', menuItem);
