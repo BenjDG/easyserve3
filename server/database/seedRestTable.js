@@ -28,7 +28,6 @@ const seedData = [
 ];
 
 async function seedRestTable () {
-  // console.log(db);
   try {
     await db.restTable.bulkCreate(seedData);
   } catch (error) {

@@ -1,8 +1,8 @@
 const db = require('../models');
 
 module.exports = {
-  findAllEmployees: function (_req, res) {
-    db.employee.findAll({})
+  findAllStatusOptions: function (_req, res) {
+    db.status.findAll({})
       .then(result => res.json(result))
       .catch(err => res.status(500).json(err));
   }
