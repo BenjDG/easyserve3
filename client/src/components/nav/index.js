@@ -16,6 +16,7 @@ function Nav () {
               alignItems='center' xs={8}
             >
               <Link href='/' color='inherit'> Home </Link>
+              <Link href='/login' color='inherit'> Login </Link>
               <Link href='/test' color='inherit'> Test </Link>
               <Link href='/tablestatus' color='inherit'> Tablestatus </Link>
               <Link href='/mainmenu' color='inherit'> Mainmenu </Link>

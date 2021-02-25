@@ -1,33 +1,25 @@
 /* global alert */
+import { TextField } from '@material-ui/core';
 import React, { Component } from 'react';
 import './style.css';
 
 class Login extends Component {
   // Setting the component's initial state
   state = {
+    email: '',
     password: ''
   };
 
   handleInputChange = (event) => {
-    let value = event.target.value;
-    const key = event.target.name;
+    const { name, value } = event.target;
 
-    if (key === 'password') {
-      value = value.substring(0, 4);
-    }
-
-    this.setState({
-      [key]: value
-    });
+    this.setState(prevValue => ({ ...prevValue, [name]: value }));
   };
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-
-    if (this.state.password.length < 4) {
-      alert('Enter four digit code.');
-    }
     this.setState({
+      email: '',
       password: ''
     });
   };
@@ -36,6 +28,13 @@ class Login extends Component {
     return (
       <div>
         <form className='form'>
+          <input
+            value={this.state.email}
+            name='email'
+            onChange={this.handleInputChange}
+            type='email'
+            placeholder='Email'
+          />
           <input
             value={this.state.password}
             name='password'

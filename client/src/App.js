@@ -10,6 +10,7 @@ import SidesMenu from './pages/sidesMenu';
 import DrinkMenu from './pages/drinkMenu';
 import McTestFace from './mcTesty/mcTestFace';
 import Tables from './pages/tables';
+import Login from './pages/login';
 import Nav from './components/nav';
 
 const theme = createMuiTheme({
@@ -24,6 +25,9 @@ function App () {
         <BrowserRouter>
           <Route exact strict path='/'>
             <Home />
+          </Route>
+          <Route exact strict path='/login'>
+            <Login />
           </Route>
           <Route exact strict path='/test'>
             <McTestFace />

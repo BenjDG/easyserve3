@@ -4,7 +4,7 @@ const authRoutes = require('./auth');
 const user = require('./user');
 const menuItem = require('./menuItem');
 const order = require('./order');
-const status = require('./status');
+const status = require('./auth/status');
 
 router.use('/auth', authRoutes);
 router.use('/user', user);
