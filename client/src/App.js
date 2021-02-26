@@ -24,9 +24,6 @@ function App () {
           <Route exact strict path='/'>
             <Home />
           </Route>
-          <Route exact strict path='/test'>
-            <McTestFace />
-          </Route>
           <Route exact strict path='/tablestatus'>
             <TableStatus />
           </Route>
