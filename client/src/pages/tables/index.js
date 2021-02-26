@@ -1,21 +1,28 @@
 import React from 'react';
 
-// import Paper from "@material-ui/core/Paper";
-// import Grid from "@material-ui/core/Grid";
+// import Paper from '@material-ui/core/Paper';
+// import Grid from '@material-ui/core/Grid';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { Button } from '@material-ui/core';
 
 function Tables () {
   return (
     <div>
-      test
       <ButtonGroup
         color='secondary'
         aria-label='outlined secondary button group'
+        orientation='vertical'
       >
         <Button>Table One</Button>
         <Button>Table Two</Button>
         <Button>Table Three</Button>
+      </ButtonGroup>
+
+      <ButtonGroup
+        color='secondary'
+        aria-label='outlined secondary button group'
+        orientation='vertical'
+      >
         <Button>Table Four</Button>
         <Button>Table Five</Button>
         <Button>Table Six</Button>
@@ -27,10 +34,10 @@ function Tables () {
   //   <Grid item xs={8}>
   //     McTesty
   //     <Typography className={classes.root}>
-  //       <Link href="/" color="inherit">
+  //       <Link href='/' color='inherit'>
   //         Home
   //       </Link>
-  //       <Link href="/test" color="inherit">
+  //       <Link href='/test' color='inherit'>
   //         McTesty
   //       </Link>
   //     </Typography>
