@@ -8,7 +8,6 @@ import HotDogMenu from './pages/hotDogMenu';
 import IceCreamMenu from './pages/iceCreamMenu';
 import SidesMenu from './pages/sidesMenu';
 import DrinkMenu from './pages/drinkMenu';
-import McTestFace from './mcTesty/mcTestFace';
 import Tables from './pages/tables';
 import Login from './pages/login';
 import Nav from './components/nav';
@@ -28,9 +27,6 @@ function App () {
           </Route>
           <Route exact strict path='/login'>
             <Login />
-          </Route>
-          <Route exact strict path='/test'>
-            <McTestFace />
           </Route>
           <Route exact strict path='/tablestatus'>
             <TableStatus />
