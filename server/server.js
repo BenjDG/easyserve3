@@ -12,7 +12,7 @@ const routes = require('./routes');
 const passport = require('./config/passport');
 const corsOptions = require('./config/cors.js');
 
-const seedEmp = require('./database/seedEmp.js');
+const seedUser = require('./database/seedUser.js');
 const seedMenuItem = require('./database/seedMenuItem.js');
 const seedOrder = require('./database/seedOrder.js');
 const seedStatus = require('./database/seedStatus.js');
@@ -31,7 +31,7 @@ app.use(express.static('public'));
 // ########
 
 app.use(helmet({ contentSecurityPolicy: false }));
-app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true }));
+app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors(corsOptions));
@@ -46,7 +46,6 @@ if (process.env.NODE_ENV === 'production') {
 
 // Add routes, API
 app.use(routes);
-
 // for Reactjs #############################
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
@@ -67,7 +66,7 @@ db.sequelize
     await db.sequelize.sync({ force: FORCE_SCHEMA })
       .then(async () => {
         if (FORCE_SCHEMA) {
-          await seedEmp();
+          await seedUser();
           await seedStatus();
           await seedRestTable();
           await seedMenuItem();

@@ -2,13 +2,13 @@ const db = require('../models');
 
 const SeedData = [
   {
-    employeeId: 1,
+    userId: 1,
     statusId: 1,
     restTableId: 1,
     notes: 'Extra ketchup on all hotdogs.'
   },
   {
-    employeeId: 2,
+    userId: 2,
     statusId: 2,
     restTableId: 2,
     notes: 'Extra mustard on all hotdogs.'
@@ -16,7 +16,6 @@ const SeedData = [
 ];
 
 async function seedOrder () {
-  // console.log(db);
   try {
     await db.order.bulkCreate(SeedData);
   } catch (error) {

@@ -172,7 +172,6 @@ const seedData = [
 ];
 
 async function seedMenuItem () {
-  // console.log(db);
   try {
     await db.menuItem.bulkCreate(seedData);
   } catch (error) {
