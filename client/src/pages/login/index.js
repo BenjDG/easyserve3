@@ -1,53 +1,47 @@
-/* global alert */
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './style.css';
 
-class Login extends Component {
+function Login () {
   // Setting the component's initial state
-  state = {
+  const [state, setState] = useState({
+    email: '',
     password: ''
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setState(prevValue => ({ ...prevValue, [name]: value }));
   };
 
-  handleInputChange = (event) => {
-    let value = event.target.value;
-    const key = event.target.name;
-
-    if (key === 'password') {
-      value = value.substring(0, 4);
-    }
-
-    this.setState({
-      [key]: value
-    });
-  };
-
-  handleFormSubmit = (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
-
-    if (this.state.password.length < 4) {
-      alert('Enter four digit code.');
-    }
-    this.setState({
+    setState({
+      email: '',
       password: ''
     });
   };
 
-  render () {
-    return (
-      <div>
-        <form className='form'>
-          <input
-            value={this.state.password}
-            name='password'
-            onChange={this.handleInputChange}
-            type='password'
-            placeholder='Password'
-          />
-          <button onClick={this.handleFormSubmit}>Submit</button>
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <form className='form'>
+        <input
+          value={state.email}
+          name='email'
+          onChange={handleInputChange}
+          type='email'
+          placeholder='Email'
+        />
+        <input
+          value={state.password}
+          name='password'
+          onChange={handleInputChange}
+          type='password'
+          placeholder='Password'
+        />
+        <button onClick={handleFormSubmit}>Submit</button>
+      </form>
+    </div>
+  );
 }
 
 export default Login;

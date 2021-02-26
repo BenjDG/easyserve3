@@ -6,7 +6,12 @@ const menuItem = require('./menuItem');
 const order = require('./order');
 const status = require('./status');
 
+const isAuthenticated = require('../../config/middleware/isAuthenticated');
+
+// path '/api
 router.use('/auth', authRoutes);
+
+router.use(isAuthenticated);
 router.use('/user', user);
 router.use('/menuitems', menuItem);
 router.use('/order', order);
