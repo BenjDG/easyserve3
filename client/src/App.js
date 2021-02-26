@@ -8,7 +8,6 @@ import HotDogMenu from './pages/hotDogMenu';
 import IceCreamMenu from './pages/iceCreamMenu';
 import SidesMenu from './pages/sidesMenu';
 import DrinkMenu from './pages/drinkMenu';
-import McTestFace from './mcTesty/mcTestFace';
 import Tables from './pages/tables';
 import Nav from './components/nav';
 
