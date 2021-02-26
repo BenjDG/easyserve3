@@ -14,25 +14,22 @@ passport.use(
     },
     async (email, password, done) => {
       // When a user tries to sign in this code runs
-      try {
-        db.user.findOne({
-          where: {
-            email
-          }
-        }).then(dbUser => {
-          // If there's no user with the given email
-          // If there is a user with the given email, but the password the user gives us is incorrect
-          if (!dbUser || !dbUser.validPassword(password)) {
-            return done(null, false, {
-              message: 'Incorrect email or password.'
-            });
-          }
-          // Login success
-          return done(null, dbUser);
-        }).catch((err) => console.error(err));
-      } catch (error) {
-        console.error(error);
-      }
+
+      db.User.findOne({
+        where: {
+          email
+        }
+      }).then(dbUser => {
+        // If there's no user with the given email
+        // If there is a user with the given email, but the password the user gives us is incorrect
+        if (!dbUser || !dbUser.validPassword(password)) {
+          return done(null, false, {
+            message: 'Incorrect email or password.'
+          });
+        }
+        // Login success
+        return done(null, dbUser);
+      });
     }
   )
 );

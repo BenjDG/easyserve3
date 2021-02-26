@@ -31,7 +31,7 @@ app.use(express.static('public'));
 // ########
 
 app.use(helmet({ contentSecurityPolicy: false }));
-app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true }));
+app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors(corsOptions));
@@ -46,6 +46,7 @@ if (process.env.NODE_ENV === 'production') {
 
 // Add routes, API
 app.use(routes);
+
 // for Reactjs #############################
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
