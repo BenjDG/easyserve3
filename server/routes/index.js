@@ -6,7 +6,7 @@ router.use('/api', apiRoutes);
 
 router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/');
+  res.end();
 });
 
 module.exports = router;
