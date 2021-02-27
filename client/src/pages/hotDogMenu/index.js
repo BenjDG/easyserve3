@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 
 function HotDog () {
   const classes = useStyles();
-  const [data, setdata] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     loadData();
@@ -26,7 +26,7 @@ function HotDog () {
       .then((res) => {
         console.log(res.data);
 
-        setdata(res.data);
+        setData(res.data);
       })
       .catch((err) => console.log(err));
   };
@@ -37,12 +37,7 @@ function HotDog () {
         <Grid item xs={2} />
         <Grid item xs={8}>
           <Typography className={classes.root}>
-            <Link href='/' color='inherit'>
-              Home
-            </Link>
-            <Link href='/test' color='inherit'>
-              McTesty
-            </Link>
+            <h1>HotDogs</h1>
           </Typography>
         </Grid>
         <Grid item xs={2} />

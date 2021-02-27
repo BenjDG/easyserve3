@@ -40,6 +40,16 @@ function Login () {
         />
         <button onClick={handleFormSubmit}>Submit</button>
       </form>
+      <h2>Demo Users:</h2>
+      <h3>Jane</h3>
+      <p>Email: 1@1.com</p>
+      <p>Password: 1234</p>
+      <h3>Billy</h3>
+      <p>Email: 1@2.com</p>
+      <p>Password: 1234</p>
+      <h3>Lloyd</h3>
+      <p>Email: 1@3.com</p>
+      <p>Password: 1234</p>
     </div>
   );
 }
