@@ -1,6 +1,16 @@
 import axios from 'axios';
 
 export default {
+  login: function (email, password) {
+    const obj = {
+      email: email,
+      password: password
+    };
+    return axios.post('/api/auth/login', obj);
+  },
+  logout: function () {
+    return axios.get('api/auth/logout');
+  },
   getHotdogs: function () {
     return axios.get('/api/menuitems/hotdogs');
   },

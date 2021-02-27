@@ -1,47 +1,42 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Link from '@material-ui/core/Link';
-import Typography from '@material-ui/core/Typography';
-import { Grid } from '@material-ui/core';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > * + *': {
-      marginLeft: theme.spacing(2)
-    }
-  }
-}));
+import { Box, Button, Grid } from '@material-ui/core';
 
 function MainMenu () {
-  const classes = useStyles();
   return (
     <Grid container>
       <Grid item xs={2} />
       <Grid item xs={8}>
-        <Typography className={classes.root}>
-          <ul>
-            <li>
-              <Link href='/hotdogs' color='inherit'>
-                Hot Dogs
-              </Link>
-            </li>
-            <li>
-              <Link href='/sides' color='inherit'>
-                Sides
-              </Link>
-            </li>
-            <li>
-              <Link href='/drinks' color='inherit'>
-                Drinks
-              </Link>
-            </li>
-            <li>
-              <Link href='/icecream' color='inherit'>
-                Ice Cream
-              </Link>
-            </li>
-          </ul>
-        </Typography>
+        <Box m={4}>
+          <Grid
+            item
+            container
+            spacing='5'
+            direction='column'
+            justify='center'
+            alignItems='center'
+          >
+            <Grid item>
+              <Button href='/order' variant='outlined' color='inherit'>
+                New Order
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button href='#' variant='outlined' color='inherit'>
+                View Orders
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button href='#' variant='outlined' color='inherit'>
+                Chefs View
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button href='#' variant='outlined' color='inherit'>
+                Admin
+              </Button>
+            </Grid>
+          </Grid>
+        </Box>
       </Grid>
       <Grid item xs={2} />
     </Grid>

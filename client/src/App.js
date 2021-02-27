@@ -28,11 +28,11 @@ function App () {
           <Route exact strict path='/login'>
             <Login />
           </Route>
-          <Route exact strict path='/tablestatus'>
-            <TableStatus />
-          </Route>
           <Route exact strict path='/mainmenu'>
             <MainMenu />
+          </Route>
+          <Route exact strict path='/tablestatus'>
+            <TableStatus />
           </Route>
           <Route exact strict path='/hotdogs'>
             <HotDogMenu />
