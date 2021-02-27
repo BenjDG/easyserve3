@@ -16,7 +16,7 @@ function MainMenu () {
             alignItems='center'
           >
             <Grid item>
-              <Button href='/order' variant='outlined' color='inherit'>
+              <Button href='/neworder' variant='outlined' color='inherit'>
                 New Order
               </Button>
             </Grid>

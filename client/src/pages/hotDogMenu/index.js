@@ -24,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
 function HotDog () {
   const classes = useStyles();
   const [hotdogs, setHotdogs] = useState([]);
+  const [hotdogsList, setHotdogsList] = useState([]);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     loadData();
@@ -32,11 +34,17 @@ function HotDog () {
   const loadData = () => {
     API.getHotdogs()
       .then((res) => {
-        console.log(res.data);
         setHotdogs(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        const error = new Error(err);
+        setError(error.message + ' - Please login');
+      });
   };
+
+  // function handleClick (orderId, itemId, title, price) {
+  //   setHotdogsList({ orderId, itemId, title, price });
+  // }
 
   return (
     <Grid container>
@@ -46,7 +54,7 @@ function HotDog () {
           <Grid item container direction='column'>
             <Grid item>
               <Paper elevation={3} className={classes.orderView}>
-                List of order items
+                {error}{hotdogsList}
               </Paper>
             </Grid>
             <Grid
@@ -58,11 +66,11 @@ function HotDog () {
               className={classes.buttonView}
               spacing={4}
             >
-
               {hotdogs.map((item) => {
                 console.log(item);
-                return <Grid item xs={3} key={item.id}><ButtonPiece title={item.title} handleAdd='' price={item.price} /></Grid>;
+                return <Grid item xs={3} key={item.id}><ButtonPiece itemId={item.id} title={item.title} click='' price={item.price} /></Grid>;
               })}
+
               <Grid item xs={3}>
                 <Button href='/' variant='outlined'>Submit</Button>
               </Grid>

@@ -2,10 +2,10 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 import PricePiece from '../pricePiece';
 
-function ButtonPiece ({ handleAdd, title, price }) {
+function ButtonPiece ({ orderId, itemId, click, title, price }) {
   return (
     <div>
-      <Button onClick={handleAdd} variant='outlined'>{title}</Button>
+      <Button onClick={click} variant='outlined'>{title}</Button>
       <PricePiece price={price} />
     </div>
   );
