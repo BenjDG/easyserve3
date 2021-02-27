@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Grid, Paper } from '@material-ui/core';
-import API from '../../services/API';
-import ButtonPiece from '../../components/buttonPiece';
 
 const useStyles = makeStyles((theme) => ({
   orderView: {
@@ -21,32 +19,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function HotDog () {
+// show items on current order plus order info
+
+// load buttons for food items
+
+function NewOrder () {
   const classes = useStyles();
-  const [hotdogs, setHotdogs] = useState([]);
-  // const [hotdogsList, setHotdogsList] = useState([]);
-  // const [error, setError] = useState('');
-
-  useEffect(() => {
-    loadData();
-  }, []);
-
-  const loadData = () => {
-    API.getHotdogs()
-      .then((res) => {
-        setHotdogs(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-        // const error = new Error(err);
-        // setError(error.message + ' - Please login');
-      });
-  };
-
-  // function handleClick (orderId, itemId, title, price) {
-  //   setHotdogsList({ orderId, itemId, title, price });
-  // }
-
   return (
     <Grid container>
       <Grid item xs={2} />
@@ -55,7 +33,7 @@ function HotDog () {
           <Grid item container direction='column'>
             <Grid item>
               <Paper elevation={3} className={classes.orderView}>
-                {/* {error}{hotdogsList} */}
+                List of order items
               </Paper>
             </Grid>
             <Grid
@@ -67,11 +45,18 @@ function HotDog () {
               className={classes.buttonView}
               spacing={4}
             >
-              {hotdogs.map((item) => {
-                console.log(item);
-                return <Grid item xs={3} key={item.id}><ButtonPiece itemId={item.id} title={item.title} click='' price={item.price} /></Grid>;
-              })}
-
+              <Grid item xs={3}>
+                <Button href='/hotdogs' variant='outlined'>Hotdogs</Button>
+              </Grid>
+              <Grid item xs={3}>
+                <Button href='/sides' variant='outlined'>Sides</Button>
+              </Grid>
+              <Grid item xs={3}>
+                <Button href='/drinks' variant='outlined'>Drinks</Button>
+              </Grid>
+              <Grid item xs={3}>
+                <Button href='/icecream' variant='outlined'>Icecream</Button>
+              </Grid>
               <Grid item xs={3}>
                 <Button href='/' variant='outlined'>Submit</Button>
               </Grid>
@@ -84,4 +69,4 @@ function HotDog () {
   );
 }
 
-export default HotDog;
+export default NewOrder;

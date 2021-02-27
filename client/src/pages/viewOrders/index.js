@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { Grid } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,19 +11,25 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Order () {
+function ViewOrders () {
   const classes = useStyles();
   return (
     <Grid container>
       <Grid item xs={2} />
       <Grid item xs={8}>
-        <Typography className={classes.root}>
-          Start an order
-        </Typography>
+        <Box m={2}>
+          <Grid item container>
+            <Grid item>
+              <Typography className={classes.root}>
+                View Orders
+              </Typography>
+            </Grid>
+          </Grid>
+        </Box>
       </Grid>
       <Grid item xs={2} />
     </Grid>
   );
 }
 
-export default Order;
+export default ViewOrders;
