@@ -1,8 +1,13 @@
 import axios from 'axios';
 
 export default {
-  login: function () {
-    return axios.post('/api/auth/login');
+  login: function (email, password) {
+    const obj = {
+      email: email,
+      password: password
+    };
+    console.log('api########');
+    return axios.post('/api/auth/login', obj);
   },
   getHotdogs: function () {
     return axios.get('/api/menuitems/hotdogs');

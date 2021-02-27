@@ -16,37 +16,12 @@ function Login () {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    loginUser(state.email, state.password);
+    API.login(state.email, state.password);
     setState({
       email: '',
       password: ''
     });
   };
-
-  function loginUser (email, password) {
-    API.login(email, password)
-      .then(result => console.log(result))
-      .catch((err) => console.error(err));
-
-    // $.post('/api/login', {
-    //   email: email,
-    //   password: password
-    // })
-    //   .then(() => {
-    //     emailInput.val('');
-    //     passwordInput.val('');
-    //     window.location.replace('/notes');
-    //     // If there's an error, log the error
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //     if (err.status === 401) {
-    //       errorMessage('Invalid username or password.');
-    //     } else {
-    //       errorMessage('Error, please refresh and try again.');
-    //     }
-    //   });
-  }
 
   return (
     <div>

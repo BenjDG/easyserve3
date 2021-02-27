@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
 import API from '../../services/API';
