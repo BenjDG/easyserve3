@@ -1,32 +1,64 @@
 import React from 'react';
 
 // import Paper from '@material-ui/core/Paper';
-// import Grid from '@material-ui/core/Grid';
+import Grid from '@material-ui/core/Grid';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import { Button } from '@material-ui/core';
+import { Box, Button, makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: theme.spacing(3, 2),
+    margin: theme.spacing(4),
+    height: 200,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
+  }
+}));
 
 function Tables () {
+  const classes = useStyles();
   return (
     <div>
-      <ButtonGroup
-        color='secondary'
-        aria-label='outlined secondary button group'
-        orientation='vertical'
-      >
-        <Button>Table One</Button>
-        <Button>Table Two</Button>
-        <Button>Table Three</Button>
-      </ButtonGroup>
+      <Grid container>
+        <Grid item xs={4} />
+        <Grid item xs={4}>
+          <Box className={classes.root}>
+            <ButtonGroup
+              color='secondary'
+              aria-label='outlined secondary button group'
+              orientation='vertical'
+              size='large'
+              alignItems='center'
+            >
+              <Button>Table One</Button>
+              <Button>Table Two</Button>
+              <Button>Table Three</Button>
+            </ButtonGroup>
+          </Box>
+        </Grid>
+        <Grid item xs={4} />
+      </Grid>
 
-      <ButtonGroup
-        color='secondary'
-        aria-label='outlined secondary button group'
-        orientation='vertical'
-      >
-        <Button>Table Four</Button>
-        <Button>Table Five</Button>
-        <Button>Table Six</Button>
-      </ButtonGroup>
+      <Grid container>
+        <Grid item xs={4} />
+        <Grid item xs={4}>
+          <Box className={classes.root}>
+            <ButtonGroup
+              color='secondary'
+              aria-label='outlined secondary button group'
+              orientation='vertical'
+              size='large'
+              alignItems='center'
+            >
+              <Button>Table Four</Button>
+              <Button>Table Five</Button>
+              <Button>Table Six</Button>
+            </ButtonGroup>
+          </Box>
+        </Grid>
+        <Grid item xs={4} />
+      </Grid>
     </div>
 
   // <Grid container>
@@ -49,20 +81,6 @@ function Tables () {
 }
 
 export default Tables;
-
-// const openedTable = document.querySelector('#table-open');
-// const takenTable = document.querySelector('#table-taken');
-// const mode = 'red';
-
-// themeSwitcher.addEventlistner('click', function () {
-//   if (mode === 'red') {
-//     mode = 'green';
-//     container.SetAttribute('class', 'green');
-//   } else {
-//     mode = 'red';
-//     container.SetAttribute('class', 'red');
-//   }
-// });
 
 // export default function CenteredGrid() {
 //   const classes = useStyles();
