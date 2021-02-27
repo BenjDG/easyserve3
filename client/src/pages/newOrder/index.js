@@ -1,15 +1,28 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { Box, Grid } from '@material-ui/core';
+import { Box, Grid, Paper } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > * + *': {
-      marginLeft: theme.spacing(2)
-    }
+  orderView: {
+    padding: theme.spacing(2, 2),
+    height: 200,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start'
+  },
+  buttonView: {
+    padding: theme.spacing(2, 2)
+    // height: 200,
+    // display: 'flex',
+    // flexDirection: 'column',
+    // justifyContent: 'flex-start'
   }
 }));
+
+// show items on current order plus order info
+
+// load buttons for food items
 
 function NewOrder () {
   const classes = useStyles();
@@ -18,11 +31,16 @@ function NewOrder () {
       <Grid item xs={2} />
       <Grid item xs={8}>
         <Box m={2}>
-          <Grid item container>
+          <Grid item container direction='column'>
             <Grid item>
-              <Typography className={classes.root}>
-                Start an order
-              </Typography>
+              <Paper elevation={3} className={classes.orderView}>
+                List of order items
+              </Paper>
+            </Grid>
+            <Grid item>
+              <Box className={classes.buttonView}>
+                Buttons
+              </Box>
             </Grid>
           </Grid>
         </Box>
