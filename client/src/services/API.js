@@ -6,8 +6,10 @@ export default {
       email: email,
       password: password
     };
-    console.log('api########');
     return axios.post('/api/auth/login', obj);
+  },
+  logout: function () {
+    return axios.get('api/auth/logout');
   },
   getHotdogs: function () {
     return axios.get('/api/menuitems/hotdogs');
