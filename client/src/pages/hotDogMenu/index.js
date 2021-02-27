@@ -24,8 +24,8 @@ const useStyles = makeStyles((theme) => ({
 function HotDog () {
   const classes = useStyles();
   const [hotdogs, setHotdogs] = useState([]);
-  const [hotdogsList, setHotdogsList] = useState([]);
-  const [error, setError] = useState('');
+  // const [hotdogsList, setHotdogsList] = useState([]);
+  // const [error, setError] = useState('');
 
   useEffect(() => {
     loadData();
@@ -37,8 +37,9 @@ function HotDog () {
         setHotdogs(res.data);
       })
       .catch((err) => {
-        const error = new Error(err);
-        setError(error.message + ' - Please login');
+        console.error(err);
+        // const error = new Error(err);
+        // setError(error.message + ' - Please login');
       });
   };
 
@@ -54,7 +55,7 @@ function HotDog () {
           <Grid item container direction='column'>
             <Grid item>
               <Paper elevation={3} className={classes.orderView}>
-                {error}{hotdogsList}
+                {/* {error}{hotdogsList} */}
               </Paper>
             </Grid>
             <Grid
