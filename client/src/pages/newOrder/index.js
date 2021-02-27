@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Order () {
+function NewOrder () {
   const classes = useStyles();
   return (
     <Grid container>
@@ -32,4 +32,4 @@ function Order () {
   );
 }
 
-export default Order;
+export default NewOrder;
