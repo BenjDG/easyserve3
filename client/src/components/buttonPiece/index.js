@@ -1,11 +1,25 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
 import PricePiece from '../pricePiece';
+import { useOrderContext } from '../../services/globalOrder';
 
-function ButtonPiece ({ orderId, itemId, click, title, price }) {
+function ButtonPiece ({ orderId, itemId, title, price }) {
+  const [_, dispatch] = useOrderContext();
+
+  const handleClick = (event) => {
+    console.log(event);
+    dispatch({
+      type: 'add',
+      orderId: orderId,
+      itemId: itemId,
+      title: title,
+      price: price
+    });
+  };
+
   return (
     <div>
-      <Button onClick={click} variant='outlined'>{title}</Button>
+      <Button onClick={handleClick} variant='outlined'>{title}</Button>
       <PricePiece price={price} />
     </div>
   );
