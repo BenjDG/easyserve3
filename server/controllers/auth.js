@@ -1,5 +1,3 @@
-// const db = require('../models');
-
 const login = async (req, res) => {
   res.json({
     email: req.user.email,
