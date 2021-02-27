@@ -22,8 +22,8 @@ function Nav () {
               <Link href='/tablestatus' color='inherit'> Tablestatus </Link>
               <Link href='/hotdogs' color='inherit'> Hotdogs </Link>
               <Link href='/sides' color='inherit'> Sides </Link>
-              <Link href='/icecream' color='inherit'> Icecream </Link>
               <Link href='/drinks' color='inherit'> Drinks </Link>
+              <Link href='/icecream' color='inherit'> Icecream </Link>
             </Grid>
             <Grid item xs={2} />
           </Grid>
