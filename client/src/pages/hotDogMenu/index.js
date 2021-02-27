@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import { Grid } from '@material-ui/core';
+import { Box, Button, Grid, Paper } from '@material-ui/core';
 import API from '../../services/API';
+import ButtonPiece from '../../components/buttonPiece';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > * + *': {
-      marginLeft: theme.spacing(2)
-    }
+  orderView: {
+    padding: theme.spacing(2, 2),
+    height: 200,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start'
+  },
+  buttonView: {
+    padding: theme.spacing(2, 2)
+    // height: 200,
+    // display: 'flex',
+    // flexDirection: 'column',
+    // justifyContent: 'flex-start'
   }
 }));
 
 function HotDog () {
   const classes = useStyles();
-  const [data, setData] = useState([]);
+  const [hotdogs, setHotdogs] = useState([]);
 
   useEffect(() => {
     loadData();
@@ -24,30 +33,44 @@ function HotDog () {
     API.getHotdogs()
       .then((res) => {
         console.log(res.data);
-
-        setData(res.data);
+        setHotdogs(res.data);
       })
       .catch((err) => console.log(err));
   };
 
   return (
     <Grid container>
-      <Grid item container>
-        <Grid item xs={2} />
-        <Grid item xs={8}>
-          <Typography className={classes.root}>
-            <h1>HotDogs</h1>
-          </Typography>
-        </Grid>
-        <Grid item xs={2} />
+      <Grid item xs={2} />
+      <Grid item xs={8}>
+        <Box m={2}>
+          <Grid item container direction='column'>
+            <Grid item>
+              <Paper elevation={3} className={classes.orderView}>
+                List of order items
+              </Paper>
+            </Grid>
+            <Grid
+              item
+              container
+              direction='row'
+              justify='center'
+              alignItems='center'
+              className={classes.buttonView}
+              spacing={4}
+            >
+
+              {hotdogs.map((item) => {
+                console.log(item);
+                return <Grid item xs={3} key={item.id}><ButtonPiece title={item.title} handleAdd='' price={item.price} /></Grid>;
+              })}
+              <Grid item xs={3}>
+                <Button href='/' variant='outlined'>Submit</Button>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Box>
       </Grid>
-      <Grid item container>
-        <ul>
-          {data.map((item, idx) => {
-            return <li key={idx}>{item.title}</li>;
-          })}
-        </ul>
-      </Grid>
+      <Grid item xs={2} />
     </Grid>
   );
 }

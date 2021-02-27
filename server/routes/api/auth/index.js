@@ -3,7 +3,7 @@ const passport = require('../../../config/passport');
 const authController = require('../../../controllers/auth');
 
 router.use(passport.authenticate('local', {
-  session: false
+  session: true
 }));
 
 // Matches with '/api/auth'

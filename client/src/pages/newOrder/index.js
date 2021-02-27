@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import { Box, Grid, Paper } from '@material-ui/core';
+import { Box, Button, Grid, Paper } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   orderView: {
@@ -37,10 +36,30 @@ function NewOrder () {
                 List of order items
               </Paper>
             </Grid>
-            <Grid item>
-              <Box className={classes.buttonView}>
-                Buttons
-              </Box>
+            <Grid
+              item
+              container
+              direction='row'
+              justify='center'
+              alignItems='center'
+              className={classes.buttonView}
+              spacing={4}
+            >
+              <Grid item xs={3}>
+                <Button href='/hotdogs' variant='outlined'>Hotdogs</Button>
+              </Grid>
+              <Grid item xs={3}>
+                <Button href='/sides' variant='outlined'>Sides</Button>
+              </Grid>
+              <Grid item xs={3}>
+                <Button href='/drinks' variant='outlined'>Drinks</Button>
+              </Grid>
+              <Grid item xs={3}>
+                <Button href='/icecream' variant='outlined'>Icecream</Button>
+              </Grid>
+              <Grid item xs={3}>
+                <Button href='/' variant='outlined'>Submit</Button>
+              </Grid>
             </Grid>
           </Grid>
         </Box>
