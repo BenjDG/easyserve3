@@ -17,13 +17,13 @@ function Nav () {
             >
               <Link href='/' color='inherit'> Home </Link>
               <Link href='/login' color='inherit'> Login </Link>
-              <Link href='/tablestatus' color='inherit'> Tablestatus </Link>
               <Link href='/mainmenu' color='inherit'> Mainmenu </Link>
+              <Link href='/tables' color='inherit'> Tables </Link>
+              <Link href='/tablestatus' color='inherit'> Tablestatus </Link>
               <Link href='/hotdogs' color='inherit'> Hotdogs </Link>
               <Link href='/sides' color='inherit'> Sides </Link>
               <Link href='/icecream' color='inherit'> Icecream </Link>
               <Link href='/drinks' color='inherit'> Drinks </Link>
-              <Link href='/tables' color='inherit'> Tables </Link>
             </Grid>
             <Grid item xs={2} />
           </Grid>
