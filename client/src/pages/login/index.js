@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './style.css';
 
 function Login () {
@@ -15,11 +16,35 @@ function Login () {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    setState({
-      email: '',
-      password: ''
-    });
+    loginUser(state.email, state.password);
   };
+
+  function loginUser (email, password) {
+    axios.post('api/login', {
+      email: email,
+      password: password
+    })
+
+
+    // $.post('/api/login', {
+    //   email: email,
+    //   password: password
+    // })
+    //   .then(() => {
+    //     emailInput.val('');
+    //     passwordInput.val('');
+    //     window.location.replace('/notes');
+    //     // If there's an error, log the error
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //     if (err.status === 401) {
+    //       errorMessage('Invalid username or password.');
+    //     } else {
+    //       errorMessage('Error, please refresh and try again.');
+    //     }
+    //   });
+  }
 
   return (
     <div>
