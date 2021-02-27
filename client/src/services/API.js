@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default {
-  Login: function () {
+  login: function () {
     return axios.post('/api/auth/login');
   },
   getHotdogs: function () {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import API from '../../services/API';
 import './style.css';
 
 function Login () {
@@ -17,14 +17,16 @@ function Login () {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     loginUser(state.email, state.password);
+    setState({
+      email: '',
+      password: ''
+    });
   };
 
   function loginUser (email, password) {
-    axios.post('api/login', {
-      email: email,
-      password: password
-    })
-
+    API.login(email, password)
+      .then(result => console.log(result))
+      .catch((err) => console.error(err));
 
     // $.post('/api/login', {
     //   email: email,
