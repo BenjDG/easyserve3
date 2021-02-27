@@ -1,6 +1,9 @@
 import axios from 'axios';
 
 export default {
+  Login: function () {
+    return axios.post('/api/auth/login');
+  },
   getHotdogs: function () {
     return axios.get('/api/menuitems/hotdogs');
   },
