@@ -12,6 +12,7 @@ import Tables from './pages/tables';
 import Login from './pages/login';
 import Nav from './components/nav';
 import NewOrder from './pages/newOrder';
+import ViewOrders from './pages/viewOrders';
 
 const theme = createMuiTheme({
   spacing: 12
@@ -34,6 +35,9 @@ function App () {
           </Route>
           <Route exact strict path='/neworder'>
             <NewOrder />
+          </Route>
+          <Route exact strict path='/vieworders'>
+            <ViewOrders />
           </Route>
           <Route exact strict path='/tablestatus'>
             <TableStatus />

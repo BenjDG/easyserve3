@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
 import API from '../../services/API';
@@ -37,12 +36,7 @@ function Drinks () {
         <Grid item xs={2} />
         <Grid item xs={8}>
           <Typography className={classes.root}>
-            <Link href='/' color='inherit'>
-              Home
-            </Link>
-            <Link href='/test' color='inherit'>
-              McTesty
-            </Link>
+            Drinks
           </Typography>
         </Grid>
         <Grid item xs={2} />
