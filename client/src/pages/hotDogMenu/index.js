@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Grid, Paper } from '@material-ui/core';
 import API from '../../services/API';
 import ButtonPiece from '../../components/buttonPiece';
+import { useOrderContext } from '../../services/globalOrder';
 
 const useStyles = makeStyles((theme) => ({
   orderView: {
@@ -22,10 +23,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function HotDog () {
+  const [_, dispatch] = useOrderContext();
   const classes = useStyles();
   const [hotdogs, setHotdogs] = useState([]);
-  // const [hotdogsList, setHotdogsList] = useState([]);
-  // const [error, setError] = useState('');
+  const [error, setError] = useState('');
+
+
 
   useEffect(() => {
     loadData();
@@ -38,14 +41,10 @@ function HotDog () {
       })
       .catch((err) => {
         console.error(err);
-        // const error = new Error(err);
-        // setError(error.message + ' - Please login');
+        const error = new Error(err);
+        setError(error.message + ' - Please login');
       });
   };
-
-  // function handleClick (orderId, itemId, title, price) {
-  //   setHotdogsList({ orderId, itemId, title, price });
-  // }
 
   return (
     <Grid container>
@@ -55,7 +54,7 @@ function HotDog () {
           <Grid item container direction='column'>
             <Grid item>
               <Paper elevation={3} className={classes.orderView}>
-                {/* {error}{hotdogsList} */}
+                {error}view order items
               </Paper>
             </Grid>
             <Grid
@@ -69,7 +68,7 @@ function HotDog () {
             >
               {hotdogs.map((item) => {
                 console.log(item);
-                return <Grid item xs={3} key={item.id}><ButtonPiece itemId={item.id} title={item.title} click='' price={item.price} /></Grid>;
+                return <Grid item xs={3} key={item.id}><ButtonPiece itemId={item.id} title={item.title} onClick={handleClick} price={item.price} /></Grid>;
               })}
 
               <Grid item xs={3}>
