@@ -11,6 +11,7 @@ import DrinkMenu from './pages/drinkMenu';
 import Tables from './pages/tables';
 import Login from './pages/login';
 import Nav from './components/nav';
+import Order from './pages/order';
 
 const theme = createMuiTheme({
   spacing: 12
@@ -30,6 +31,9 @@ function App () {
           </Route>
           <Route exact strict path='/mainmenu'>
             <MainMenu />
+          </Route>
+          <Route exact strict path='/order'>
+            <Order />
           </Route>
           <Route exact strict path='/tablestatus'>
             <TableStatus />
