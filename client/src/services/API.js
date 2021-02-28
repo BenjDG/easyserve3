@@ -44,11 +44,11 @@ export default {
   findAllOrders: function () {
     return axios.get('/api/order/all');
   },
-  findOrderById: function () {
-    return axios.get('/api/order/:id');
+  findOrderById: function (id) {
+    return axios.get(`/api/order/${id}`);
   },
-  findOrderByIdWithItems: function () {
-    return axios.get('/api/order/:id/items');
+  findOrderByIdWithItems: function (id) {
+    return axios.get(`/api/order/${id}/items`);
   },
   createNewOrder: function () {
     // { userId, tableId, statusId, notes }

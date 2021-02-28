@@ -3,6 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Grid, Paper } from '@material-ui/core';
 import API from '../../services/API';
 import ButtonPiece from '../../components/buttonPiece';
+import ViewTable from '../../components/viewTable';
+
+// findOrderByIdWithItems: function () {
+//   return axios.get('/api/order/:id/items');
+// },
 
 const useStyles = makeStyles((theme) => ({
   orderView: {
@@ -27,13 +32,31 @@ function HotDog () {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    loadData();
+    loadHotDogData();
+    loadOrderData();
   }, []);
 
-  const loadData = () => {
+  const loadHotDogData = () => {
     API.getHotdogs()
       .then((res) => {
         setHotdogs(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+        const error = new Error(err);
+        setError(error.message + ' - Please login');
+      });
+  };
+
+  API.findOrderByIdWithItems('1')
+    .then((res) => {
+      console.log(res);
+    });
+    
+  const loadOrderData = () => {
+    API.findOrderByIdWithItems('1')
+      .then((res) => {
+        console.log(res);
       })
       .catch((err) => {
         console.error(err);
@@ -50,7 +73,8 @@ function HotDog () {
           <Grid item container direction='column'>
             <Grid item>
               <Paper elevation={3} className={classes.orderView}>
-                {error}view order items
+                {error}
+                <ViewTable />
               </Paper>
             </Grid>
             <Grid
