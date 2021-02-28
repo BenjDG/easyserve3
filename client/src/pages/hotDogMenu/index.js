@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Grid, Paper } from '@material-ui/core';
 import API from '../../services/API';
 import ButtonPiece from '../../components/buttonPiece';
-import { useOrderContext } from '../../services/globalOrder';
 
 const useStyles = makeStyles((theme) => ({
   orderView: {
@@ -23,12 +22,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function HotDog () {
-  const [_, dispatch] = useOrderContext();
   const classes = useStyles();
   const [hotdogs, setHotdogs] = useState([]);
   const [error, setError] = useState('');
-
-
 
   useEffect(() => {
     loadData();
