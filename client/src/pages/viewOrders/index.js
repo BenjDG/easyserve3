@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function ViewOrders () {
+function AllOrders () {
   const classes = useStyles();
   const [viewOrders, setAllOrders] = useState([])
 
@@ -53,4 +53,4 @@ function ViewOrders () {
   );
 }
 
-export default ViewOrders;
+export default AllOrders;
