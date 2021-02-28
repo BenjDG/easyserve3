@@ -67,8 +67,7 @@ function HotDog () {
               spacing={4}
             >
               {hotdogs.map((item) => {
-                console.log(item);
-                return <Grid item xs={3} key={item.id}><ButtonPiece itemId={item.id} title={item.title} onClick={handleClick} price={item.price} /></Grid>;
+                return <Grid item xs={3} key={item.id}><ButtonPiece itemId={item.id} title={item.title} price={item.price} /></Grid>;
               })}
 
               <Grid item xs={3}>
