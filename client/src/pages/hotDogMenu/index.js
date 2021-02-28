@@ -29,11 +29,12 @@ const useStyles = makeStyles((theme) => ({
 function HotDog () {
   const classes = useStyles();
   const [hotdogs, setHotdogs] = useState([]);
+  const [OrderByIdWithItems, setOrderByIdWithItems] = useState({});
   const [error, setError] = useState('');
 
   useEffect(() => {
     loadHotDogData();
-    loadOrderData();
+    loadOrderData(2);
   }, []);
 
   const loadHotDogData = () => {
@@ -48,15 +49,11 @@ function HotDog () {
       });
   };
 
-  API.findOrderByIdWithItems('1')
-    .then((res) => {
-      console.log(res);
-    });
-    
-  const loadOrderData = () => {
-    API.findOrderByIdWithItems('1')
+  const loadOrderData = (orderId) => {
+    API.findOrderByIdWithItems(orderId)
       .then((res) => {
-        console.log(res);
+        // console.log(res.data);
+        setOrderByIdWithItems(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -74,7 +71,7 @@ function HotDog () {
             <Grid item>
               <Paper elevation={3} className={classes.orderView}>
                 {error}
-                <ViewTable />
+                <ViewTable oneOrder={OrderByIdWithItems} />
               </Paper>
             </Grid>
             <Grid

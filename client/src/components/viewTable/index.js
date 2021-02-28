@@ -1,6 +1,8 @@
 import React from 'react';
 
-function viewTable () {
+function viewTable ({ oneOrder }) {
+  console.log(`oneOrder >>>>> ${oneOrder}`);
+  console.log(oneOrder);
   return (
     <p>View Table</p>
   );
