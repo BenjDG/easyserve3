@@ -14,6 +14,7 @@ import Nav from './components/nav';
 import NewOrder from './pages/newOrder';
 import ViewOrders from './pages/viewOrders';
 import { OrderProvider } from './services/globalOrder';
+import { UserProvider } from './services/userContext';
 
 const theme = createMuiTheme({
   spacing: 12
@@ -32,33 +33,35 @@ function App () {
             <Route exact strict path='/login'>
               <Login />
             </Route>
-            <Route exact strict path='/mainmenu'>
-              <MainMenu />
-            </Route>
-            <Route exact strict path='/neworder'>
-              <NewOrder />
-            </Route>
-            <Route exact strict path='/vieworders'>
-              <ViewOrders />
-            </Route>
-            <Route exact strict path='/tablestatus'>
-              <TableStatus />
-            </Route>
-            <Route exact strict path='/hotdogs'>
-              <HotDogMenu />
-            </Route>
-            <Route exact strict path='/sides'>
-              <SidesMenu />
-            </Route>
-            <Route exact strict path='/icecream'>
-              <IceCreamMenu />
-            </Route>
-            <Route exact strict path='/drinks'>
-              <DrinkMenu />
-            </Route>
-            <Route exact strict path='/tables'>
-              <Tables />
-            </Route>
+            <UserProvider>
+              <Route exact strict path='/mainmenu'>
+                <MainMenu />
+              </Route>
+              <Route exact strict path='/neworder'>
+                <NewOrder />
+              </Route>
+              <Route exact strict path='/vieworders'>
+                <ViewOrders />
+              </Route>
+              <Route exact strict path='/tablestatus'>
+                <TableStatus />
+              </Route>
+              <Route exact strict path='/hotdogs'>
+                <HotDogMenu />
+              </Route>
+              <Route exact strict path='/sides'>
+                <SidesMenu />
+              </Route>
+              <Route exact strict path='/icecream'>
+                <IceCreamMenu />
+              </Route>
+              <Route exact strict path='/drinks'>
+                <DrinkMenu />
+              </Route>
+              <Route exact strict path='/tables'>
+                <Tables />
+              </Route>
+            </UserProvider>
           </BrowserRouter>
         </OrderProvider>
       </ThemeProvider>

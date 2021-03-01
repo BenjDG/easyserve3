@@ -3,20 +3,21 @@ import React, { useContext, useState } from 'react';
 
 const emptyContext = [null, () => {}];
 
+// default value is emptyContext
 const UserContext = React.createContext(emptyContext);
 
 const UserContextProvider = UserContext.Provider;
 
-export const useUserProvider = () => {
+const useUserProvider = () => {
   const res = useContext(UserContext);
-  return res ? res : emptyContext;
+  return res || emptyContext;
 };
 
 /**
  * Provider Component
  */
 
-export const UserProvider = ({ children }) => {
+const UserProvider = ({ children }) => {
   const userModel = useUserModel();
   return (
     <UserContextProvider value={userModel}>
@@ -34,7 +35,8 @@ const useUserModel = () => {
     token: ''
   });
   return {
-    user,
-    setUser
+    user, setUser
   };
 };
+
+export { UserProvider, useUserProvider };
