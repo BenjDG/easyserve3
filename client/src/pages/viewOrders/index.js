@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function AllOrders() {
+function AllOrders () {
   const classes = useStyles();
   const [allorders, setAllOrders] = useState([]);
 
@@ -48,7 +48,7 @@ function AllOrders() {
               <Grid item>
                 {allorders.map((item) => {
                   console.log(item);
-                  return <Grid item xs={3} key={item.id}></Grid>;
+                  return <Grid item xs={3} key={item.id} />;
                 })}
               </Grid>
             </Grid>
