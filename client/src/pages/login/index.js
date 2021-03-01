@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import API from '../../services/API';
+import { useUserProvider } from '../../services/userContext';
 import './style.css';
 
 function Login () {
+  const [_, setUser] = useUserProvider();
   // Setting the component's initial login
   const [login, setLogin] = useState({
     email: '',
@@ -21,7 +23,13 @@ function Login () {
       .then(result => {
         if (result.status === 200) {
           // redirect to main menu
-          window.location = '/mainmenu';
+          console.log(result);
+          console.log(result.data.email);
+          console.log(result.data.id);
+          setUser({
+            
+          });
+          // window.location = '/mainmenu';
         } else {
           setErr('An error occured.  Please check your username and password.');
           console.error(result.status);

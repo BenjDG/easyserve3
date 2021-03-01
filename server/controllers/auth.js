@@ -1,7 +1,10 @@
 const login = async (req, res) => {
+  console.log(req.user);
   res.json({
     email: req.user.email,
-    id: req.user.id
+    id: req.user.id,
+    first_name: req.user.first_name,
+    last_name: req.user.last_name
   });
 };
 

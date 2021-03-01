@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Box, Button, Grid } from '@material-ui/core';
+import { useUserProvider } from '../../services/userContext';
 
 function MainMenu () {
+  const user = useContext(useUserProvider);
+  console.log(user);
   return (
     <Grid container>
       <Grid item xs={2} />
@@ -10,7 +13,7 @@ function MainMenu () {
           <Grid
             item
             container
-            spacing='5'
+            spacing={5}
             direction='column'
             justify='center'
             alignItems='center'

@@ -31,8 +31,7 @@ const useUserModel = () => {
     id: '',
     first_name: '',
     last_name: '',
-    email: '',
-    token: ''
+    email: ''
   });
   return {
     user, setUser
