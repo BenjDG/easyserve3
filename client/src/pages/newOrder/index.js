@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Grid } from '@material-ui/core';
 import API from '../../services/API';
 import ViewTable from '../../components/viewTable';
+import SelectorBox from '../../components/selectorBox';
 
 const useStyles = makeStyles((theme) => ({
   orderView: {
@@ -29,24 +30,31 @@ function NewOrder () {
   const classes = useStyles();
   const [orderByIdWithItems, setOrderByIdWithItems] = useState({});
   const [allMenuItems, setAllMenuItems] = useState({});
-  const [orderId, setOrderId] = useState();
-  const [userId, setUserId] = useState();
-  const [tableId, setTableId] = useState();
+  const [toggleHidden, setToggleHidden] = useState(true);
+  const [usersList, setUsersList] = useState([]);
+  const [tablesList, setTablesList] = useState([]);
+  const [selectedUser, setSelectedUser] = useState();
+  const [selectedTable, setSelectedTable] = useState();
+  // const [orderId, setOrderId] = useState();
+  // const [userId, setUserId] = useState();
+  // const [tableId, setTableId] = useState();
   const [error, setError] = useState('');
 
   useEffect(async () => {
-    await createNewOrder(1, 1);
+    // await createNewOrder(1, 1);
     await loadOrderData(2);
     await loadMenuItems();
+    await loadAllUsers();
+    await loadAllTables();
   }, []);
 
   const createNewOrder = (userId, tableId, statusId = 1, notes = null) => {
     API.createNewOrder(userId, tableId, statusId, notes)
       .then(result => {
         console.log(result.data);
-        setOrderId(result.id);
-        setUserId(result.userId);
-        setTableId(result.restTableId);
+        // setOrderId(result.id);
+        // setUserId(result.userId);
+        // setTableId(result.restTableId);
       })
       .catch((err) => {
         console.error(err);
@@ -79,16 +87,54 @@ function NewOrder () {
       });
   };
 
+  const loadAllUsers = () => {
+    API.findAllUsers()
+      .then((res) => {
+        console.log(res.data);
+        setUsersList(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+        const error = new Error(err);
+        setError(error.message + ' - Please login');
+      });
+  };
+
+  const loadAllTables = () => {
+    API.getTableOptions()
+      .then((res) => {
+        console.log(res.data);
+        setTablesList(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+        const error = new Error(err);
+        setError(error.message + ' - Please login');
+      });
+  };
+
   return (
     <Grid container>
       <Grid item xs={2} />
       <Grid item xs={8}>
         <Box m={2}>
           <Grid item container direction='column'>
-            <Grid item>
-              {error}
-              <ViewTable oneOrder={orderByIdWithItems} allMenuItems={allMenuItems} />
-            </Grid>
+            {error}
+            {toggleHidden
+              ? (
+                <div>
+                  <Grid item>
+                    <SelectorBox tablesList={tablesList} usersList={usersList} toggleHidden={setToggleHidden} setTable={setSelectedTable} setUser={setSelectedUser} />
+                  </Grid>
+                </div>)
+              : (
+                <div>
+                  <Grid item>
+                    <ViewTable oneOrder={orderByIdWithItems} allMenuItems={allMenuItems} />
+                  </Grid>
+                </div>
+                )}
+
             <Grid
               item
               container
@@ -118,7 +164,7 @@ function NewOrder () {
         </Box>
       </Grid>
       <Grid item xs={2} />
-    </Grid>
+    </Grid >
   );
 }
 
