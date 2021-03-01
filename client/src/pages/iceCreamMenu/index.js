@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import { Grid } from '@material-ui/core';
+import { Box, Button, Grid, Paper } from '@material-ui/core';
 import API from '../../services/API';
+import ButtonPiece from '../../components/buttonPiece';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > * + *': {
-      marginLeft: theme.spacing(2)
-    }
+  orderView: {
+    padding: theme.spacing(2, 2),
+    height: 200,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start'
+  },
+  buttonView: {
+    padding: theme.spacing(2, 2)
+    // height: 200,
+    // display: 'flex',
+    // flexDirection: 'column',
+    // justifyContent: 'flex-start'
   }
 }));
 
-function IceCream () {
+function IceCream() {
   const classes = useStyles();
-  const [data, setdata] = useState([]);
+  const [data, setIcecreams] = useState([]);
 
   useEffect(() => {
     loadData();
@@ -23,31 +32,46 @@ function IceCream () {
   const loadData = () => {
     API.getIcecreams()
       .then((res) => {
-        console.log(res.data);
-
-        setdata(res.data);
+        setIcecreams(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
     <Grid container>
-      <Grid item container>
-        <Grid item xs={2} />
-        <Grid item xs={8}>
-          <Typography className={classes.root}>
-            Icecream
-          </Typography>
-        </Grid>
-        <Grid item xs={2} />
+      <Grid item xs={2} />
+      <Grid item xs={8}>
+        <Box m={2}>
+          <Grid item container direction='column'>
+            <Grid item>
+              <Paper elevation={3} className={classes.orderView}>
+                {/* {error}{hotdogsList} */}
+              </Paper>
+            </Grid>
+            <Grid
+              item
+              container
+              direction='row'
+              justify='center'
+              alignItems='center'
+              className={classes.buttonView}
+              spacing={4}
+            >
+              {icecreams.map((item) => {
+                console.log(item);
+                return <Grid item xs={3} key={item.id}><ButtonPiece itemId={item.id} title={item.title} click='' price={item.price} /></Grid>;
+              })}
+
+              <Grid item xs={3}>
+                <Button href='/' variant='outlined'>Submit</Button>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Box>
       </Grid>
-      <Grid item container>
-        <ul>
-          {data.map((item, idx) => {
-            return <li key={idx}>{item.title}</li>;
-          })}
-        </ul>
-      </Grid>
+      <Grid item xs={2} />
     </Grid>
   );
 }
