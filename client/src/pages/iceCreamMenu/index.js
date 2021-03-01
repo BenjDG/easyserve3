@@ -21,9 +21,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function IceCream() {
+function IceCream () {
   const classes = useStyles();
-  const [data, setIcecreams] = useState([]);
+  const [icecreams, setIcecreams] = useState([]);
 
   useEffect(() => {
     loadData();

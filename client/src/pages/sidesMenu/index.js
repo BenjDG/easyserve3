@@ -21,9 +21,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Sides() {
+function Sides () {
   const classes = useStyles();
-  const [data, setSides] = useState([]);
+  const [sides, setSides] = useState([]);
 
   useEffect(() => {
     loadData();

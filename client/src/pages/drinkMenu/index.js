@@ -21,9 +21,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Drinks() {
+function Drinks () {
   const classes = useStyles();
-  const [data, setDrinks] = useState([]);
+  const [drinks, setDrinks] = useState([]);
 
   useEffect(() => {
     loadData();

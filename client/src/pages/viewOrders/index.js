@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { Box, Grid, Paper } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 import API from '../../services/API';
 
 const useStyles = makeStyles((theme) => ({
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function AllOrders () {
+function AllOrders() {
   const classes = useStyles();
   const [allorders, setAllOrders] = useState([])
 
@@ -33,7 +33,7 @@ function AllOrders () {
         // setError(error.message + ' - Please login');
       });
   };
-  
+
   return (
     <Grid container>
       <Grid item xs={2} />
@@ -44,6 +44,13 @@ function AllOrders () {
               <Typography className={classes.root}>
                 View Orders
               </Typography>
+
+              <Grid item>
+                {allorders.map((item) => {
+                  console.log(item);
+                  return <Grid item xs={3} key={item.id}></Grid>;
+                })}
+              </Grid>  
             </Grid>
           </Grid>
         </Box>
