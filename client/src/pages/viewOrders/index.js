@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
 function AllOrders() {
   const classes = useStyles();
-  const [allorders, setAllOrders] = useState([])
+  const [allorders, setAllOrders] = useState([]);
 
   useEffect(() => {
     loadData();
@@ -50,7 +50,7 @@ function AllOrders() {
                   console.log(item);
                   return <Grid item xs={3} key={item.id}></Grid>;
                 })}
-              </Grid>  
+              </Grid>
             </Grid>
           </Grid>
         </Box>
