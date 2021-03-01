@@ -1,9 +1,9 @@
 import React from 'react';
 
-function viewTableRow () {
+function ViewTableRow ({ item }) {
   return (
-    <p>View Table Row</p>
+    <p>Item Id {item}</p>
   );
 }
 
-export default viewTableRow;
+export default ViewTableRow;

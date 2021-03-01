@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Grid, Paper } from '@material-ui/core';
+import { Box, Button, Grid } from '@material-ui/core';
 import API from '../../services/API';
 import ButtonPiece from '../../components/buttonPiece';
 import ViewTable from '../../components/viewTable';
@@ -52,7 +52,6 @@ function HotDog () {
   const loadOrderData = (orderId) => {
     API.findOrderByIdWithItems(orderId)
       .then((res) => {
-        // console.log(res.data);
         setOrderByIdWithItems(res.data);
       })
       .catch((err) => {
@@ -69,10 +68,8 @@ function HotDog () {
         <Box m={2}>
           <Grid item container direction='column'>
             <Grid item>
-              <Paper elevation={3} className={classes.orderView}>
-                {error}
-                <ViewTable oneOrder={OrderByIdWithItems} />
-              </Paper>
+              {error}
+              <ViewTable oneOrder={OrderByIdWithItems} />
             </Grid>
             <Grid
               item
