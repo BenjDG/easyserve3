@@ -1,8 +1,12 @@
 import React from 'react';
 import ViewTableRow from '../viewTableRow';
 
-function ViewTable ({ oneOrder }) {
+function ViewTable ({ oneOrder, allMenuItems }) {
   const { id, notes, orderItems = [], restTableId, statusId, userId } = oneOrder;
+  const menuArray = [];
+  if (allMenuItems.length) {
+    allMenuItems.map(item => menuArray.push(item.title));
+  }
   return (
     <div>
       <p>Order Id: {id} | User Id: {userId} | Table: {restTableId} | Status Id: {statusId}</p>
@@ -12,7 +16,7 @@ function ViewTable ({ oneOrder }) {
         ? (
           <div>
             {orderItems.map((obj, idx) => {
-              return (<ViewTableRow key={idx} item={obj.menu_itemId} />);
+              return (<ViewTableRow key={idx} item={menuArray[obj.menu_itemId - 1]} />);
             })}
           </div>
           )
@@ -21,7 +25,6 @@ function ViewTable ({ oneOrder }) {
             Please Wait
           </div>
           )}
-
     </div>
   );
 }

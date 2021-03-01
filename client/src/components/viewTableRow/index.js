@@ -2,7 +2,7 @@ import React from 'react';
 
 function ViewTableRow ({ item }) {
   return (
-    <p>Item Id {item}</p>
+    <p>Item Name: {item}</p>
   );
 }
 

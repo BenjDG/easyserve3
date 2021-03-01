@@ -23,6 +23,9 @@ export default {
   getIcecreams: function () {
     return axios.get('/api/menuitems/icecreams');
   },
+  getAllMenuItems: function () {
+    return axios.get('/api/menuitems/allmenu');
+  },
   findAllUsers: function () {
     return axios.get('/api/user');
   },

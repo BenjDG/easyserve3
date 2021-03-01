@@ -30,11 +30,13 @@ function HotDog () {
   const classes = useStyles();
   const [hotdogs, setHotdogs] = useState([]);
   const [OrderByIdWithItems, setOrderByIdWithItems] = useState({});
+  const [AllMenuItems, setAllMenuItems] = useState({});
   const [error, setError] = useState('');
 
   useEffect(() => {
     loadHotDogData();
     loadOrderData(2);
+    loadMenuItems();
   }, []);
 
   const loadHotDogData = () => {
@@ -61,6 +63,18 @@ function HotDog () {
       });
   };
 
+  const loadMenuItems = () => {
+    API.getAllMenuItems()
+      .then((res) => {
+        setAllMenuItems(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+        const error = new Error(err);
+        setError(error.message + ' - Please login');
+      });
+  };
+
   return (
     <Grid container>
       <Grid item xs={2} />
@@ -69,7 +83,7 @@ function HotDog () {
           <Grid item container direction='column'>
             <Grid item>
               {error}
-              <ViewTable oneOrder={OrderByIdWithItems} />
+              <ViewTable oneOrder={OrderByIdWithItems} allMenuItems={AllMenuItems} />
             </Grid>
             <Grid
               item
