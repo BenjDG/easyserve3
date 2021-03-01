@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Grid, Paper } from '@material-ui/core';
+import { Box, Button, Grid } from '@material-ui/core';
+import API from '../../services/API';
+import ViewTable from '../../components/viewTable';
 
 const useStyles = makeStyles((theme) => ({
   orderView: {
@@ -25,6 +27,58 @@ const useStyles = makeStyles((theme) => ({
 
 function NewOrder () {
   const classes = useStyles();
+  const [orderByIdWithItems, setOrderByIdWithItems] = useState({});
+  const [allMenuItems, setAllMenuItems] = useState({});
+  const [orderId, setOrderId] = useState();
+  const [userId, setUserId] = useState();
+  const [tableId, setTableId] = useState();
+  const [error, setError] = useState('');
+
+  useEffect(async () => {
+    await createNewOrder(1, 1);
+    await loadOrderData(2);
+    await loadMenuItems();
+  }, []);
+
+  const createNewOrder = (userId, tableId, statusId = 1, notes = null) => {
+    API.createNewOrder(userId, tableId, statusId, notes)
+      .then(result => {
+        console.log(result.data);
+        setOrderId(result.id);
+        setUserId(result.userId);
+        setTableId(result.restTableId);
+      })
+      .catch((err) => {
+        console.error(err);
+        const error = new Error(err);
+        setError(error.message + ' - Please login');
+      });
+  };
+
+  const loadOrderData = (orderId) => {
+    API.findOrderByIdWithItems(orderId)
+      .then((res) => {
+        setOrderByIdWithItems(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+        const error = new Error(err);
+        setError(error.message + ' - Please login');
+      });
+  };
+
+  const loadMenuItems = () => {
+    API.getAllMenuItems()
+      .then((res) => {
+        setAllMenuItems(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+        const error = new Error(err);
+        setError(error.message + ' - Please login');
+      });
+  };
+
   return (
     <Grid container>
       <Grid item xs={2} />
@@ -32,9 +86,8 @@ function NewOrder () {
         <Box m={2}>
           <Grid item container direction='column'>
             <Grid item>
-              <Paper elevation={3} className={classes.orderView}>
-                List of order items
-              </Paper>
+              {error}
+              <ViewTable oneOrder={orderByIdWithItems} allMenuItems={allMenuItems} />
             </Grid>
             <Grid
               item

@@ -53,9 +53,15 @@ export default {
   findOrderByIdWithItems: function (id) {
     return axios.get(`/api/order/${id}/items`);
   },
-  createNewOrder: function () {
+  createNewOrder: function (userId, tableId, statusId, notes) {
     // { userId, tableId, statusId, notes }
-    return axios.post('/api/order/create');
+    const obj = {
+      userId: userId,
+      tableId: tableId,
+      statusId: statusId,
+      notes: notes
+    };
+    return axios.post('/api/order/create', obj);
   },
   createNewOrderItem: function () {
     return axios.post('/api/order/add/:orderId/:itemId');
