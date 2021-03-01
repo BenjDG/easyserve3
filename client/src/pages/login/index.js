@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import API from '../../services/API';
-import { useUserProvider } from '../../services/userContext';
+import { UseUserProvider } from '../../services/userContext';
 import './style.css';
 
 function Login () {
-  const [_, setUser] = useUserProvider();
+  const [_, setUser] = UseUserProvider();
   // Setting the component's initial login
   const [login, setLogin] = useState({
     email: '',
@@ -27,7 +27,10 @@ function Login () {
           console.log(result.data.email);
           console.log(result.data.id);
           setUser({
-            
+            id: result.data.id,
+            first_name: result.data.first_name,
+            last_name: result.data.last_name,
+            email: result.data.email
           });
           // window.location = '/mainmenu';
         } else {

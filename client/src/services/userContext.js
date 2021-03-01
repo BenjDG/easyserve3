@@ -8,7 +8,8 @@ const UserContext = React.createContext(emptyContext);
 
 const UserContextProvider = UserContext.Provider;
 
-const useUserProvider = () => {
+// getter?
+const UseUserProvider = () => {
   const res = useContext(UserContext);
   return res || emptyContext;
 };
@@ -38,4 +39,4 @@ const useUserModel = () => {
   };
 };
 
-export { UserProvider, useUserProvider };
+export { UserProvider, UseUserProvider };

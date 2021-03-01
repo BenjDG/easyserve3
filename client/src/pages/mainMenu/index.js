@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Box, Button, Grid } from '@material-ui/core';
-import { useUserProvider } from '../../services/userContext';
+import { UserProvider } from '../../services/userContext';
 
 function MainMenu () {
-  const user = useContext(useUserProvider);
+  const user = UserProvider();
   console.log(user);
   return (
     <Grid container>
