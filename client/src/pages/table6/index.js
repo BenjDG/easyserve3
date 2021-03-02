@@ -1,38 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Grid, Paper } from '@material-ui/core';
-import API from '../../services/API';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
+import React, { useEffect, useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { Box, Button, Grid, Paper } from "@material-ui/core";
+import API from "../../services/API";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   orderView: {
     padding: theme.spacing(2, 2),
     height: 200,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start'
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
   },
   buttonView: {
-    padding: theme.spacing(2, 2)
+    padding: theme.spacing(2, 2),
     // height: 200,
     // display: 'flex',
     // flexDirection: 'column',
     // justifyContent: 'flex-start'
   },
   root: {
-    maxWidth: 345
+    maxWidth: 345,
   },
   media: {
-    height: 140
-  }
+    height: 140,
+  },
 }));
 
-function Table1 () {
+function Table6() {
   const classes = useStyles();
   const [tables, setTable] = useState([]);
   // const [hotdogsList, setHotdogsList] = useState([]);
@@ -65,19 +65,19 @@ function Table1 () {
       <Grid item xs={2} />
       <Grid item xs={8}>
         <Box m={2}>
-          <Grid item container direction='column'>
+          <Grid item container direction="column">
             <Grid item>
               <Paper elevation={3} className={classes.orderView}>
                 {/* {error}{hotdogsList} */}
-                <h1>Table1</h1>
+                <h1>Table6</h1>
               </Paper>
             </Grid>
             <Grid
               item
               container
-              direction='row'
-              justify='center'
-              alignItems='center'
+              direction="row"
+              justify="center"
+              alignItems="center"
               className={classes.buttonView}
               spacing={4}
             >
@@ -89,27 +89,27 @@ function Table1 () {
                       <CardActionArea>
                         <CardMedia
                           className={classes.media}
-                          image='/static/images/cards/contemplative-reptile.jpg'
-                          title='Contemplative Reptile'
+                          image="/static/images/cards/contemplative-reptile.jpg"
+                          title="Contemplative Reptile"
                         />
                         <CardContent>
-                          <Typography gutterBottom variant='h5' component='h2'>
+                          <Typography gutterBottom variant="h5" component="h2">
                             User {currTable.userId}
                           </Typography>
                           <Typography
-                            variant='body2'
-                            color='textSecondary'
-                            component='p'
+                            variant="body2"
+                            color="textSecondary"
+                            component="p"
                           >
                             {currTable.notes}
                           </Typography>
                         </CardContent>
                       </CardActionArea>
                       <CardActions>
-                        <Button size='small' color='primary'>
+                        <Button size="small" color="primary">
                           Share
                         </Button>
-                        <Button size='small' color='primary'>
+                        <Button size="small" color="primary">
                           {currTable.createdAt}
                         </Button>
                       </CardActions>
@@ -119,7 +119,7 @@ function Table1 () {
               })}
 
               <Grid item xs={3}>
-                <Button href='/' variant='outlined'>
+                <Button href="/" variant="outlined">
                   Submit
                 </Button>
               </Grid>
@@ -132,4 +132,4 @@ function Table1 () {
   );
 }
 
-export default Table1;
+export default Table6;

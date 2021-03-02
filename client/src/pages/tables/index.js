@@ -31,9 +31,9 @@ function Tables () {
               size='large'
               alignItems='center'
             >
-              <Button>Table One</Button>
-              <Button>Table Two</Button>
-              <Button>Table Three</Button>
+              <Button href='/table1'>Table One</Button>
+              <Button href='/table2'>Table Two</Button>
+              <Button href='/table3'>Table Three</Button>
             </ButtonGroup>
           </Box>
         </Grid>
@@ -51,9 +51,9 @@ function Tables () {
               size='large'
               alignItems='center'
             >
-              <Button>Table Four</Button>
-              <Button>Table Five</Button>
-              <Button>Table Six</Button>
+              <Button href='/table4'>Table Four</Button>
+              <Button href='/table5'>Table Five</Button>
+              <Button href='/table6'>Table Six</Button>
             </ButtonGroup>
           </Box>
         </Grid>
