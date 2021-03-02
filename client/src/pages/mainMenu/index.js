@@ -24,17 +24,17 @@ function MainMenu () {
               </Button>
             </Grid>
             <Grid item>
-              <Button href='#' variant='outlined' color='inherit'>
+              <Button href='#' variant='outlined' color='inherit' disabled>
                 View Orders
               </Button>
             </Grid>
             <Grid item>
-              <Button href='#' variant='outlined' color='inherit'>
+              <Button href='#' variant='outlined' color='inherit' disabled>
                 Chefs View
               </Button>
             </Grid>
             <Grid item>
-              <Button href='#' variant='outlined' color='inherit'>
+              <Button href='#' variant='outlined' color='inherit' disabled>
                 Admin
               </Button>
             </Grid>
