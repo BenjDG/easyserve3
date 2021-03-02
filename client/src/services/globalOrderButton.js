@@ -37,10 +37,8 @@ function reducer (state, action) {
 
 function OrderProviderButton ({ value = [], ...props }) {
   const [state, dispatch] = useReducer(reducer, []);
-
-  console.log('Order Provider triggered');
-  console.log(state);
-
+  // console.log('Order Provider triggered');
+  // console.log(state);
   return <Provider value={[state, dispatch]} {...props} />;
 }
 

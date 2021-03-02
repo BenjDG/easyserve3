@@ -26,13 +26,14 @@ function HotDog () {
   const [hotdogs, setHotdogs] = useState([]);
   const [OrderByIdWithItems, setOrderByIdWithItems] = useState({});
   const [AllMenuItems, setAllMenuItems] = useState({});
+  const [refresh, setRefresh] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
     loadHotDogData();
     loadOrderData(currentOrder);
     loadMenuItems();
-  }, []);
+  }, [refresh]);
 
   const loadHotDogData = () => {
     API.getHotdogs()
@@ -49,7 +50,7 @@ function HotDog () {
   const loadOrderData = (orderId) => {
     API.findOrderByIdWithItems(orderId)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setOrderByIdWithItems(res.data);
       })
       .catch((err) => {
@@ -91,7 +92,7 @@ function HotDog () {
               spacing={4}
             >
               {hotdogs.map((item) => {
-                return <Grid item xs={3} key={item.id}><ButtonPiece orderId={currentOrder} itemId={item.id} title={item.title} price={item.price} /></Grid>;
+                return <Grid item xs={3} key={item.id}><ButtonPiece orderId={currentOrder} itemId={item.id} title={item.title} price={item.price} setRefresh={setRefresh} refresh={refresh} /></Grid>;
               })}
 
               <Grid item xs={3}>
