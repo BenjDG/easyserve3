@@ -49,6 +49,7 @@ function HotDog () {
   const loadOrderData = (orderId) => {
     API.findOrderByIdWithItems(orderId)
       .then((res) => {
+        console.log(res.data);
         setOrderByIdWithItems(res.data);
       })
       .catch((err) => {

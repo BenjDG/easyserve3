@@ -2,7 +2,7 @@ import React from 'react';
 import ViewTableRow from '../viewTableRow';
 
 function ViewTable ({ oneOrder, allMenuItems }) {
-  const { id, notes, orderItems = [], restTableId, statusId, userId } = oneOrder;
+  const { id, notes, orderItems = [], restTableId, statusId, userId } = oneOrder || {};
   const menuArray = [];
   if (allMenuItems.length) {
     allMenuItems.map(item => menuArray.push(item.title));
