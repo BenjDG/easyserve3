@@ -21,6 +21,9 @@ const theme = createMuiTheme({
 });
 
 function App () {
+  // const [currentOrder, setCurrentOrder] = useState({
+  //   currentOrderId: 1
+  // });
   return (
     <div>
       <ThemeProvider theme={theme}>

@@ -13,12 +13,11 @@ function reducer (state, action) {
     case 'add':
       console.log(action);
       return [
-        ...state,
         {
-          orderId: '1111',
-          itemId: '1111',
-          title: 'testTitle',
-          price: '3.50'
+          orderId: '1',
+          itemId: action.itemId,
+          title: action.title,
+          price: action.price
         }
       ];
     case 'remove':
@@ -35,6 +34,7 @@ function OrderProvider ({ value = [], ...props }) {
   const [state, dispatch] = useReducer(reducer, []);
 
   console.log('Order Provider triggered');
+  console.log(state);
 
   return <Provider value={[state, dispatch]} {...props} />;
 }
