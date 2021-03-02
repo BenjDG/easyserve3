@@ -1,7 +1,10 @@
 import React from 'react';
 import { Box, Button, Grid } from '@material-ui/core';
+// import { UserProvider } from '../../services/userContext';
 
 function MainMenu () {
+  // const { user } = useContext(UserProvider());
+  // console.log(user);
   return (
     <Grid container>
       <Grid item xs={2} />
@@ -10,7 +13,7 @@ function MainMenu () {
           <Grid
             item
             container
-            spacing='5'
+            spacing={5}
             direction='column'
             justify='center'
             alignItems='center'
@@ -21,17 +24,17 @@ function MainMenu () {
               </Button>
             </Grid>
             <Grid item>
-              <Button href='#' variant='outlined' color='inherit'>
+              <Button href='#' variant='outlined' color='inherit' disabled>
                 View Orders
               </Button>
             </Grid>
             <Grid item>
-              <Button href='#' variant='outlined' color='inherit'>
+              <Button href='#' variant='outlined' color='inherit' disabled>
                 Chefs View
               </Button>
             </Grid>
             <Grid item>
-              <Button href='#' variant='outlined' color='inherit'>
+              <Button href='#' variant='outlined' color='inherit' disabled>
                 Admin
               </Button>
             </Grid>

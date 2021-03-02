@@ -37,5 +37,10 @@ module.exports = {
     })
       .then(result => res.json(result))
       .catch(err => res.status(500).json(err));
+  },
+  findAllMenuItems: function (_req, res) {
+    db.menuItem.findAll({})
+      .then(result => res.json(result))
+      .catch(err => res.status(500).json(err));
   }
 };

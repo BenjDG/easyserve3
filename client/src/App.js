@@ -7,20 +7,29 @@ import HotDogMenu from './pages/hotDogMenu';
 import IceCreamMenu from './pages/iceCreamMenu';
 import SidesMenu from './pages/sidesMenu';
 import DrinkMenu from './pages/drinkMenu';
+import Checkout from './pages/checkout';
 import Tables from './pages/tables';
 import Login from './pages/login';
 import Nav from './components/nav';
 import NewOrder from './pages/newOrder';
 import ViewOrders from './pages/viewOrders';
+import { OrderProviderButton } from './services/globalOrderButton';
+import { UserProvider } from './services/userContext';
+import { CurrentOrderProvider } from './services/orderContext';
+import CurrentOrder from './pages/currentOrder';
 
 const theme = createMuiTheme({
   spacing: 12
 });
 
 function App () {
+  // const [currentOrder, setCurrentOrder] = useState({
+  //   currentOrderId: 1
+  // });
   return (
     <div>
       <ThemeProvider theme={theme}>
+
         <Nav />
         <BrowserRouter>
           <Route exact strict path='/'>
@@ -29,30 +38,42 @@ function App () {
           <Route exact strict path='/login'>
             <Login />
           </Route>
-          <Route exact strict path='/mainmenu'>
-            <MainMenu />
-          </Route>
-          <Route exact strict path='/neworder'>
-            <NewOrder />
-          </Route>
-          <Route exact strict path='/vieworders'>
-            <ViewOrders />
-          </Route>
-          <Route exact strict path='/hotdogs'>
-            <HotDogMenu />
-          </Route>
-          <Route exact strict path='/sides'>
-            <SidesMenu />
-          </Route>
-          <Route exact strict path='/icecream'>
-            <IceCreamMenu />
-          </Route>
-          <Route exact strict path='/drinks'>
-            <DrinkMenu />
-          </Route>
-          <Route exact strict path='/tables'>
-            <Tables />
-          </Route>
+          <UserProvider>
+            <Route exact strict path='/mainmenu'>
+              <MainMenu />
+            </Route>
+            <CurrentOrderProvider>
+              <OrderProviderButton>
+                <Route exact strict path='/neworder'>
+                  <NewOrder />
+                </Route>
+                <Route exact strict path='/currentorder'>
+                  <CurrentOrder />
+                </Route>
+                <Route exact strict path='/vieworders'>
+                  <ViewOrders />
+                </Route>
+                <Route exact strict path='/hotdogs'>
+                  <HotDogMenu />
+                </Route>
+                <Route exact strict path='/sides'>
+                  <SidesMenu />
+                </Route>
+                <Route exact strict path='/icecream'>
+                  <IceCreamMenu />
+                </Route>
+                <Route exact strict path='/drinks'>
+                  <DrinkMenu />
+                </Route>
+                <Route exact strict path='/tables'>
+                  <Tables />
+                </Route>
+                <Route exact strict path='/checkout'>
+                  <Checkout />
+                </Route>
+              </OrderProviderButton>
+            </CurrentOrderProvider>
+          </UserProvider>
         </BrowserRouter>
       </ThemeProvider>
     </div>
