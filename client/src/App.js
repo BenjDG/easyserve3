@@ -15,6 +15,7 @@ import NewOrder from './pages/newOrder';
 import ViewOrders from './pages/viewOrders';
 import { OrderProviderButton } from './services/globalOrderButton';
 import { UserProvider } from './services/userContext';
+import { CurrentOrderProvider } from './services/orderContext';
 
 const theme = createMuiTheme({
   spacing: 12
@@ -27,19 +28,21 @@ function App () {
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <OrderProviderButton>
-          <Nav />
-          <BrowserRouter>
-            <Route exact strict path='/'>
-              <Home />
+
+        <Nav />
+        <BrowserRouter>
+          <Route exact strict path='/'>
+            <Home />
+          </Route>
+          <Route exact strict path='/login'>
+            <Login />
+          </Route>
+          <UserProvider>
+            <Route exact strict path='/mainmenu'>
+              <MainMenu />
             </Route>
-            <Route exact strict path='/login'>
-              <Login />
-            </Route>
-            <UserProvider>
-              <Route exact strict path='/mainmenu'>
-                <MainMenu />
-              </Route>
+            <CurrentOrderProvider>
+              {/* <OrderProviderButton> */}
               <Route exact strict path='/neworder'>
                 <NewOrder />
               </Route>
@@ -64,9 +67,10 @@ function App () {
               <Route exact strict path='/tables'>
                 <Tables />
               </Route>
-            </UserProvider>
-          </BrowserRouter>
-        </OrderProviderButton>
+              {/* </OrderProviderButton> */}
+            </CurrentOrderProvider>
+          </UserProvider>
+        </BrowserRouter>
       </ThemeProvider>
     </div>
   );

@@ -4,6 +4,7 @@ import { Box, Button, Grid } from '@material-ui/core';
 import API from '../../services/API';
 import ViewTable from '../../components/viewTable';
 import SelectorBox from '../../components/selectorBox';
+import { useCurrentOrderContext } from '../../services/orderContext';
 
 const useStyles = makeStyles((theme) => ({
   orderView: {
@@ -15,10 +16,6 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonView: {
     padding: theme.spacing(2, 2)
-    // height: 200,
-    // display: 'flex',
-    // flexDirection: 'column',
-    // justifyContent: 'flex-start'
   }
 }));
 
@@ -28,6 +25,8 @@ const useStyles = makeStyles((theme) => ({
 
 function NewOrder () {
   const classes = useStyles();
+  // eslint-disable-next-line no-unused-vars
+  const [_, setCurrentOrder] = useCurrentOrderContext();
   const [orderByIdWithItems, setOrderByIdWithItems] = useState({});
   const [allMenuItems, setAllMenuItems] = useState({});
   const [toggleHidden, setToggleHidden] = useState(true);
@@ -48,6 +47,7 @@ function NewOrder () {
     await setToggleHidden(false);
     await API.createNewOrder(userId, tableId, statusId, notes)
       .then(result => {
+        setCurrentOrder(result.data.id);
         return result.data.id;
       }).then(async (id) => await loadOrderData(id))
       .catch((err) => {

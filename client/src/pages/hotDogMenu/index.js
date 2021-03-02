@@ -4,10 +4,7 @@ import { Box, Button, Grid } from '@material-ui/core';
 import API from '../../services/API';
 import ButtonPiece from '../../components/buttonPiece';
 import ViewTable from '../../components/viewTable';
-
-// findOrderByIdWithItems: function () {
-//   return axios.get('/api/order/:id/items');
-// },
+import { useCurrentOrderContext } from '../../services/orderContext';
 
 const useStyles = makeStyles((theme) => ({
   orderView: {
@@ -19,15 +16,13 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonView: {
     padding: theme.spacing(2, 2)
-    // height: 200,
-    // display: 'flex',
-    // flexDirection: 'column',
-    // justifyContent: 'flex-start'
   }
 }));
 
 function HotDog () {
   const classes = useStyles();
+  // eslint-disable-next-line no-unused-vars
+  const [currentOrder, _] = useCurrentOrderContext();
   const [hotdogs, setHotdogs] = useState([]);
   const [OrderByIdWithItems, setOrderByIdWithItems] = useState({});
   const [AllMenuItems, setAllMenuItems] = useState({});
@@ -35,7 +30,7 @@ function HotDog () {
 
   useEffect(() => {
     loadHotDogData();
-    loadOrderData(1);
+    loadOrderData(currentOrder);
     loadMenuItems();
   }, []);
 

@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
-const OrderContext = React.createContext({
-  currentOrderId: 1
-});
+const CurrentOrderContext = createContext();
 
-export default OrderContext;
+const { Provider } = CurrentOrderContext;
+
+const CurrentOrderProvider = (props) => {
+  const [currentOrder, setCurrentOrder] = useState(0);
+
+  return (
+    <Provider value={[currentOrder, setCurrentOrder]} {...props} />
+  );
+};
+
+const useCurrentOrderContext = () => {
+  return useContext(CurrentOrderContext);
+};
+
+export { CurrentOrderProvider, useCurrentOrderContext };
