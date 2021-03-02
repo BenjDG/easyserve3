@@ -126,32 +126,34 @@ function NewOrder () {
                   </Grid>
                 </div>
                 )}
+            {!toggleHidden
+              ? (
+                <Grid
+                  item
+                  container
+                  direction='row'
+                  justify='center'
+                  alignItems='center'
+                  className={classes.buttonView}
+                  spacing={4}
+                >
+                  <Grid item xs={3}>
+                    <Button href='/hotdogs' variant='outlined'>Hotdogs</Button>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Button href='/sides' variant='outlined'>Sides</Button>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Button href='/drinks' variant='outlined'>Drinks</Button>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Button href='/icecream' variant='outlined'>Icecream</Button>
+                  </Grid>
+                </Grid>
+                )
+              : (<div />
+                )}
 
-            <Grid
-              item
-              container
-              direction='row'
-              justify='center'
-              alignItems='center'
-              className={classes.buttonView}
-              spacing={4}
-            >
-              <Grid item xs={3}>
-                <Button href='/hotdogs' variant='outlined'>Hotdogs</Button>
-              </Grid>
-              <Grid item xs={3}>
-                <Button href='/sides' variant='outlined'>Sides</Button>
-              </Grid>
-              <Grid item xs={3}>
-                <Button href='/drinks' variant='outlined'>Drinks</Button>
-              </Grid>
-              <Grid item xs={3}>
-                <Button href='/icecream' variant='outlined'>Icecream</Button>
-              </Grid>
-              <Grid item xs={3}>
-                <Button href='/' variant='outlined'>Submit</Button>
-              </Grid>
-            </Grid>
           </Grid>
         </Box>
       </Grid>
