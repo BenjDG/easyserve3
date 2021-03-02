@@ -33,29 +33,29 @@ function NewOrder () {
   const [toggleHidden, setToggleHidden] = useState(true);
   const [usersList, setUsersList] = useState([]);
   const [tablesList, setTablesList] = useState([]);
-  const [selectedUser, setSelectedUser] = useState();
-  const [selectedTable, setSelectedTable] = useState();
   // const [orderId, setOrderId] = useState();
   // const [userId, setUserId] = useState();
   // const [tableId, setTableId] = useState();
   const [error, setError] = useState('');
 
   useEffect(async () => {
-    // await createNewOrder(1, 1);
-    await loadOrderData(2);
     await loadMenuItems();
     await loadAllUsers();
     await loadAllTables();
   }, []);
 
-  const createNewOrder = (userId, tableId, statusId = 1, notes = null) => {
-    API.createNewOrder(userId, tableId, statusId, notes)
+  const createNewOrder = async (userId, tableId, statusId = 1, notes = null) => {
+    await setToggleHidden(false);
+    console.log(userId);
+    await API.createNewOrder(userId, tableId, statusId, notes)
       .then(result => {
+        console.log('createNewOrder');
         console.log(result.data);
         // setOrderId(result.id);
         // setUserId(result.userId);
+        return result.data.id;
         // setTableId(result.restTableId);
-      })
+      }).then(async (id) => await loadOrderData(id))
       .catch((err) => {
         console.error(err);
         const error = new Error(err);
@@ -63,10 +63,11 @@ function NewOrder () {
       });
   };
 
-  const loadOrderData = (orderId) => {
-    API.findOrderByIdWithItems(orderId)
-      .then((res) => {
-        setOrderByIdWithItems(res.data);
+  const loadOrderData = async (orderId) => {
+    await API.findOrderByIdWithItems(orderId)
+      .then(async (res) => {
+        console.log(`res.data.id >>> ${res.data.id}`);
+        await setOrderByIdWithItems(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -90,7 +91,7 @@ function NewOrder () {
   const loadAllUsers = () => {
     API.findAllUsers()
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setUsersList(res.data);
       })
       .catch((err) => {
@@ -103,7 +104,7 @@ function NewOrder () {
   const loadAllTables = () => {
     API.getTableOptions()
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setTablesList(res.data);
       })
       .catch((err) => {
@@ -124,7 +125,7 @@ function NewOrder () {
               ? (
                 <div>
                   <Grid item>
-                    <SelectorBox tablesList={tablesList} usersList={usersList} toggleHidden={setToggleHidden} setTable={setSelectedTable} setUser={setSelectedUser} />
+                    <SelectorBox tablesList={tablesList} usersList={usersList} createOrder={createNewOrder} />
                   </Grid>
                 </div>)
               : (
@@ -164,7 +165,7 @@ function NewOrder () {
         </Box>
       </Grid>
       <Grid item xs={2} />
-    </Grid >
+    </Grid>
   );
 }
 

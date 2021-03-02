@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function SelectorBox ({ tablesList, usersList, toggleHidden, setTable, setUser }) {
+function SelectorBox ({ tablesList, usersList, createOrder, setTable, setUser }) {
   const classes = useStyles();
   const [userTemp, setUserTemp] = useState('');
   const [tableTemp, setTableTemp] = useState('');
@@ -25,12 +25,7 @@ function SelectorBox ({ tablesList, usersList, toggleHidden, setTable, setUser }
   };
 
   const handleSubmit = () => {
-    // setuser
-    setUser(userTemp);
-    setTable(tableTemp);
-    toggleHidden(false);
-    // settable
-    // toggleHidden
+    createOrder(userTemp, tableTemp);
   };
 
   return (

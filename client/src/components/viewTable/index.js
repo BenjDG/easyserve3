@@ -9,8 +9,15 @@ function ViewTable ({ oneOrder, allMenuItems }) {
   }
   return (
     <div>
-      <p>Order Id: {id} | User Id: {userId} | Table: {restTableId} | Status Id: {statusId}</p>
-      <p>Order Notes: {notes}</p>
+      {id
+        ? (
+          <div>
+            <p>Order Id: {id} | User Id: {userId} | Table: {restTableId} | Status Id: {statusId}</p>
+            <p>Order Notes: {notes}</p>
+          </div>)
+        : (
+          <div>Loading Order...</div>)}
+
       {/* menu_itemId */}
       {orderItems.length
         ? (
@@ -21,9 +28,7 @@ function ViewTable ({ oneOrder, allMenuItems }) {
           </div>
           )
         : (
-          <div>
-            Please Wait
-          </div>
+          <div />
           )}
     </div>
   );
