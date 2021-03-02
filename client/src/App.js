@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Home from './pages/home';
-import TableStatus from './pages/tableStatus';
 import MainMenu from './pages/mainMenu';
 import HotDogMenu from './pages/hotDogMenu';
 import IceCreamMenu from './pages/iceCreamMenu';
@@ -53,9 +52,6 @@ function App () {
                 </Route>
                 <Route exact strict path='/vieworders'>
                   <ViewOrders />
-                </Route>
-                <Route exact strict path='/tablestatus'>
-                  <TableStatus />
                 </Route>
                 <Route exact strict path='/hotdogs'>
                   <HotDogMenu />

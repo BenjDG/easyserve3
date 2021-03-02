@@ -13,7 +13,8 @@ function Nav () {
               container
               direction='row'
               justify='space-evenly'
-              alignItems='center' xs={8}
+              alignItems='center'
+              xs={8}
             >
               <Link href='/' color='inherit'> Home </Link>
               <Link href='/login' color='inherit'> Login </Link>
