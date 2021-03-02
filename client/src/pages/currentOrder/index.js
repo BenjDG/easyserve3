@@ -114,7 +114,7 @@ function CurrentOrder () {
                 <Button href='/icecream' variant='outlined'>Icecream</Button>
               </Grid>
               <Grid item xs={3}>
-                <Button href='/' variant='outlined'>Submit</Button>
+                <Button href='/checkout' variant='outlined'>Checkout</Button>
               </Grid>
             </Grid>
           </Grid>

@@ -8,6 +8,7 @@ import HotDogMenu from './pages/hotDogMenu';
 import IceCreamMenu from './pages/iceCreamMenu';
 import SidesMenu from './pages/sidesMenu';
 import DrinkMenu from './pages/drinkMenu';
+import Checkout from './pages/checkout';
 import Tables from './pages/tables';
 import Login from './pages/login';
 import Nav from './components/nav';
@@ -70,6 +71,9 @@ function App () {
                 </Route>
                 <Route exact strict path='/tables'>
                   <Tables />
+                </Route>
+                <Route exact strict path='/checkout'>
+                  <Checkout />
                 </Route>
               </OrderProviderButton>
             </CurrentOrderProvider>
