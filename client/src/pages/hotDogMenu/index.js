@@ -21,9 +21,9 @@ const useStyles = makeStyles((theme) => ({
 
 function HotDog () {
   const classes = useStyles();
+  const [hotdogs, setHotdogs] = useState([]);
   // eslint-disable-next-line no-unused-vars
   const [currentOrder, _] = useCurrentOrderContext();
-  const [hotdogs, setHotdogs] = useState([]);
   const [OrderByIdWithItems, setOrderByIdWithItems] = useState({});
   const [AllMenuItems, setAllMenuItems] = useState({});
   const [refresh, setRefresh] = useState();
