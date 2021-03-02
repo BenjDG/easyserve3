@@ -22,7 +22,7 @@ function Checkout () {
       <Grid item xs={4} />
       <Grid item xs={4}>
         <Box className={classes.root}>
-          Picture
+          <img src='https://media.giphy.com/media/adw9aTVANeCP6PTZpB/source.gif' alt='checkout' />
         </Box>
         <Button href='/currentorder' variant='outlined'>Back</Button>
       </Grid>
