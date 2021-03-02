@@ -19,7 +19,8 @@ function Nav () {
               <Link href='/login' color='inherit'> Login </Link>
               <Link href='/mainmenu' color='inherit'> Mainmenu </Link>
               <Link href='/neworder' color='inherit'> New Order </Link>
-              <Link href='/vieworders' color='inherit'> View Orders </Link>
+              <Link href='/currentorder' color='inherit'> Current Order </Link>
+              <Link href='/vieworders' color='inherit'> View All Orders </Link>
               <Link href='/tables' color='inherit'> Tables </Link>
               <Link href='/tablestatus' color='inherit'> Tablestatus </Link>
               <Link href='/hotdogs' color='inherit'> Hotdogs </Link>

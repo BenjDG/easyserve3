@@ -65,7 +65,7 @@ function IceCream () {
               })}
 
               <Grid item xs={3}>
-                <Button href='/' variant='outlined'>Submit</Button>
+                <Button href='/currentorder' variant='outlined'>Back</Button>
               </Grid>
             </Grid>
           </Grid>

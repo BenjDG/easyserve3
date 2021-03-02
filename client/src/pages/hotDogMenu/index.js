@@ -26,7 +26,7 @@ function HotDog () {
   const [hotdogs, setHotdogs] = useState([]);
   const [OrderByIdWithItems, setOrderByIdWithItems] = useState({});
   const [AllMenuItems, setAllMenuItems] = useState({});
-  const [refresh, setRefresh] = useState(false);
+  const [refresh, setRefresh] = useState();
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -96,7 +96,7 @@ function HotDog () {
               })}
 
               <Grid item xs={3}>
-                <Button href='/' variant='outlined'>Submit</Button>
+                <Button href='/currentorder' variant='outlined'>Back</Button>
               </Grid>
             </Grid>
           </Grid>
