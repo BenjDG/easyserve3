@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Grid, Paper } from '@material-ui/core';
-import API from '../../services/API';
-import ButtonPiece from '../../components/buttonPiece';
+import React, { useEffect, useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { Box, Button, Grid, Paper } from "@material-ui/core";
+import API from "../../services/API";
+import SidesBtn from "../../components/SidesBtn";
 
 const useStyles = makeStyles((theme) => ({
   orderView: {
     padding: theme.spacing(2, 2),
     height: 200,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start'
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
   },
   buttonView: {
-    padding: theme.spacing(2, 2)
+    padding: theme.spacing(2, 2),
     // height: 200,
     // display: 'flex',
     // flexDirection: 'column',
     // justifyContent: 'flex-start'
-  }
+  },
 }));
 
-function Sides () {
+function Sides() {
   const classes = useStyles();
   const [sides, setSides] = useState([]);
 
@@ -44,7 +44,7 @@ function Sides () {
       <Grid item xs={2} />
       <Grid item xs={8}>
         <Box m={2}>
-          <Grid item container direction='column'>
+          <Grid item container direction="column">
             <Grid item>
               <Paper elevation={3} className={classes.orderView}>
                 {/* {error}{hotdogsList} */}
@@ -53,19 +53,30 @@ function Sides () {
             <Grid
               item
               container
-              direction='row'
-              justify='center'
-              alignItems='center'
+              direction="row"
+              justify="center"
+              alignItems="center"
               className={classes.buttonView}
               spacing={4}
             >
               {sides.map((item) => {
                 console.log(item);
-                return <Grid item xs={3} key={item.id}><ButtonPiece itemId={item.id} title={item.title} click='' price={item.price} /></Grid>;
+                return (
+                  <Grid item xs={3} key={item.id}>
+                    <SidesBtn
+                      itemId={item.id}
+                      title={item.title}
+                      click=""
+                      price={item.price}
+                    />
+                  </Grid>
+                );
               })}
 
               <Grid item xs={3}>
-                <Button href='/' variant='outlined'>Submit</Button>
+                <Button href="/" variant="outlined">
+                  Submit
+                </Button>
               </Grid>
             </Grid>
           </Grid>

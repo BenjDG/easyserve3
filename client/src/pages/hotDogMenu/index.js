@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Grid, Paper } from '@material-ui/core';
-import API from '../../services/API';
-import ButtonPiece from '../../components/buttonPiece';
+import React, { useEffect, useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { Box, Button, Grid, Paper } from "@material-ui/core";
+import API from "../../services/API";
+import HotDogBtn from "../../components/hotDogBtn";
 
 const useStyles = makeStyles((theme) => ({
   orderView: {
     padding: theme.spacing(2, 2),
     height: 200,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start'
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
   },
   buttonView: {
-    padding: theme.spacing(2, 2)
+    padding: theme.spacing(2, 2),
     // height: 200,
     // display: 'flex',
     // flexDirection: 'column',
     // justifyContent: 'flex-start'
-  }
+  },
 }));
 
-function HotDog () {
+function HotDog() {
   const classes = useStyles();
   const [hotdogs, setHotdogs] = useState([]);
+  const [hotdogRender, setHotdogRender] = useState("");
+
   // const [hotdogsList, setHotdogsList] = useState([]);
   // const [error, setError] = useState('');
 
@@ -43,6 +45,11 @@ function HotDog () {
       });
   };
 
+  function getHotdogById(title) {
+    console.log(title);
+    setHotdogRender(title);
+  }
+
   // function handleClick (orderId, itemId, title, price) {
   //   setHotdogsList({ orderId, itemId, title, price });
   // }
@@ -52,28 +59,41 @@ function HotDog () {
       <Grid item xs={2} />
       <Grid item xs={8}>
         <Box m={2}>
-          <Grid item container direction='column'>
+          <Grid item container direction="column">
             <Grid item>
               <Paper elevation={3} className={classes.orderView}>
+                {hotdogRender}
                 {/* {error}{hotdogsList} */}
               </Paper>
             </Grid>
             <Grid
               item
               container
-              direction='row'
-              justify='center'
-              alignItems='center'
+              direction="row"
+              justify="center"
+              alignItems="center"
               className={classes.buttonView}
               spacing={4}
             >
               {hotdogs.map((item) => {
                 console.log(item);
-                return <Grid item xs={3} key={item.id}><ButtonPiece itemId={item.id} title={item.title} click='' price={item.price} /></Grid>;
+                return (
+                  <Grid item xs={3} key={item.id}>
+                    <HotDogBtn
+                      getHotdogById={getHotdogById}
+                      itemId={item.id}
+                      title={item.title}
+                      click=""
+                      price={item.price}
+                    />
+                  </Grid>
+                );
               })}
 
               <Grid item xs={3}>
-                <Button href='/' variant='outlined'>Submit</Button>
+                <Button href="/" variant="outlined">
+                  Submit
+                </Button>
               </Grid>
             </Grid>
           </Grid>
