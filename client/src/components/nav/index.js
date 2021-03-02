@@ -13,19 +13,39 @@ function Nav () {
               container
               direction='row'
               justify='space-evenly'
-              alignItems='center' xs={8}
+              alignItems='center'
+              xs={8}
             >
-              <Link href='/' color='inherit'> Home </Link>
-              <Link href='/login' color='inherit'> Login </Link>
-              <Link href='/mainmenu' color='inherit'> Mainmenu </Link>
-              <Link href='/neworder' color='inherit'> New Order </Link>
-              <Link href='/vieworders' color='inherit'> View Orders </Link>
-              <Link href='/tables' color='inherit'> Tables </Link>
-              <Link href='/tablestatus' color='inherit'> Tablestatus </Link>
-              <Link href='/hotdogs' color='inherit'> Hotdogs </Link>
-              <Link href='/sides' color='inherit'> Sides </Link>
-              <Link href='/drinks' color='inherit'> Drinks </Link>
-              <Link href='/icecream' color='inherit'> Icecream </Link>
+              <Link href='/' color='inherit'>
+                Home
+              </Link>
+              <Link href='/login' color='inherit'>
+                Login
+              </Link>
+              <Link href='/mainmenu' color='inherit'>
+                Main Menu
+              </Link>
+              <Link href='/neworder' color='inherit'>
+                New Order
+              </Link>
+              <Link href='/vieworders' color='inherit'>
+                View Orders
+              </Link>
+              <Link href='/tables' color='inherit'>
+                Tables
+              </Link>
+              <Link href='/hotdogs' color='inherit'>
+                Hotdogs
+              </Link>
+              <Link href='/sides' color='inherit'>
+                Sides
+              </Link>
+              <Link href='/drinks' color='inherit'>
+                Drinks
+              </Link>
+              <Link href='/icecream' color='inherit'>
+                Ice Cream
+              </Link>
             </Grid>
             <Grid item xs={2} />
           </Grid>
