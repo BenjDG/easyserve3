@@ -63,8 +63,8 @@ export default {
     };
     return axios.post('/api/order/create', obj);
   },
-  createNewOrderItem: function () {
-    return axios.post('/api/order/add/:orderId/:itemId');
+  createNewOrderItem: function (orderId, itemId) {
+    return axios.post(`/api/order/add/${orderId}/${itemId}`);
   },
   updateOrderInfo: function () {
     // { orderId, userId, tableId, statusId, notes }

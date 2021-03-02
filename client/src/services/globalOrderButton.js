@@ -1,4 +1,5 @@
 import React, { createContext, useReducer, useContext } from 'react';
+import API from './API';
 
 const OrderContext = createContext([{
   orderId: '',
@@ -11,7 +12,11 @@ const { Provider } = OrderContext;
 function reducer (state, action) {
   switch (action.type) {
     case 'add':
-      console.log(action);
+      try {
+        API.createNewOrderItem(action.orderId, action.itemId);
+      } catch (error) {
+        console.error(error);
+      }
       return [
         {
           orderId: action.orderId,
