@@ -46,15 +46,9 @@ function NewOrder () {
 
   const createNewOrder = async (userId, tableId, statusId = 1, notes = null) => {
     await setToggleHidden(false);
-    console.log(userId);
     await API.createNewOrder(userId, tableId, statusId, notes)
       .then(result => {
-        console.log('createNewOrder');
-        console.log(result.data);
-        // setOrderId(result.id);
-        // setUserId(result.userId);
         return result.data.id;
-        // setTableId(result.restTableId);
       }).then(async (id) => await loadOrderData(id))
       .catch((err) => {
         console.error(err);
@@ -66,7 +60,6 @@ function NewOrder () {
   const loadOrderData = async (orderId) => {
     await API.findOrderByIdWithItems(orderId)
       .then(async (res) => {
-        console.log(`res.data.id >>> ${res.data.id}`);
         await setOrderByIdWithItems(res.data);
       })
       .catch((err) => {
@@ -91,7 +84,6 @@ function NewOrder () {
   const loadAllUsers = () => {
     API.findAllUsers()
       .then((res) => {
-        // console.log(res.data);
         setUsersList(res.data);
       })
       .catch((err) => {
@@ -104,7 +96,6 @@ function NewOrder () {
   const loadAllTables = () => {
     API.getTableOptions()
       .then((res) => {
-        // console.log(res.data);
         setTablesList(res.data);
       })
       .catch((err) => {
