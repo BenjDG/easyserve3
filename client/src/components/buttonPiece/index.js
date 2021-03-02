@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
 import PricePiece from '../pricePiece';
-import { useOrderContext } from '../../services/globalOrder';
+import { useOrderButtonContext } from '../../services/globalOrderButton';
 
 function ButtonPiece ({ orderId, itemId, title, price }) {
-  const [_, dispatch] = useOrderContext();
+  const [_, dispatch] = useOrderButtonContext();
 
   const handleClick = (event) => {
     console.log(event);

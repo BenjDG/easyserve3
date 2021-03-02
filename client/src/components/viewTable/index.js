@@ -16,7 +16,7 @@ function ViewTable ({ oneOrder, allMenuItems }) {
             <p>Order Notes: {notes}</p>
           </div>)
         : (
-          <div>Loading Order...</div>)}
+          <div>Loading Order...Are you logged on?</div>)}
 
       {/* menu_itemId */}
       {orderItems.length

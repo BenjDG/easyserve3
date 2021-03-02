@@ -35,7 +35,7 @@ function HotDog () {
 
   useEffect(() => {
     loadHotDogData();
-    loadOrderData(2);
+    loadOrderData(1);
     loadMenuItems();
   }, []);
 

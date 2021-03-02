@@ -30,7 +30,7 @@ function reducer (state, action) {
   }
 }
 
-function OrderProvider ({ value = [], ...props }) {
+function OrderProviderButton ({ value = [], ...props }) {
   const [state, dispatch] = useReducer(reducer, []);
 
   console.log('Order Provider triggered');
@@ -39,8 +39,8 @@ function OrderProvider ({ value = [], ...props }) {
   return <Provider value={[state, dispatch]} {...props} />;
 }
 
-function useOrderContext () {
+function useOrderButtonContext () {
   return useContext(OrderContext);
 }
 
-export { OrderProvider, useOrderContext };
+export { OrderProviderButton, useOrderButtonContext };

@@ -13,7 +13,7 @@ import Login from './pages/login';
 import Nav from './components/nav';
 import NewOrder from './pages/newOrder';
 import ViewOrders from './pages/viewOrders';
-import { OrderProvider } from './services/globalOrder';
+import { OrderProviderButton } from './services/globalOrderButton';
 import { UserProvider } from './services/userContext';
 
 const theme = createMuiTheme({
@@ -27,7 +27,7 @@ function App () {
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <OrderProvider>
+        <OrderProviderButton>
           <Nav />
           <BrowserRouter>
             <Route exact strict path='/'>
@@ -66,7 +66,7 @@ function App () {
               </Route>
             </UserProvider>
           </BrowserRouter>
-        </OrderProvider>
+        </OrderProviderButton>
       </ThemeProvider>
     </div>
   );
