@@ -14,7 +14,7 @@ function reducer (state, action) {
       console.log(action);
       return [
         {
-          orderId: '1',
+          orderId: action.orderId,
           itemId: action.itemId,
           title: action.title,
           price: action.price

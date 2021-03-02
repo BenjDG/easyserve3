@@ -29,8 +29,6 @@ function HotDog () {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    console.log('########');
-    console.log(currentOrder);
     loadHotDogData();
     loadOrderData(currentOrder);
     loadMenuItems();
@@ -93,7 +91,7 @@ function HotDog () {
               spacing={4}
             >
               {hotdogs.map((item) => {
-                return <Grid item xs={3} key={item.id}><ButtonPiece itemId={item.id} title={item.title} price={item.price} /></Grid>;
+                return <Grid item xs={3} key={item.id}><ButtonPiece orderId={currentOrder} itemId={item.id} title={item.title} price={item.price} /></Grid>;
               })}
 
               <Grid item xs={3}>

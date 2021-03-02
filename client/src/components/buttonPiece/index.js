@@ -4,17 +4,21 @@ import PricePiece from '../pricePiece';
 import { useOrderButtonContext } from '../../services/globalOrderButton';
 
 function ButtonPiece ({ orderId, itemId, title, price }) {
-  const [_, dispatch] = useOrderButtonContext();
+  const [_, dispatch] = useOrderButtonContext(); // eslint-disable-line
 
-  const handleClick = (event) => {
+  const handleClick = async (event) => {
     console.log(event);
-    dispatch({
-      type: 'add',
-      orderId: orderId,
-      itemId: itemId,
-      title: title,
-      price: price
-    });
+    try {
+      await dispatch({
+        type: 'add',
+        orderId: orderId,
+        itemId: itemId,
+        title: title,
+        price: price
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

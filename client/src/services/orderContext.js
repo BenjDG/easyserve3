@@ -31,9 +31,7 @@ const loadedState = loadState();
 
 const CurrentOrderProvider = (props) => {
   const [currentOrder, setCurrentOrder] = useState(loadedState);
-  console.log('##########!!!!!!!!');
   saveState(currentOrder);
-  console.log(currentOrder);
   return (
     <Provider value={[currentOrder, setCurrentOrder]} {...props} />
   );

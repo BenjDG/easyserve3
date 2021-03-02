@@ -42,32 +42,32 @@ function App () {
               <MainMenu />
             </Route>
             <CurrentOrderProvider>
-              {/* <OrderProviderButton> */}
-              <Route exact strict path='/neworder'>
-                <NewOrder />
-              </Route>
-              <Route exact strict path='/vieworders'>
-                <ViewOrders />
-              </Route>
-              <Route exact strict path='/tablestatus'>
-                <TableStatus />
-              </Route>
-              <Route exact strict path='/hotdogs'>
-                <HotDogMenu />
-              </Route>
-              <Route exact strict path='/sides'>
-                <SidesMenu />
-              </Route>
-              <Route exact strict path='/icecream'>
-                <IceCreamMenu />
-              </Route>
-              <Route exact strict path='/drinks'>
-                <DrinkMenu />
-              </Route>
-              <Route exact strict path='/tables'>
-                <Tables />
-              </Route>
-              {/* </OrderProviderButton> */}
+              <OrderProviderButton>
+                <Route exact strict path='/neworder'>
+                  <NewOrder />
+                </Route>
+                <Route exact strict path='/vieworders'>
+                  <ViewOrders />
+                </Route>
+                <Route exact strict path='/tablestatus'>
+                  <TableStatus />
+                </Route>
+                <Route exact strict path='/hotdogs'>
+                  <HotDogMenu />
+                </Route>
+                <Route exact strict path='/sides'>
+                  <SidesMenu />
+                </Route>
+                <Route exact strict path='/icecream'>
+                  <IceCreamMenu />
+                </Route>
+                <Route exact strict path='/drinks'>
+                  <DrinkMenu />
+                </Route>
+                <Route exact strict path='/tables'>
+                  <Tables />
+                </Route>
+              </OrderProviderButton>
             </CurrentOrderProvider>
           </UserProvider>
         </BrowserRouter>
