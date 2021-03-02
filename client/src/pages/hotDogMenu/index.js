@@ -29,6 +29,8 @@ function HotDog () {
   const [error, setError] = useState('');
 
   useEffect(() => {
+    console.log('########');
+    console.log(currentOrder);
     loadHotDogData();
     loadOrderData(currentOrder);
     loadMenuItems();
