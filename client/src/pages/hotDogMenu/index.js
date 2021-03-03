@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Box, Button, Grid } from "@material-ui/core";
 import API from "../../services/API";
 import ButtonPiece from "../../components/buttonPiece";
-import HotDogBtn from "../../components/hotDogBtn";
+// import HotDogBtn from '../../components/hotDogBtn';
 import ViewTable from "../../components/viewTable";
 import { useCurrentOrderContext } from "../../services/orderContext";
 
@@ -49,10 +49,10 @@ function HotDog() {
       });
   };
 
-  function getHotdogById(title) {
-    console.log(title);
-    setHotdogRender(title);
-  }
+  // function getHotdogById(title) {
+  //   console.log(title);
+  //   setHotdogRender(title);
+  // }
 
   // function handleClick (orderId, itemId, title, price) {
   //   setHotdogsList({ orderId, itemId, title, price });

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box, Button, Grid } from "@material-ui/core";
-import SidesBtn from "../../components/sidesBtn";
+// import SidesBtn from '../../components/sidesBtn';
 import API from "../../services/API";
 import ButtonPiece from "../../components/buttonPiece";
 import ViewTable from "../../components/viewTable";

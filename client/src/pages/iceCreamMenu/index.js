@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import IceCreamBtn from "../../components/iceCreamBtn";
+// import IceCreamBtn from '../../components/iceCreamBtn';
 import { Box, Button, Grid } from "@material-ui/core";
 import API from "../../services/API";
 import ButtonPiece from "../../components/buttonPiece";
