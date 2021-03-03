@@ -8,7 +8,7 @@ const status = require('./status');
 
 const isAuthenticated = require('../../config/middleware/isAuthenticated');
 
-// path '/api
+// path 'localhost:3001/api
 router.use('/auth', authRoutes);
 
 router.use(isAuthenticated);
