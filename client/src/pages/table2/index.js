@@ -15,24 +15,24 @@ const useStyles = makeStyles((theme) => ({
     height: 200,
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
   },
   buttonView: {
-    padding: theme.spacing(2, 2)
+    padding: theme.spacing(2, 2),
     // height: 200,
     // display: 'flex',
     // flexDirection: 'column',
     // justifyContent: 'flex-start'
   },
   root: {
-    maxWidth: 345
+    maxWidth: 345,
   },
   media: {
-    height: 140
-  }
+    height: 140,
+  },
 }));
 
-function Table2 () {
+function Table2() {
   const classes = useStyles();
   const [tables, setTable] = useState([]);
   // const [hotdogsList, setHotdogsList] = useState([]);
@@ -46,7 +46,7 @@ function Table2 () {
     API.findAllOrders()
       .then((res) => {
         // console.log(res.data);
-        const currTable = res.data.filter((table1) => table2.restTableId === 2);
+        const currTable = res.data.filter((table2) => table2.restTableId === 2);
         setTable(currTable);
       })
       .catch((err) => {
