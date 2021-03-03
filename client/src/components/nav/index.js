@@ -11,7 +11,7 @@ function Nav () {
 
   return (
     <div>
-      <AppBar position='sticky'>
+      <AppBar position='sticky' style={{ background: 'red' }}>
         <Toolbar>
           <Grid container>
             <Grid item xs={2} />

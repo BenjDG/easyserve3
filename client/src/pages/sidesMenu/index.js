@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Grid } from '@material-ui/core';
+// import SidesBtn from '../../components/sidesBtn';
 import API from '../../services/API';
 import ButtonPiece from '../../components/buttonPiece';
 import ViewTable from '../../components/viewTable';
@@ -80,7 +81,10 @@ function Sides () {
           <Grid item container direction='column'>
             <Grid item>
               {error}
-              <ViewTable oneOrder={OrderByIdWithItems} allMenuItems={AllMenuItems} />
+              <ViewTable
+                oneOrder={OrderByIdWithItems}
+                allMenuItems={AllMenuItems}
+              />
             </Grid>
             <Grid
               item
@@ -93,11 +97,30 @@ function Sides () {
             >
               {sides.map((item) => {
                 console.log(item);
-                return <Grid item xs={3} key={item.id}><ButtonPiece orderId={currentOrder} itemId={item.id} title={item.title} price={item.price} setRefresh={setRefresh} refresh={refresh} /></Grid>;
+                return (
+                  <Grid item xs={3} key={item.id}>
+                    <ButtonPiece
+                      orderId={currentOrder}
+                      itemId={item.id}
+                      title={item.title}
+                      price={item.price}
+                      setRefresh={setRefresh}
+                      refresh={refresh}
+                    />
+                    {/* <SidesBtn
+                      itemId={item.id}
+                      title={item.title}
+                      click=""
+                      price={item.price}
+                    /> */}
+                  </Grid>
+                );
               })}
 
               <Grid item xs={3}>
-                <Button href='/currentorder' variant='outlined'>Back</Button>
+                <Button href='/currentorder' variant='outlined'>
+                  Back
+                </Button>
               </Grid>
             </Grid>
           </Grid>
