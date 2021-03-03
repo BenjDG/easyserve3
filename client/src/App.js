@@ -27,10 +27,10 @@ import CurrentOrder from './pages/currentOrder';
 import API from './services/API';
 
 const theme = createMuiTheme({
-  spacing: 12,
+  spacing: 12
 });
 
-function App() {
+function App () {
   const { user, setUser } = UseUserProvider();
   const userId = sessionStorage.getItem('userId'); // eslint-disable-line
 

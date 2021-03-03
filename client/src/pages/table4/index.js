@@ -15,24 +15,24 @@ const useStyles = makeStyles((theme) => ({
     height: 200,
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-start'
   },
   buttonView: {
-    padding: theme.spacing(2, 2),
+    padding: theme.spacing(2, 2)
     // height: 200,
     // display: 'flex',
     // flexDirection: 'column',
     // justifyContent: 'flex-start'
   },
   root: {
-    maxWidth: 345,
+    maxWidth: 345
   },
   media: {
-    height: 140,
-  },
+    height: 140
+  }
 }));
 
-function Table4() {
+function Table4 () {
   const classes = useStyles();
   const [tables, setTable] = useState([]);
   // const [hotdogsList, setHotdogsList] = useState([]);
