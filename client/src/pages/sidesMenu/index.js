@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Grid, Paper } from '@material-ui/core';
-import API from '../../services/API';
-import SidesBtn from '../../components/SidesBtn';
+import React, { useEffect, useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { Box, Button, Grid, Paper } from "@material-ui/core";
+import API from "../../services/API";
+import SidesBtn from "../../components/sidesBtn";
 
 const useStyles = makeStyles((theme) => ({
   orderView: {
     padding: theme.spacing(2, 2),
     height: 200,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start'
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
   },
   buttonView: {
-    padding: theme.spacing(2, 2)
+    padding: theme.spacing(2, 2),
     // height: 200,
     // display: 'flex',
     // flexDirection: 'column',
     // justifyContent: 'flex-start'
-  }
+  },
 }));
 
-function Sides () {
+function Sides() {
   const classes = useStyles();
   const [sides, setSides] = useState([]);
 
@@ -44,7 +44,7 @@ function Sides () {
       <Grid item xs={2} />
       <Grid item xs={8}>
         <Box m={2}>
-          <Grid item container direction='column'>
+          <Grid item container direction="column">
             <Grid item>
               <Paper elevation={3} className={classes.orderView}>
                 {/* {error}{hotdogsList} */}
@@ -53,9 +53,9 @@ function Sides () {
             <Grid
               item
               container
-              direction='row'
-              justify='center'
-              alignItems='center'
+              direction="row"
+              justify="center"
+              alignItems="center"
               className={classes.buttonView}
               spacing={4}
             >
@@ -66,7 +66,7 @@ function Sides () {
                     <SidesBtn
                       itemId={item.id}
                       title={item.title}
-                      click=''
+                      click=""
                       price={item.price}
                     />
                   </Grid>
@@ -74,7 +74,7 @@ function Sides () {
               })}
 
               <Grid item xs={3}>
-                <Button href='/' variant='outlined'>
+                <Button href="/" variant="outlined">
                   Submit
                 </Button>
               </Grid>
