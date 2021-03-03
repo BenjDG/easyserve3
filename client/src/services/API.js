@@ -23,11 +23,14 @@ export default {
   getIcecreams: function () {
     return axios.get('/api/menuitems/icecreams');
   },
+  getAllMenuItems: function () {
+    return axios.get('/api/menuitems/allmenu');
+  },
   findAllUsers: function () {
     return axios.get('/api/user');
   },
-  findUserById: function () {
-    return axios.get('/api/user/:id');
+  findUserById: function (id) {
+    return axios.get(`/api/user/${id}`);
   },
   createNewUser: function () {
     // { email, password, fName, lName, role }
@@ -44,18 +47,24 @@ export default {
   findAllOrders: function () {
     return axios.get('/api/order/all');
   },
-  findOrderById: function () {
-    return axios.get('/api/order/:id');
+  findOrderById: function (id) {
+    return axios.get(`/api/order/${id}`);
   },
-  findOrderByIdWithItems: function () {
-    return axios.get('/api/order/:id/items');
+  findOrderByIdWithItems: function (id) {
+    return axios.get(`/api/order/${id}/items`);
   },
-  createNewOrder: function () {
+  createNewOrder: function (userId, tableId, statusId, notes) {
     // { userId, tableId, statusId, notes }
-    return axios.post('/api/order/create');
+    const obj = {
+      userId: userId,
+      tableId: tableId,
+      statusId: statusId,
+      notes: notes
+    };
+    return axios.post('/api/order/create', obj);
   },
-  createNewOrderItem: function () {
-    return axios.post('/api/order/add/:orderId/:itemId');
+  createNewOrderItem: function (orderId, itemId) {
+    return axios.post(`/api/order/add/${orderId}/${itemId}`);
   },
   updateOrderInfo: function () {
     // { orderId, userId, tableId, statusId, notes }
