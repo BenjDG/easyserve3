@@ -28,6 +28,7 @@ module.exports = {
       .catch(err => res.status(500).json(err));
   },
   createNewOrder: async function (req, res) {
+    console.log(req.body);
     const { userId, tableId, statusId, notes } = req.body;
     db.order.create({
       userId: userId,
@@ -36,7 +37,10 @@ module.exports = {
       notes: notes
     })
       .then(result => res.json(result))
-      .catch(err => res.status(500).json(err));
+      .catch(err => {
+        console.error(err);
+        res.status(500).json(err);
+      });
   },
   updateOrderInfo: async function (req, res) {
     const { orderId, userId, tableId, statusId, notes } = req.body;
