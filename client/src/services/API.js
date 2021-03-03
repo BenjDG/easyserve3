@@ -29,8 +29,8 @@ export default {
   findAllUsers: function () {
     return axios.get('/api/user');
   },
-  findUserById: function () {
-    return axios.get('/api/user/:id');
+  findUserById: function (id) {
+    return axios.get(`/api/user/${id}`);
   },
   createNewUser: function () {
     // { email, password, fName, lName, role }
