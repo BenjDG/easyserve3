@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Box, Button, Grid } from "@material-ui/core";
-import API from "../../services/API";
-import ButtonPiece from "../../components/buttonPiece";
+import React, { useEffect, useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { Box, Button, Grid } from '@material-ui/core';
+import API from '../../services/API';
+import ButtonPiece from '../../components/buttonPiece';
 // import HotDogBtn from '../../components/hotDogBtn';
-import ViewTable from "../../components/viewTable";
-import { useCurrentOrderContext } from "../../services/orderContext";
+import ViewTable from '../../components/viewTable';
+import { useCurrentOrderContext } from '../../services/orderContext';
 
 const useStyles = makeStyles((theme) => ({
   orderView: {
     padding: theme.spacing(2, 2),
     height: 200,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-start",
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start'
   },
   buttonView: {
-    padding: theme.spacing(2, 2),
-  },
+    padding: theme.spacing(2, 2)
+  }
 }));
 
-function HotDog() {
+function HotDog () {
   const classes = useStyles();
   const [hotdogs, setHotdogs] = useState([]);
   // eslint-disable-next-line no-unused-vars
@@ -29,7 +29,7 @@ function HotDog() {
   const [AllMenuItems, setAllMenuItems] = useState({});
   const [refresh, setRefresh] = useState();
   // const [hotdogRender, setHotdogRender] = useState('');
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   useEffect(() => {
     loadHotDogData();
@@ -45,7 +45,7 @@ function HotDog() {
       .catch((err) => {
         console.error(err);
         const error = new Error(err);
-        setError(error.message + " - Please login");
+        setError(error.message + ' - Please login');
       });
   };
 
@@ -66,7 +66,7 @@ function HotDog() {
       .catch((err) => {
         console.error(err);
         const error = new Error(err);
-        setError(error.message + " - Please login");
+        setError(error.message + ' - Please login');
       });
   };
 
@@ -78,7 +78,7 @@ function HotDog() {
       .catch((err) => {
         console.error(err);
         const error = new Error(err);
-        setError(error.message + " - Please login");
+        setError(error.message + ' - Please login');
       });
   };
 
@@ -87,7 +87,7 @@ function HotDog() {
       <Grid item xs={2} />
       <Grid item xs={8}>
         <Box m={2}>
-          <Grid item container direction="column">
+          <Grid item container direction='column'>
             <Grid item>
               {/* <Paper elevation={3} className={classes.orderView}>
                 {hotdogRender} */}
@@ -102,9 +102,9 @@ function HotDog() {
             <Grid
               item
               container
-              direction="row"
-              justify="center"
-              alignItems="center"
+              direction='row'
+              justify='center'
+              alignItems='center'
               className={classes.buttonView}
               spacing={4}
             >
@@ -131,7 +131,7 @@ function HotDog() {
               })}
 
               <Grid item xs={3}>
-                <Button href="/currentorder" variant="outlined">
+                <Button href='/currentorder' variant='outlined'>
                   Back
                 </Button>
               </Grid>

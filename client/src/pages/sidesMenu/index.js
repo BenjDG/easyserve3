@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Box, Button, Grid } from "@material-ui/core";
+import React, { useEffect, useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { Box, Button, Grid } from '@material-ui/core';
 // import SidesBtn from '../../components/sidesBtn';
-import API from "../../services/API";
-import ButtonPiece from "../../components/buttonPiece";
-import ViewTable from "../../components/viewTable";
-import { useCurrentOrderContext } from "../../services/orderContext";
+import API from '../../services/API';
+import ButtonPiece from '../../components/buttonPiece';
+import ViewTable from '../../components/viewTable';
+import { useCurrentOrderContext } from '../../services/orderContext';
 
 const useStyles = makeStyles((theme) => ({
   orderView: {
     padding: theme.spacing(2, 2),
     height: 200,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-start",
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start'
   },
   buttonView: {
-    padding: theme.spacing(2, 2),
-  },
+    padding: theme.spacing(2, 2)
+  }
 }));
 
-function Sides() {
+function Sides () {
   const classes = useStyles();
   const [sides, setSides] = useState([]);
   // eslint-disable-next-line no-unused-vars
@@ -28,7 +28,7 @@ function Sides() {
   const [OrderByIdWithItems, setOrderByIdWithItems] = useState({});
   const [AllMenuItems, setAllMenuItems] = useState({});
   const [refresh, setRefresh] = useState();
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   useEffect(() => {
     loadSidesData();
@@ -44,7 +44,7 @@ function Sides() {
       .catch((err) => {
         console.error(err);
         const error = new Error(err);
-        setError(error.message + " - Please login");
+        setError(error.message + ' - Please login');
       });
   };
 
@@ -57,7 +57,7 @@ function Sides() {
       .catch((err) => {
         console.error(err);
         const error = new Error(err);
-        setError(error.message + " - Please login");
+        setError(error.message + ' - Please login');
       });
   };
 
@@ -69,7 +69,7 @@ function Sides() {
       .catch((err) => {
         console.error(err);
         const error = new Error(err);
-        setError(error.message + " - Please login");
+        setError(error.message + ' - Please login');
       });
   };
 
@@ -78,7 +78,7 @@ function Sides() {
       <Grid item xs={2} />
       <Grid item xs={8}>
         <Box m={2}>
-          <Grid item container direction="column">
+          <Grid item container direction='column'>
             <Grid item>
               {error}
               <ViewTable
@@ -89,9 +89,9 @@ function Sides() {
             <Grid
               item
               container
-              direction="row"
-              justify="center"
-              alignItems="center"
+              direction='row'
+              justify='center'
+              alignItems='center'
               className={classes.buttonView}
               spacing={4}
             >
@@ -118,7 +118,7 @@ function Sides() {
               })}
 
               <Grid item xs={3}>
-                <Button href="/currentorder" variant="outlined">
+                <Button href='/currentorder' variant='outlined'>
                   Back
                 </Button>
               </Grid>
