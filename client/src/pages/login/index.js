@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import API from '../../services/API';
+import { useHistory } from 'react-router-dom';
+import { UseUserProvider } from '../../services/userContext';
 import './style.css';
 
 function Login () {
+  const history = useHistory();
+  const { setUser } = UseUserProvider();
   // Setting the component's initial login
   const [login, setLogin] = useState({
     email: '',
@@ -20,8 +24,15 @@ function Login () {
     API.login(login.email, login.password)
       .then(result => {
         if (result.status === 200) {
-          // redirect to main menu
-          window.location = '/mainmenu';
+          // console.log(result);
+          sessionStorage.setItem('userId', result?.data?.id); // eslint-disable-line
+          setUser({
+            id: result?.data?.id,
+            first_name: result?.data?.first_name,
+            last_name: result?.data?.last_name,
+            email: result?.data?.email
+          });
+          history.push('/mainmenu');
         } else {
           setErr('An error occured.  Please check your username and password.');
           console.error(result.status);

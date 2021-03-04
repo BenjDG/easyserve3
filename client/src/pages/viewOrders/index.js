@@ -1,18 +1,28 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import { Box, Grid } from '@material-ui/core';
+import { Box, Grid, Typography } from '@material-ui/core';
+import React, { useEffect, useState, useStyles } from 'react';
+import API from '../../services/API';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > * + *': {
-      marginLeft: theme.spacing(2)
-    }
-  }
-}));
-
-function ViewOrders () {
+function AllOrders () {
   const classes = useStyles();
+  const [allorders, setAllOrders] = useState([]);
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const loadData = () => {
+    API.findAllOrders()
+      .then((res) => {
+        console.log(res.data);
+        setAllOrders(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+        // const error = new Error(err);
+        // setError(error.message + ' - Please login');
+      });
+  };
+
   return (
     <Grid container>
       <Grid item xs={2} />
@@ -21,8 +31,14 @@ function ViewOrders () {
           <Grid item container>
             <Grid item>
               <Typography className={classes.root}>
-                View Orders
+                View All Orders
               </Typography>
+              <Grid item>
+                {allorders.map((item) => {
+                  console.log(item);
+                  return <Grid item xs={3} key={item.id}>{item.id}{item.userId}{item.restTableId}{item.statusId}{item.notes}</Grid>;
+                })}
+              </Grid>
             </Grid>
           </Grid>
         </Box>
@@ -32,4 +48,4 @@ function ViewOrders () {
   );
 }
 
-export default ViewOrders;
+export default AllOrders;

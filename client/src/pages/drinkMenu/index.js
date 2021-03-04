@@ -1,53 +1,132 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import { Grid } from '@material-ui/core';
+import { Box, Button, Grid } from '@material-ui/core';
 import API from '../../services/API';
+import ButtonPiece from '../../components/buttonPiece';
+import ViewTable from '../../components/viewTable';
+import { useCurrentOrderContext } from '../../services/orderContext';
+// import DrinkBtn from '../../components/drinkBtn';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > * + *': {
-      marginLeft: theme.spacing(2)
-    }
+  orderView: {
+    padding: theme.spacing(2, 2),
+    height: 200,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start'
+  },
+  buttonView: {
+    padding: theme.spacing(2, 2)
   }
 }));
 
 function Drinks () {
   const classes = useStyles();
-  const [data, setdata] = useState([]);
+  const [drinks, setDrinks] = useState([]);
+  // eslint-disable-next-line no-unused-vars
+  const [currentOrder, _] = useCurrentOrderContext();
+  const [OrderByIdWithItems, setOrderByIdWithItems] = useState({});
+  const [AllMenuItems, setAllMenuItems] = useState({});
+  const [refresh, setRefresh] = useState();
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    loadData();
-  }, []);
+    loadDrinksData();
+    loadOrderData(currentOrder);
+    loadMenuItems();
+  }, [refresh]);
 
-  const loadData = () => {
+  const loadDrinksData = () => {
     API.getDrinks()
       .then((res) => {
-        console.log(res.data);
-
-        setdata(res.data);
+        setDrinks(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.error(err);
+        const error = new Error(err);
+        setError(error.message + ' - Please login');
+      });
+  };
+
+  const loadOrderData = (orderId) => {
+    API.findOrderByIdWithItems(orderId)
+      .then((res) => {
+        // console.log(res.data);
+        setOrderByIdWithItems(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+        const error = new Error(err);
+        setError(error.message + ' - Please login');
+      });
+  };
+
+  const loadMenuItems = () => {
+    API.getAllMenuItems()
+      .then((res) => {
+        setAllMenuItems(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+        const error = new Error(err);
+        setError(error.message + ' - Please login');
+      });
   };
 
   return (
     <Grid container>
-      <Grid item container>
-        <Grid item xs={2} />
-        <Grid item xs={8}>
-          <Typography className={classes.root}>
-            Drinks
-          </Typography>
-        </Grid>
-        <Grid item xs={2} />
+      <Grid item xs={2} />
+      <Grid item xs={8}>
+        <Box m={2}>
+          <Grid item container direction='column'>
+            <Grid item>
+              {error}
+              <ViewTable
+                oneOrder={OrderByIdWithItems}
+                allMenuItems={AllMenuItems}
+              />
+            </Grid>
+            <Grid
+              item
+              container
+              direction='row'
+              justify='center'
+              alignItems='center'
+              className={classes.buttonView}
+              spacing={4}
+            >
+              {drinks.map((item) => {
+                console.log(item);
+                return (
+                  <Grid item xs={3} key={item.id}>
+                    <ButtonPiece
+                      orderId={currentOrder}
+                      itemId={item.id}
+                      title={item.title}
+                      price={item.price}
+                      setRefresh={setRefresh}
+                      refresh={refresh}
+                    />
+                    {/* <DrinkBtn
+                      itemId={item.id}
+                      title={item.title}
+                      click=""
+                      price={item.price}
+                    /> */}
+                  </Grid>
+                );
+              })}
+
+              <Grid item xs={3}>
+                <Button href='/currentorder' variant='outlined'>
+                  Back
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Box>
       </Grid>
-      <Grid item container>
-        <ul>
-          {data.map((item, idx) => {
-            return <li key={idx}>{item.title}</li>;
-          })}
-        </ul>
-      </Grid>
+      <Grid item xs={2} />
     </Grid>
   );
 }
