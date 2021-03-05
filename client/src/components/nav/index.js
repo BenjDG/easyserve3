@@ -2,7 +2,7 @@ import React from 'react';
 import { AppBar, Grid, Link, Toolbar } from '@material-ui/core';
 import { useHistory, Link as RouterLink } from 'react-router-dom';
 
-function Nav(){
+function Nav () {
   const history = useHistory();
   const logout = () => {
     sessionStorage.removeItem('userId'); // eslint-disable-line
