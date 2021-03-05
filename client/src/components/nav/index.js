@@ -2,7 +2,7 @@ import React from 'react';
 import { AppBar, Grid, Link, Toolbar } from '@material-ui/core';
 import { useHistory, Link as RouterLink } from 'react-router-dom';
 
-function Nav () {
+function Nav() {
   const history = useHistory();
   const logout = () => {
     sessionStorage.removeItem('userId'); // eslint-disable-line
@@ -24,36 +24,28 @@ function Nav () {
               xs={8}
             >
               <Link component={RouterLink} to='/' color='inherit'>
-                {' '}
-                Home{' '}
+                Home
               </Link>
               <Link component={RouterLink} to='/login' color='inherit'>
-                {' '}
-                Login{' '}
+                Login
               </Link>
               <Link component={RouterLink} to='/mainmenu' color='inherit'>
-                {' '}
-                Mainmenu{' '}
+                Mainmenu
               </Link>
               <Link component={RouterLink} to='/neworder' color='inherit'>
-                {' '}
-                New Order{' '}
+                New Order
               </Link>
               <Link component={RouterLink} to='/currentorder' color='inherit'>
-                {' '}
-                Current Order{' '}
+                Current Order
               </Link>
               <Link component={RouterLink} to='/vieworders' color='inherit'>
-                {' '}
-                View All Orders{' '}
+                View All Orders
               </Link>
               <Link component={RouterLink} to='/tables' color='inherit'>
-                {' '}
-                Tables{' '}
+                Tables
               </Link>
               <Link onClick={logout} color='inherit'>
-                {' '}
-                Logout{' '}
+                Logout
               </Link>
               {/* <Link href='/hotdogs' color='inherit'> Hotdogs </Link>
               <Link href='/sides' color='inherit'> Sides </Link>
