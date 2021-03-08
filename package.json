@@ -1,8 +1,8 @@
 {
-  "name": "easy-serve-2",
+  "name": "easy-order",
   "version": "1.0.0",
-  "description": "easy-serve-2",
-  "author": "easy-serve-2",
+  "description": "easy-order",
+  "author": "easy-order",
   "license": "MIT",
   "main": "server/server.js",
   "repository": {
