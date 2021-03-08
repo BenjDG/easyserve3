@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Grid } from '@material-ui/core';
-// import SidesBtn from '../../components/sidesBtn';
 import API from '../../services/API';
 import ButtonPiece from '../../components/buttonPiece';
 import ViewTable from '../../components/viewTable';
@@ -107,16 +106,9 @@ function Sides () {
                       setRefresh={setRefresh}
                       refresh={refresh}
                     />
-                    {/* <SidesBtn
-                      itemId={item.id}
-                      title={item.title}
-                      click=""
-                      price={item.price}
-                    /> */}
                   </Grid>
                 );
               })}
-
               <Grid item xs={3}>
                 <Button href='/currentorder' variant='outlined'>
                   Back

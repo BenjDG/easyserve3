@@ -18,11 +18,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 2)
   }
 }));
-
-// show items on current order plus order info
-
-// load buttons for food items
-
 function NewOrder () {
   const classes = useStyles();
   // eslint-disable-next-line no-unused-vars
@@ -32,9 +27,6 @@ function NewOrder () {
   const [toggleHidden, setToggleHidden] = useState(true);
   const [usersList, setUsersList] = useState([]);
   const [tablesList, setTablesList] = useState([]);
-  // const [orderId, setOrderId] = useState();
-  // const [userId, setUserId] = useState();
-  // const [tableId, setTableId] = useState();
   const [error, setError] = useState('');
 
   useEffect(async () => {
@@ -153,7 +145,6 @@ function NewOrder () {
                 )
               : (<div />
                 )}
-
           </Grid>
         </Box>
       </Grid>

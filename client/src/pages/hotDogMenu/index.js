@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Grid } from '@material-ui/core';
 import API from '../../services/API';
 import ButtonPiece from '../../components/buttonPiece';
-// import HotDogBtn from '../../components/hotDogBtn';
 import ViewTable from '../../components/viewTable';
 import { useCurrentOrderContext } from '../../services/orderContext';
 
@@ -28,7 +27,6 @@ function HotDog () {
   const [OrderByIdWithItems, setOrderByIdWithItems] = useState({});
   const [AllMenuItems, setAllMenuItems] = useState({});
   const [refresh, setRefresh] = useState();
-  // const [hotdogRender, setHotdogRender] = useState('');
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -49,14 +47,6 @@ function HotDog () {
       });
   };
 
-  // function getHotdogById(title) {
-  //   console.log(title);
-  //   setHotdogRender(title);
-  // }
-
-  // function handleClick (orderId, itemId, title, price) {
-  //   setHotdogsList({ orderId, itemId, title, price });
-  // }
   const loadOrderData = (orderId) => {
     API.findOrderByIdWithItems(orderId)
       .then((res) => {
@@ -89,10 +79,6 @@ function HotDog () {
         <Box m={2}>
           <Grid item container direction='column'>
             <Grid item>
-              {/* <Paper elevation={3} className={classes.orderView}>
-                {hotdogRender} */}
-              {/* {error}{hotdogsList} */}
-              {/* </Paper> */}
               {error}
               <ViewTable
                 oneOrder={OrderByIdWithItems}
@@ -119,13 +105,6 @@ function HotDog () {
                       setRefresh={setRefresh}
                       refresh={refresh}
                     />
-                    {/* <HotDogBtn
-                      getHotdogById={getHotdogById}
-                      itemId={item.id}
-                      title={item.title}
-                      click=''
-                      price={item.price}
-                    /> */}
                   </Grid>
                 );
               })}

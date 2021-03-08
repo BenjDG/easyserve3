@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Grid } from '@material-ui/core';
 import API from '../../services/API';
 import ViewTable from '../../components/viewTable';
-// import SelectorBox from '../../components/selectorBox';
 import { useCurrentOrderContext } from '../../services/orderContext';
 
 const useStyles = makeStyles((theme) => ({
@@ -29,32 +28,12 @@ function CurrentOrder () {
   const [CurrentOrder, _setCurrentOrder] = useCurrentOrderContext();
   const [orderByIdWithItems, setOrderByIdWithItems] = useState({});
   const [allMenuItems, setAllMenuItems] = useState({});
-  // const [toggleHidden, setToggleHidden] = useState(true);
-  // const [usersList, setUsersList] = useState([]);
-  // const [tablesList, setTablesList] = useState([]);
-  // const [orderId, setOrderId] = useState();
-  // const [userId, setUserId] = useState();
-  // const [tableId, setTableId] = useState();
   const [error, setError] = useState('');
 
   useEffect(async () => {
     await loadMenuItems();
     await loadOrderData(CurrentOrder);
   }, []);
-
-  // const createNewOrder = async (userId, tableId, statusId = 1, notes = null) => {
-  //   await setToggleHidden(false);
-  //   await API.createNewOrder(userId, tableId, statusId, notes)
-  //     .then(result => {
-  //       setCurrentOrder(result.data.id);
-  //       return result.data.id;
-  //     }).then(async (id) => await loadOrderData(id))
-  //     .catch((err) => {
-  //       console.error(err);
-  //       const error = new Error(err);
-  //       setError(error.message + ' - Please login');
-  //     });
-  // };
 
   const loadOrderData = async (orderId) => {
     await API.findOrderByIdWithItems(orderId)

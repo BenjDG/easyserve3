@@ -13,10 +13,6 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonView: {
     padding: theme.spacing(2, 2)
-    // height: 200,
-    // display: 'flex',
-    // flexDirection: 'column',
-    // justifyContent: 'flex-start'
   },
   root: {
     maxWidth: 345
@@ -41,8 +37,6 @@ function AllOrders () {
       })
       .catch((err) => {
         console.error(err);
-        // const error = new Error(err);
-        // setError(error.message + ' - Please login');
       });
   };
 

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import API from '../../services/API';
 import { useHistory } from 'react-router-dom';
 import { UseUserProvider } from '../../services/userContext';
-import './style.css';
 
 function Login () {
   const history = useHistory();
