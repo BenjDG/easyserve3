@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Grid } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 import API from '../../services/API';
 import ViewTable from '../../components/viewTable';
-import SelectorBox from '../../components/selectorBox';
 import { useCurrentOrderContext } from '../../services/orderContext';
+import ButtonPiece from '../../components/buttonPiece';
 
 const useStyles = makeStyles((theme) => ({
   orderView: {
@@ -21,50 +21,28 @@ const useStyles = makeStyles((theme) => ({
 function NewOrder () {
   const classes = useStyles();
   // eslint-disable-next-line no-unused-vars
-  const [_, setCurrentOrder] = useCurrentOrderContext();
+  const [currentOrder, setCurrentOrder] = useCurrentOrderContext();
   const [orderByIdWithItems, setOrderByIdWithItems] = useState({});
-  const [allMenuItems, setAllMenuItems] = useState({});
-  const [toggleHidden, setToggleHidden] = useState(true);
-  const [usersList, setUsersList] = useState([]);
-  const [tablesList, setTablesList] = useState([]);
+  // const [toggleHidden, setToggleHidden] = useState(true);
+  // const [usersList, setUsersList] = useState([]);
+  // const [tablesList, setTablesList] = useState([]);
   const [error, setError] = useState('');
+  const [refresh, setRefresh] = useState();
+  const [items, setItems] = useState([]);
 
   useEffect(async () => {
-    await loadMenuItems();
-    await loadAllUsers();
-    await loadAllTables();
-  }, []);
+    // await loadMenuItems();
+    // await loadAllUsers();
+    // await loadAllTables();
+    loadItemData();
+    loadOrderData(currentOrder);
+  }, [refresh]);
 
-  const createNewOrder = async (userId, tableId, statusId = 1, notes = null) => {
-    await setToggleHidden(false);
-    await API.createNewOrder(userId, tableId, statusId, notes)
-      .then(result => {
-        setCurrentOrder(result.data.id);
-        return result.data.id;
-      }).then(async (id) => await loadOrderData(id))
-      .catch((err) => {
-        console.error(err);
-        const error = new Error(err);
-        setError(error.message + ' - Please login');
-      });
-  };
-
-  const loadOrderData = async (orderId) => {
-    await API.findOrderByIdWithItems(orderId)
-      .then(async (res) => {
-        await setOrderByIdWithItems(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-        const error = new Error(err);
-        setError(error.message + ' - Please login');
-      });
-  };
-
-  const loadMenuItems = () => {
+  const loadItemData = () => {
     API.getAllMenuItems()
       .then((res) => {
-        setAllMenuItems(res.data);
+        console.log(res.data);
+        setItems(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -73,10 +51,11 @@ function NewOrder () {
       });
   };
 
-  const loadAllUsers = () => {
-    API.findAllUsers()
+  const loadOrderData = (orderId) => {
+    API.findOrderByIdWithItems(orderId)
       .then((res) => {
-        setUsersList(res.data);
+        console.log(res.data);
+        setOrderByIdWithItems(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -85,17 +64,66 @@ function NewOrder () {
       });
   };
 
-  const loadAllTables = () => {
-    API.getTableOptions()
-      .then((res) => {
-        setTablesList(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-        const error = new Error(err);
-        setError(error.message + ' - Please login');
-      });
-  };
+  // const createNewOrder = async (userId, tableId, statusId = 1, notes = null) => {
+  //   await API.createNewOrder(userId, tableId, statusId, notes)
+  //     .then(result => {
+  //       setCurrentOrder(result.data.id);
+  //       return result.data.id;
+  //     }).then(async (id) => await loadOrderData(id))
+  //     .catch((err) => {
+  //       console.error(err);
+  //       const error = new Error(err);
+  //       setError(error.message + ' - Please login');
+  //     });
+  // };
+
+  // const loadOrderData = async (orderId) => {
+  //   await API.findOrderByIdWithItems(orderId)
+  //     .then(async (res) => {
+  //       await setOrderByIdWithItems(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //       const error = new Error(err);
+  //       setError(error.message + ' - Please login');
+  //     });
+  // };
+
+  // const loadMenuItems = () => {
+  //   API.getAllMenuItems()
+  //     .then((res) => {
+  //       setAllMenuItems(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //       const error = new Error(err);
+  //       setError(error.message + ' - Please login');
+  //     });
+  // };
+
+  // const loadAllUsers = () => {
+  //   API.findAllUsers()
+  //     .then((res) => {
+  //       setUsersList(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //       const error = new Error(err);
+  //       setError(error.message + ' - Please login');
+  //     });
+  // };
+
+  // const loadAllTables = () => {
+  //   API.getTableOptions()
+  //     .then((res) => {
+  //       setTablesList(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //       const error = new Error(err);
+  //       setError(error.message + ' - Please login');
+  //     });
+  // };
 
   return (
     <Grid container>
@@ -104,47 +132,47 @@ function NewOrder () {
         <Box m={2}>
           <Grid item container direction='column'>
             {error}
-            {toggleHidden
-              ? (
-                <div>
-                  <Grid item>
-                    <SelectorBox tablesList={tablesList} usersList={usersList} createOrder={createNewOrder} />
+            <Grid item>
+              View Order Area
+              <ViewTable oneOrder={orderByIdWithItems} allMenuItems={items} />
+            </Grid>
+            <Grid
+              item
+              container
+              direction='row'
+              justify='center'
+              alignItems='center'
+              className={classes.buttonView}
+              spacing={4}
+            >
+              Button Area
+              {items.map((item) => {
+                return (
+                  <Grid item xs={3} key={item.id}>
+                    <ButtonPiece
+                      orderId={currentOrder}
+                      itemId={item.id}
+                      title={item.title}
+                      price={item.price}
+                      setRefresh={setRefresh}
+                      refresh={refresh}
+                    />
                   </Grid>
-                </div>)
-              : (
-                <div>
-                  <Grid item>
-                    <ViewTable oneOrder={orderByIdWithItems} allMenuItems={allMenuItems} />
-                  </Grid>
-                </div>
-                )}
-            {!toggleHidden
-              ? (
-                <Grid
-                  item
-                  container
-                  direction='row'
-                  justify='center'
-                  alignItems='center'
-                  className={classes.buttonView}
-                  spacing={4}
-                >
-                  <Grid item xs={3}>
-                    <Button href='/hotdogs' variant='outlined'>Hotdogs</Button>
-                  </Grid>
-                  <Grid item xs={3}>
-                    <Button href='/sides' variant='outlined'>Sides</Button>
-                  </Grid>
-                  <Grid item xs={3}>
-                    <Button href='/drinks' variant='outlined'>Drinks</Button>
-                  </Grid>
-                  <Grid item xs={3}>
-                    <Button href='/icecream' variant='outlined'>Icecream</Button>
-                  </Grid>
-                </Grid>
-                )
-              : (<div />
-                )}
+                );
+              })}
+              {/* <Grid item xs={3}>
+                <Button href='/hotdogs' variant='outlined'>Hotdogs</Button>
+              </Grid>
+              <Grid item xs={3}>
+                <Button href='/sides' variant='outlined'>Sides</Button>
+              </Grid>
+              <Grid item xs={3}>
+                <Button href='/drinks' variant='outlined'>Drinks</Button>
+              </Grid>
+              <Grid item xs={3}>
+                <Button href='/icecream' variant='outlined'>Icecream</Button>
+              </Grid> */}
+            </Grid>
           </Grid>
         </Box>
       </Grid>
