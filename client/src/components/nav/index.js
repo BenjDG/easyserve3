@@ -1,12 +1,17 @@
 import React from 'react';
 import { AppBar, Grid, Link, Toolbar } from '@material-ui/core';
 import { useHistory, Link as RouterLink } from 'react-router-dom';
+import API from '../../services/API';
+import { UseUserProvider } from '../../services/userContext';
 
 function Nav () {
+  const { setUser } = UseUserProvider();
   const history = useHistory();
   const logout = () => {
     sessionStorage.removeItem('userId'); // eslint-disable-line
-    history.push('/');
+    API.logout();
+    setUser('');
+    history.replace('/');
   };
 
   return (

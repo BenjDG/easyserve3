@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import API from '../../services/API';
 import { useHistory } from 'react-router-dom';
 import { UseUserProvider } from '../../services/userContext';
-import { Box, Button, Grid, makeStyles, TextField } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import { Box, Button, Grid, makeStyles, Paper, TextField } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,45 +64,49 @@ function Login () {
     <Grid container>
       <Grid item xs={2} />
       <Grid item xs={8}>
-        <Box m={2}>
-          <Grid
-            container
-            className={classes.root}
-          >
-            <Grid item>
-              <TextField
-                required
-                id='outlined-email-required'
-                name='email'
-                value={login.email}
-                onChange={handleInputChange}
-                label='Email'
-                type='email'
-                variant='outlined'
-              />
+        <Paper>
+          <Box m={2}>
+            <Typography variant='h3' align='center'>
+              Please Login
+            </Typography>
+            <Grid
+              container
+              className={classes.root}
+            >
+              <Grid item>
+                <TextField
+                  required
+                  id='outlined-email-required'
+                  name='email'
+                  value={login.email}
+                  onChange={handleInputChange}
+                  label='Email'
+                  type='email'
+                  variant='outlined'
+                />
+              </Grid>
+              <Grid item>
+                <TextField
+                  required
+                  id='outlined-password-input'
+                  name='password'
+                  value={login.password}
+                  onChange={handleInputChange}
+                  label='Password'
+                  type='password'
+                  autoComplete='current-password'
+                  variant='outlined'
+                />
+              </Grid>
+              <Grid item>
+                <Button variant='contained' color='primary' onClick={handleFormSubmit}>
+                  Submit
+                </Button>
+                <h2 className='error'>{err}</h2>
+              </Grid>
             </Grid>
-            <Grid item>
-              <TextField
-                required
-                id='outlined-password-input'
-                name='password'
-                value={login.password}
-                onChange={handleInputChange}
-                label='Password'
-                type='password'
-                autoComplete='current-password'
-                variant='outlined'
-              />
-            </Grid>
-            <Grid item>
-              <Button variant='contained' color='primary' onClick={handleFormSubmit}>
-                Submit
-              </Button>
-              <h2 className='error'>{err}</h2>
-            </Grid>
-          </Grid>
-
-        </Box>
+          </Box>
+        </Paper>
       </Grid>
       <Grid item xs={2} />
     </Grid>

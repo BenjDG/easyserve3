@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Home from './pages/home';
 import MainMenu from './pages/mainMenu';
@@ -30,7 +30,7 @@ function App () {
   useEffect(() => {
     // add api call to get user info by userId
     // logout needs to remove session Id from localstorage
-    // console.log(user);
+    console.log(user.id);
     user.id &&
       API.findUserById(user.id)
         .then((result) => {
@@ -39,49 +39,57 @@ function App () {
         .catch((err) => {
           console.error(err);
         });
+    if (!user.id) {
+      console.log('redirect here.');
+    }
   }, [userId, user]);
 
   return (
     <div>
       <BrowserRouter>
         <Nav />
-        <Route exact strict path='/'>
-          <Home />
-        </Route>
-        <Route exact strict path='/login'>
-          <Login />
-        </Route>
-        {userId && (
-          <>
-            <Route exact strict path='/mainmenu'>
-              <MainMenu />
-            </Route>
-            <Route exact strict path='/neworder'>
-              <NewOrder />
-            </Route>
-            <Route exact strict path='/currentorder'>
-              <CurrentOrder />
-            </Route>
-            <Route exact strict path='/vieworders'>
-              <ViewOrders />
-            </Route>
-            <Route exact strict path='/hotdogs'>
-              <HotDogMenu />
-            </Route>
-            <Route exact strict path='/sides'>
-              <SidesMenu />
-            </Route>
-            <Route exact strict path='/icecream'>
-              <IceCreamMenu />
-            </Route>
-            <Route exact strict path='/drinks'>
-              <DrinkMenu />
-            </Route>
-            <Route exact strict path='/checkout'>
-              <Checkout />
-            </Route>
-          </>
-        )}
+        <Switch>
+          <Route exact strict path='/'>
+            <Home />
+          </Route>
+          <Route exact strict path='/login'>
+            <Login />
+          </Route>
+          {userId && (
+            <>
+              <Route exact strict path='/mainmenu'>
+                <MainMenu />
+              </Route>
+              <Route exact strict path='/neworder'>
+                <NewOrder />
+              </Route>
+              <Route exact strict path='/currentorder'>
+                <CurrentOrder />
+              </Route>
+              <Route exact strict path='/vieworders'>
+                <ViewOrders />
+              </Route>
+              <Route exact strict path='/hotdogs'>
+                <HotDogMenu />
+              </Route>
+              <Route exact strict path='/sides'>
+                <SidesMenu />
+              </Route>
+              <Route exact strict path='/icecream'>
+                <IceCreamMenu />
+              </Route>
+              <Route exact strict path='/drinks'>
+                <DrinkMenu />
+              </Route>
+              <Route exact strict path='/checkout'>
+                <Checkout />
+              </Route>
+            </>
+          )}
+          <Route path='*'>
+            <Login />
+          </Route>
+        </Switch>
       </BrowserRouter>
     </div>
   );

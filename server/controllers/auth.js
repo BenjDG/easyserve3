@@ -1,4 +1,5 @@
 const login = async (req, res) => {
+  console.log('login');
   res.json({
     email: req.user.email,
     id: req.user.id,
@@ -7,8 +8,8 @@ const login = async (req, res) => {
   });
 };
 
-const logout = async (req, res) => {
-  req.logout();
+const logout = function (req, res) {
+  req.session.destroy();
   res.end();
 };
 
