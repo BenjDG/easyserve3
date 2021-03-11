@@ -3,8 +3,10 @@ import { Box, Button, Grid } from '@material-ui/core';
 import API from '../../services/API';
 import { useCurrentOrderContext } from '../../services/orderContext';
 import { UseUserProvider } from '../../services/userContext';
+import { useHistory } from 'react-router-dom';
 
 function MainMenu () {
+  const history = useHistory();
   const [error, setError] = useState('');
   const [_, setCurrentOrder] = useCurrentOrderContext();
   // console.log(user);
@@ -20,7 +22,7 @@ function MainMenu () {
       .then(async (result) => {
         console.log(result);
         await setCurrentOrder(result.data.id);
-      })
+      }).then(() => history.push('/neworder'))
       .catch((err) => {
         console.error(err);
         const error = new Error(err);
