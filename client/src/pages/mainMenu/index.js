@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 function MainMenu () {
   const history = useHistory();
   const [error, setError] = useState('');
-  const [_, setCurrentOrder] = useCurrentOrderContext();
+  const [_, setCurrentOrder] = useCurrentOrderContext(); // eslint-disable-line
   // console.log(user);
   const { user } = UseUserProvider();
 
