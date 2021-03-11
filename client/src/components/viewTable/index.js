@@ -1,8 +1,9 @@
 import { Paper } from '@material-ui/core';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import ViewTableRow from '../viewTableRow';
 
 function ViewTable ({ oneOrder, allMenuItems }) {
+  const messagesEndRef = useRef(null);
   const { id, notes, orderItems = [], restTableId, statusId, userId } = oneOrder || {};
   const menuArray = [];
   if (allMenuItems.length) {
@@ -12,7 +13,12 @@ function ViewTable ({ oneOrder, allMenuItems }) {
   useEffect(() => {
     // scroll to bottom
     console.log('scrolling');
+    scrollToBottom();
   }, [allMenuItems]);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+  };
 
   return (
     <div>
@@ -32,6 +38,7 @@ function ViewTable ({ oneOrder, allMenuItems }) {
             {orderItems.map((obj, idx) => {
               return (<ViewTableRow key={idx} item={menuArray[obj.menu_itemId - 1]} />);
             })}
+            <div ref={messagesEndRef} />
           </Paper>
           )
         : (
