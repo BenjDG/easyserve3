@@ -12,7 +12,6 @@ import ViewOrders from './pages/viewOrders';
 import { OrderProviderButton } from './services/globalOrderButton';
 import { UserProvider, UseUserProvider } from './services/userContext';
 import { CurrentOrderProvider } from './services/orderContext';
-import CurrentOrder from './pages/currentOrder';
 import API from './services/API';
 
 const theme = createMuiTheme({
@@ -58,9 +57,6 @@ function App () {
               </Route>
               <Route exact strict path='/neworder'>
                 <NewOrder />
-              </Route>
-              <Route exact strict path='/currentorder'>
-                <CurrentOrder />
               </Route>
               <Route exact strict path='/vieworders'>
                 <ViewOrders />

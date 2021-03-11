@@ -40,9 +40,6 @@ function Nav () {
               <Link component={RouterLink} to='/neworder' color='inherit'>
                 New Order
               </Link>
-              <Link component={RouterLink} to='/currentorder' color='inherit'>
-                Current Order
-              </Link>
               <Link component={RouterLink} to='/vieworders' color='inherit'>
                 View All Orders
               </Link>
