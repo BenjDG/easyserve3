@@ -7,13 +7,13 @@ import { useCurrentOrderContext } from '../../services/orderContext';
 import ButtonPiece from '../../components/buttonPiece';
 
 const useStyles = makeStyles((theme) => ({
-  orderView: {
-    padding: theme.spacing(2, 2),
-    height: 200,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start'
-  },
+  // orderView: {
+  //   padding: theme.spacing(2, 2),
+  //   height: 200,
+  //   display: 'flex',
+  //   flexDirection: 'column',
+  //   justifyContent: 'flex-start'
+  // },
   buttonView: {
     padding: theme.spacing(2, 2)
   }

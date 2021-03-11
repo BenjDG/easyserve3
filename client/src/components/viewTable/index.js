@@ -28,14 +28,14 @@ function ViewTable ({ oneOrder, allMenuItems }) {
       {/* menu_itemId */}
       {orderItems.length
         ? (
-          <Paper variant='outlined' style={{ maxHeight: 200, overflow: 'auto' }}>
+          <Paper variant='outlined' style={{ height: 200, overflow: 'auto' }}>
             {orderItems.map((obj, idx) => {
               return (<ViewTableRow key={idx} item={menuArray[obj.menu_itemId - 1]} />);
             })}
           </Paper>
           )
         : (
-          <div />
+          <Paper variant='outlined' style={{ height: 200, overflow: 'auto' }} />
           )}
     </div>
   );
