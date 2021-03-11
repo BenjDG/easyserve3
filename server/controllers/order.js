@@ -30,7 +30,7 @@ module.exports = {
   createNewOrder: async function (req, res) {
     console.log(req.body);
     const { userId, tableId, statusId, notes } = req.body;
-    db.order.create({
+    await db.order.create({
       userId: userId,
       restTableId: tableId,
       statusId: statusId,

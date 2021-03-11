@@ -31,6 +31,8 @@ function NewOrder () {
   const [items, setItems] = useState([]);
 
   useEffect(async () => {
+    console.log('###### current order');
+    console.log(currentOrder);
     // await loadMenuItems();
     // await loadAllUsers();
     // await loadAllTables();
@@ -63,67 +65,6 @@ function NewOrder () {
         setError(error.message + ' - Please login');
       });
   };
-
-  // const createNewOrder = async (userId, tableId, statusId = 1, notes = null) => {
-  //   await API.createNewOrder(userId, tableId, statusId, notes)
-  //     .then(result => {
-  //       setCurrentOrder(result.data.id);
-  //       return result.data.id;
-  //     }).then(async (id) => await loadOrderData(id))
-  //     .catch((err) => {
-  //       console.error(err);
-  //       const error = new Error(err);
-  //       setError(error.message + ' - Please login');
-  //     });
-  // };
-
-  // const loadOrderData = async (orderId) => {
-  //   await API.findOrderByIdWithItems(orderId)
-  //     .then(async (res) => {
-  //       await setOrderByIdWithItems(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //       const error = new Error(err);
-  //       setError(error.message + ' - Please login');
-  //     });
-  // };
-
-  // const loadMenuItems = () => {
-  //   API.getAllMenuItems()
-  //     .then((res) => {
-  //       setAllMenuItems(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //       const error = new Error(err);
-  //       setError(error.message + ' - Please login');
-  //     });
-  // };
-
-  // const loadAllUsers = () => {
-  //   API.findAllUsers()
-  //     .then((res) => {
-  //       setUsersList(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //       const error = new Error(err);
-  //       setError(error.message + ' - Please login');
-  //     });
-  // };
-
-  // const loadAllTables = () => {
-  //   API.getTableOptions()
-  //     .then((res) => {
-  //       setTablesList(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //       const error = new Error(err);
-  //       setError(error.message + ' - Please login');
-  //     });
-  // };
 
   return (
     <Grid container>
@@ -160,18 +101,6 @@ function NewOrder () {
                   </Grid>
                 );
               })}
-              {/* <Grid item xs={3}>
-                <Button href='/hotdogs' variant='outlined'>Hotdogs</Button>
-              </Grid>
-              <Grid item xs={3}>
-                <Button href='/sides' variant='outlined'>Sides</Button>
-              </Grid>
-              <Grid item xs={3}>
-                <Button href='/drinks' variant='outlined'>Drinks</Button>
-              </Grid>
-              <Grid item xs={3}>
-                <Button href='/icecream' variant='outlined'>Icecream</Button>
-              </Grid> */}
             </Grid>
           </Grid>
         </Box>

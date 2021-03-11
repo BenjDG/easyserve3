@@ -1,4 +1,5 @@
-import React from 'react';
+import { Paper } from '@material-ui/core';
+import React, { useEffect } from 'react';
 import ViewTableRow from '../viewTableRow';
 
 function ViewTable ({ oneOrder, allMenuItems }) {
@@ -7,6 +8,12 @@ function ViewTable ({ oneOrder, allMenuItems }) {
   if (allMenuItems.length) {
     allMenuItems.map(item => menuArray.push(item.title));
   }
+
+  useEffect(() => {
+    // scroll to bottom
+    console.log('scrolling');
+  }, [allMenuItems]);
+
   return (
     <div>
       {id
@@ -21,11 +28,11 @@ function ViewTable ({ oneOrder, allMenuItems }) {
       {/* menu_itemId */}
       {orderItems.length
         ? (
-          <div>
+          <Paper variant='outlined' style={{ maxHeight: 200, overflow: 'auto' }}>
             {orderItems.map((obj, idx) => {
               return (<ViewTableRow key={idx} item={menuArray[obj.menu_itemId - 1]} />);
             })}
-          </div>
+          </Paper>
           )
         : (
           <div />

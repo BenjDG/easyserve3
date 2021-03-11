@@ -26,7 +26,7 @@ function App () {
   useEffect(() => {
     // add api call to get user info by userId
     // logout needs to remove session Id from localstorage
-    console.log(user.id);
+    // console.log(user.id);
     user.id &&
       API.findUserById(user.id)
         .then((result) => {

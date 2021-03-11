@@ -1,15 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Button, Grid } from '@material-ui/core';
-// import { UserProvider } from '../../services/userContext';
+import API from '../../services/API';
+import { useCurrentOrderContext } from '../../services/orderContext';
+import { UseUserProvider } from '../../services/userContext';
 
 function MainMenu () {
-  // const { user } = useContext(UserProvider());
+  const [error, setError] = useState('');
+  const [_, setCurrentOrder] = useCurrentOrderContext();
   // console.log(user);
+  const { user } = UseUserProvider();
+
+  const handleNewOrderClick = async () => {
+    // on click create new order
+    // set current order number
+    // redirect to neworder page
+    console.log(user);
+    console.log('click');
+    await API.createNewOrder(user, '1', '1', null)
+      .then(async (result) => {
+        console.log(result);
+        await setCurrentOrder(result.data.id);
+      })
+      .catch((err) => {
+        console.error(err);
+        const error = new Error(err);
+        setError(error.message + ' - Please login');
+      });
+  };
   return (
     <Grid container>
       <Grid item xs={2} />
       <Grid item xs={8}>
         <Box m={4}>
+          {error}
           <Grid
             item
             container
@@ -19,7 +42,7 @@ function MainMenu () {
             alignItems='center'
           >
             <Grid item>
-              <Button href='/neworder' variant='outlined' color='inherit'>
+              <Button onClick={handleNewOrderClick} variant='outlined' color='inherit'>
                 New Order
               </Button>
             </Grid>
