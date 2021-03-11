@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 2)
   }
 }));
-function NewOrder () {
+function Order () {
   const classes = useStyles();
   // eslint-disable-next-line no-unused-vars
   const [currentOrder, setCurrentOrder] = useCurrentOrderContext();
@@ -110,4 +110,4 @@ function NewOrder () {
   );
 }
 
-export default NewOrder;
+export default Order;

@@ -7,7 +7,7 @@ import Checkout from './pages/checkout';
 
 import Login from './pages/login';
 import Nav from './components/nav';
-import NewOrder from './pages/newOrder';
+import Order from './pages/order';
 import ViewOrders from './pages/viewOrders';
 import { OrderProviderButton } from './services/globalOrderButton';
 import { UserProvider, UseUserProvider } from './services/userContext';
@@ -55,8 +55,8 @@ function App () {
               <Route exact strict path='/mainmenu'>
                 <MainMenu />
               </Route>
-              <Route exact strict path='/neworder'>
-                <NewOrder />
+              <Route exact strict path='/order'>
+                <Order />
               </Route>
               <Route exact strict path='/vieworders'>
                 <ViewOrders />

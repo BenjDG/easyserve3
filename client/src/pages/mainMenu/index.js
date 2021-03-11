@@ -22,7 +22,7 @@ function MainMenu () {
       .then(async (result) => {
         console.log(result);
         await setCurrentOrder(result.data.id);
-      }).then(() => history.push('/neworder'))
+      }).then(() => history.push('/order'))
       .catch((err) => {
         console.error(err);
         const error = new Error(err);
