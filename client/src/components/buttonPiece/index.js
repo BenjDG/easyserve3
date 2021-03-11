@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
-import PricePiece from '../pricePiece';
 import { useOrderButtonContext } from '../../services/globalOrderButton';
 
 function ButtonPiece ({ orderId, itemId, title, price, setRefresh, refresh }) {
@@ -29,7 +28,6 @@ function ButtonPiece ({ orderId, itemId, title, price, setRefresh, refresh }) {
   return (
     <div>
       <Button onClick={handleClick} variant='outlined'>{title}</Button>
-      <PricePiece price={price} />
     </div>
   );
 }

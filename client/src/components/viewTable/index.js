@@ -12,7 +12,7 @@ function ViewTable ({ oneOrder, allMenuItems }) {
 
   useEffect(() => {
     // scroll to bottom
-    console.log('scrolling');
+    // console.log('scrolling');
     scrollToBottom();
   }, [allMenuItems]);
 

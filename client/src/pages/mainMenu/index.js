@@ -18,6 +18,7 @@ function MainMenu () {
     // redirect to neworder page
     console.log(user);
     console.log('click');
+    // API.createNewOrder(user, table, status, notes)
     await API.createNewOrder(user, '1', '1', null)
       .then(async (result) => {
         console.log(result);
