@@ -1,29 +1,16 @@
 import { Box, Grid, Typography } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-
 import API from '../../services/API';
+import ViewAllOrdersTable from '../../components/viewAllOrdersTable';
+
 const useStyles = makeStyles((theme) => ({
-  orderView: {
-    padding: theme.spacing(2, 2),
-    height: 200,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start'
-  },
-  buttonView: {
-    padding: theme.spacing(2, 2)
-  },
-  root: {
-    maxWidth: 345
-  },
-  media: {
-    height: 140
-  }
+
 }));
+
 function AllOrders () {
   const classes = useStyles();
-  const [allorders, setAllOrders] = useState([]);
+  const [allOrders, setAllOrders] = useState([]);
 
   useEffect(() => {
     loadData();
@@ -32,7 +19,7 @@ function AllOrders () {
   const loadData = () => {
     API.findAllOrders()
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setAllOrders(res.data);
       })
       .catch((err) => {
@@ -49,18 +36,25 @@ function AllOrders () {
             <Grid item>
               <Typography className={classes.root}>View All Orders</Typography>
               <Grid item>
-                {allorders.map((item) => {
-                  console.log(item);
-                  return (
-                    <Grid item xs={3} key={item.id}>
-                      {item.id}
-                      {item.userId}
-                      {item.restTableId}
-                      {item.statusId}
-                      {item.notes}
-                    </Grid>
-                  );
-                })}
+                <ViewAllOrdersTable allOrders={allOrders} />
+                {/* {allorders.length
+                  ? (
+                    <div>
+                      {allorders.map((item) => {
+                        console.log(item);
+                        return (
+                          <Grid item xs={3} key={item.id}>
+                            {item.id}
+                            {item.userId}
+                            {item.restTableId}
+                            {item.statusId}
+                            {item.notes}
+                          </Grid>
+                        );
+                      })}
+                    </div>)
+                  : (<div>Loading Orders...Are you logged on?</div>)} */}
+
               </Grid>
             </Grid>
           </Grid>
