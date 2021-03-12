@@ -28,9 +28,8 @@ function reducer (state, action) {
       ];
     case 'remove':
       try {
-        console.log(action.orderItemRecId);
-        API.deleteOneOrderItem(action.orderItemRecId)
-          .then(result => console.log(result));
+        // console.log(action.orderItemRecId);
+        API.deleteOneOrderItem(action.orderItemRecId);
       } catch (error) {
         console.error(error);
       }

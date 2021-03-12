@@ -1,8 +1,9 @@
 import { Paper, Table, TableBody } from '@material-ui/core';
 import React, { useEffect, useRef } from 'react';
+import PricePiece from '../pricePiece';
 import ViewTableRow from '../viewTableRow';
 
-function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh }) {
+function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, totalPrice }) {
   const messagesEndRef = useRef(null);
   const { id, notes, orderItems = [], restTableId, statusId, userId } = oneOrder || {};
 
@@ -33,6 +34,7 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh }) {
         ? (
           <div>
             <p>Order Id: {id} | User Id: {userId} | Table: {restTableId} | Status Id: {statusId}</p>
+            <PricePiece price={totalPrice} />
             <p>Order Notes: {notes}</p>
           </div>)
         : (
