@@ -30,6 +30,7 @@ function Order () {
     // await loadMenuItems();
     // await loadAllUsers();
     // await loadAllTables();
+    console.log('####### refresh');
     loadItemData();
     loadOrderData(currentOrder);
   }, [refresh]);
@@ -68,7 +69,12 @@ function Order () {
           <Grid item container direction='column'>
             {error}
             <Grid item>
-              <ViewTable oneOrder={orderByIdWithItems} allMenuItems={items} />
+              <ViewTable
+                oneOrder={orderByIdWithItems}
+                allMenuItems={items}
+                setRefresh={setRefresh}
+                refresh={refresh}
+              />
             </Grid>
             <Grid
               item

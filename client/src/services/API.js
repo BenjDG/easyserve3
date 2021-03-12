@@ -70,9 +70,9 @@ export default {
     // { orderId, userId, tableId, statusId, notes }
     return axios.put('/api/order/update');
   },
-  deleteOneOrderItem: function () {
+  deleteOneOrderItem: function (orderItemRecId) {
     // { orderItemRecId }
-    return axios.delete('/api/order/delete/item/:orderItemRecId');
+    return axios.delete(`/api/order/delete/item/${orderItemRecId}`);
   },
   deleteOneOrder: function () {
     // { orderId }

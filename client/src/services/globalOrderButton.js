@@ -19,6 +19,7 @@ function reducer (state, action) {
       }
       return [
         {
+          id: action.id,
           orderId: action.orderId,
           itemId: action.itemId,
           title: action.title,
@@ -26,10 +27,14 @@ function reducer (state, action) {
         }
       ];
     case 'remove':
-      console.log(action);
-      return state.filter((_, index) => {
-        return index !== action.index;
-      });
+      try {
+        console.log(action.orderItemRecId);
+        API.deleteOneOrderItem(action.orderItemRecId)
+          .then(result => console.log(result));
+      } catch (error) {
+        console.error(error);
+      }
+      return state;
     default:
       return state;
   }

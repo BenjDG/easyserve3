@@ -2,19 +2,26 @@ import { Paper, Table, TableBody } from '@material-ui/core';
 import React, { useEffect, useRef } from 'react';
 import ViewTableRow from '../viewTableRow';
 
-function ViewTable ({ oneOrder, allMenuItems }) {
+function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh }) {
   const messagesEndRef = useRef(null);
   const { id, notes, orderItems = [], restTableId, statusId, userId } = oneOrder || {};
-  const menuArray = [];
+
+  // menuArray for lookup name
+  const menuArrayTitles = [];
   if (allMenuItems.length) {
-    allMenuItems.map(item => menuArray.push(item.title));
+    allMenuItems.map(item => menuArrayTitles.push(item.title));
+  }
+
+  const menuArrayPrices = [];
+  if (allMenuItems.length) {
+    allMenuItems.map(item => menuArrayPrices.push(item.price));
   }
 
   useEffect(() => {
     // scroll to bottom
     // console.log('scrolling');
     scrollToBottom();
-  }, [allMenuItems, menuArray]);
+  }, [allMenuItems, menuArrayTitles]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
@@ -38,7 +45,18 @@ function ViewTable ({ oneOrder, allMenuItems }) {
             <Table size='small'>
               <TableBody>
                 {orderItems.map((obj, idx) => {
-                  return (<ViewTableRow key={idx} item={menuArray[obj.menu_itemId - 1]} />);
+                  // console.log('repaint orderItems');
+                  // console.log(obj);
+                  return (
+                    <ViewTableRow
+                      key={idx}
+                      item={menuArrayTitles[obj.menu_itemId - 1]}
+                      price={menuArrayPrices[obj.menu_itemId - 1]}
+                      itemRecId={obj.id}
+                      setRefresh={setRefresh}
+                      refresh={refresh}
+                    />
+                  );
                 })}
                 <tr ref={messagesEndRef} />
               </TableBody>

@@ -5,7 +5,7 @@ import { useOrderButtonContext } from '../../services/globalOrderButton';
 function ButtonPiece ({ orderId, itemId, title, price, setRefresh, refresh }) {
   const [_, dispatch] = useOrderButtonContext(); // eslint-disable-line
 
-  const handleClick = async (event) => {
+  const handleClick = async (_event) => {
     // console.log(event);
     if (refresh) {
       setRefresh(false);
