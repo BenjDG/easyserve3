@@ -1,9 +1,9 @@
 import { Paper, Table, TableBody } from '@material-ui/core';
 import React, { useEffect, useRef } from 'react';
-import PricePiece from '../pricePiece';
+import TotalPricePiece from '../totalPricePiece';
 import ViewTableRow from '../viewTableRow';
 
-function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, totalPrice }) {
+function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh }) {
   const messagesEndRef = useRef(null);
   const { id, notes, orderItems = [], restTableId, statusId, userId } = oneOrder || {};
 
@@ -20,7 +20,6 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, totalPrice })
 
   useEffect(() => {
     // scroll to bottom
-    // console.log('scrolling');
     scrollToBottom();
   }, [allMenuItems, menuArrayTitles]);
 
@@ -34,13 +33,12 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, totalPrice })
         ? (
           <div>
             <p>Order Id: {id} | User Id: {userId} | Table: {restTableId} | Status Id: {statusId}</p>
-            <PricePiece price={totalPrice} />
+            <TotalPricePiece orderItems={orderItems} />
             <p>Order Notes: {notes}</p>
           </div>)
         : (
           <div>Loading Order...Are you logged on?</div>)}
 
-      {/* menu_itemId */}
       {orderItems.length
         ? (
           <Paper variant='outlined' style={{ height: 200, overflow: 'auto' }}>

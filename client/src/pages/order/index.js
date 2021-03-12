@@ -17,24 +17,13 @@ function Order () {
   // eslint-disable-next-line no-unused-vars
   const [currentOrder, setCurrentOrder] = useCurrentOrderContext();
   const [orderByIdWithItems, setOrderByIdWithItems] = useState({});
-  const [totalPrice, setTotalPrice] = useState();
-  // const [toggleHidden, setToggleHidden] = useState(true);
-  // const [usersList, setUsersList] = useState([]);
-  // const [tablesList, setTablesList] = useState([]);
   const [error, setError] = useState('');
   const [refresh, setRefresh] = useState();
   const [items, setItems] = useState([]);
 
   useEffect(async () => {
-    // console.log('###### current order');
-    // console.log(currentOrder);
-    // await loadMenuItems();
-    // await loadAllUsers();
-    // await loadAllTables();
-    // console.log('####### refresh');
     await loadItemData();
     await loadOrderData(currentOrder);
-    await currentTotal(orderByIdWithItems.orderItems);
   }, [refresh]);
 
   const loadItemData = () => {
@@ -53,7 +42,7 @@ function Order () {
   const loadOrderData = (orderId) => {
     API.findOrderByIdWithItems(orderId)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setOrderByIdWithItems(res.data);
       })
       .catch((err) => {
@@ -61,21 +50,6 @@ function Order () {
         const error = new Error(err);
         setError(error.message + ' - Please login');
       });
-  };
-
-  const currentTotal = (itemsArray) => {
-    console.log(itemsArray);
-    if (itemsArray) {
-      // console.log(itemsArray[0].menuItem.price);
-      try {
-        const priceArr = itemsArray.map(item => +item.menuItem.price);
-        const total = priceArr.reduce((acc, curr) => acc + curr);
-        console.log(total);
-        setTotalPrice(total);
-      } catch (error) {
-        console.error(error);
-      }
-    }
   };
 
   return (
@@ -89,7 +63,6 @@ function Order () {
               <ViewTable
                 oneOrder={orderByIdWithItems}
                 allMenuItems={items}
-                totalPrice={totalPrice}
                 setRefresh={setRefresh}
                 refresh={refresh}
               />
