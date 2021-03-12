@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Collapse, IconButton, makeStyles, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@material-ui/core';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
@@ -18,7 +18,8 @@ const test = [
 ];
 
 function ViewAllOrdersTableRow ({ row }) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [itemData, setItemData] = useState([]);
   const classes = useRowStyles();
   const price = 1;
   console.log(row);
@@ -31,8 +32,10 @@ function ViewAllOrdersTableRow ({ row }) {
   };
 
   const loadOrderData = (orderId) => {
-    API.findOrderByIdWithItems().then(res => {
+    API.findOrderByIdWithItems(orderId).then(res => {
       console.log(res);
+      console.log(res.data.orderItems);
+      setItemData(res.data.orderItems);
     }).catch(err => console.error(err));
   };
 
@@ -62,22 +65,18 @@ function ViewAllOrdersTableRow ({ row }) {
               <Table size='small' aria-label='purchases'>
                 <TableHead>
                   <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align='right'>Amount</TableCell>
-                    <TableCell align='right'>Total price ($)</TableCell>
+                    <TableCell>Item</TableCell>
+                    <TableCell align='right'>Item price ($)</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {test.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
+                  {itemData.map(row => (
+                    <TableRow key={row.menuItem.id}>
                       <TableCell component='th' scope='row'>
-                        {historyRow.date}
+                        {row.menuItem.title}
                       </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align='right'>{historyRow.amount}</TableCell>
                       <TableCell align='right'>
-                        {Math.round(historyRow.amount * price * 100) / 100}
+                        {Math.round(row.menuItem.price * price * 100) / 100}
                       </TableCell>
                     </TableRow>
                   ))}

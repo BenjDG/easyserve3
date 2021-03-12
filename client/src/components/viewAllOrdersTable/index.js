@@ -3,7 +3,7 @@ import React from 'react';
 import ViewAllOrdersTableRow from '../viewAllOrdersTableRow';
 
 function ViewAllOrdersTable ({ allOrders }) {
-  console.log(allOrders);
+  // console.log(allOrders);
   return (
     <div>
       {allOrders.length
