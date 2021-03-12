@@ -4,7 +4,7 @@ import React from 'react';
 function ViewTableRow ({ item }) {
   return (
     <TableRow>
-      <TableCell component='th' scope='row'>
+      <TableCell>
         {item}
       </TableCell>
     </TableRow>

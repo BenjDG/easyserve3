@@ -16,12 +16,12 @@ function MainMenu () {
     // on click create new order
     // set current order number
     // redirect to neworder page
-    console.log(user);
-    console.log('click');
+    // console.log(user);
+    // console.log('click');
     // API.createNewOrder(user, table, status, notes)
     await API.createNewOrder(user, '1', '1', null)
       .then(async (result) => {
-        console.log(result);
+        // console.log(result);
         await setCurrentOrder(result.data.id);
       }).then(() => history.push('/order'))
       .catch((err) => {

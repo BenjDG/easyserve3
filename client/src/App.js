@@ -34,9 +34,6 @@ function App () {
         .catch((err) => {
           console.error(err);
         });
-    if (!user.id) {
-      console.log('redirect here.');
-    }
   }, [userId, user]);
 
   return (

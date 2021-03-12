@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 2)
   }
 }));
+
 function Order () {
   const classes = useStyles();
   // eslint-disable-next-line no-unused-vars
@@ -24,8 +25,8 @@ function Order () {
   const [items, setItems] = useState([]);
 
   useEffect(async () => {
-    console.log('###### current order');
-    console.log(currentOrder);
+    // console.log('###### current order');
+    // console.log(currentOrder);
     // await loadMenuItems();
     // await loadAllUsers();
     // await loadAllTables();
@@ -36,7 +37,7 @@ function Order () {
   const loadItemData = () => {
     API.getAllMenuItems()
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setItems(res.data);
       })
       .catch((err) => {
@@ -49,7 +50,7 @@ function Order () {
   const loadOrderData = (orderId) => {
     API.findOrderByIdWithItems(orderId)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setOrderByIdWithItems(res.data);
       })
       .catch((err) => {

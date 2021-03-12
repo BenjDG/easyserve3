@@ -40,7 +40,7 @@ function ViewTable ({ oneOrder, allMenuItems }) {
                 {orderItems.map((obj, idx) => {
                   return (<ViewTableRow key={idx} item={menuArray[obj.menu_itemId - 1]} />);
                 })}
-                <div ref={messagesEndRef} />
+                <tr ref={messagesEndRef} />
               </TableBody>
             </Table>
           </Paper>
