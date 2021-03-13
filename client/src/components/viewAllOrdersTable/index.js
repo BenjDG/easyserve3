@@ -9,18 +9,6 @@ function ViewAllOrdersTable ({ allOrders }) {
       {allOrders.length
         ? (
           <div>
-            {/* {allOrders.map((item) => {
-              console.log(item);
-              return (
-                <Grid item xs={3} key={item.id}>
-                  {item.id}
-                  {item.userId}
-                  {item.restTableId}
-                  {item.statusId}
-                  {item.notes}
-                </Grid>
-              );
-            })} */}
             <TableContainer component={Paper}>
               <Table aria-label='collapsible table'>
                 <TableHead>

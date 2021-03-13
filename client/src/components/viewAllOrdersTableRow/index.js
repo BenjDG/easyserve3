@@ -12,11 +12,6 @@ const useRowStyles = makeStyles({
   }
 });
 
-const test = [
-  { date: '2020-01-05', customerId: '11091700', amount: 3 },
-  { date: '2020-01-02', customerId: 'Anonymous', amount: 1 }
-];
-
 function ViewAllOrdersTableRow ({ row }) {
   const [open, setOpen] = useState(false);
   const [itemData, setItemData] = useState([]);
@@ -60,7 +55,7 @@ function ViewAllOrdersTableRow ({ row }) {
           <Collapse in={open} timeout='auto' unmountOnExit>
             <Box margin={1}>
               <Typography variant='h6' gutterBottom component='div'>
-                Extra Data
+                Order Items
               </Typography>
               <Table size='small' aria-label='purchases'>
                 <TableHead>

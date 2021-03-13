@@ -15,11 +15,13 @@ const useStyles = makeStyles((theme) => ({
 function Order () {
   const classes = useStyles();
   // eslint-disable-next-line no-unused-vars
-  const [currentOrder, setCurrentOrder] = useCurrentOrderContext();
+  const [currentOrder, _setCurrentOrder] = useCurrentOrderContext();
   const [orderByIdWithItems, setOrderByIdWithItems] = useState({});
   const [error, setError] = useState('');
   const [refresh, setRefresh] = useState();
   const [items, setItems] = useState([]);
+  const [userNames, setUserNames] = useState();
+  const [statusNames, setStatusNames] = useState();
 
   useEffect(async () => {
     await loadItemData();
@@ -52,6 +54,9 @@ function Order () {
       });
   };
 
+  // load UserName list
+  // load StatusName list
+
   return (
     <Grid container>
       <Grid item xs={2} />
@@ -65,6 +70,8 @@ function Order () {
                 allMenuItems={items}
                 setRefresh={setRefresh}
                 refresh={refresh}
+                userNames={userNames}
+                statusNames={statusNames}
               />
             </Grid>
             <Grid

@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import TotalPricePiece from '../totalPricePiece';
 import ViewTableRow from '../viewTableRow';
 
-function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh }) {
+function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, statusNames }) {
   const messagesEndRef = useRef(null);
   const { id, notes, orderItems = [], restTableId, statusId, userId } = oneOrder || {};
 
