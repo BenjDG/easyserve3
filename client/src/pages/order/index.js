@@ -65,8 +65,10 @@ function Order () {
 
   // load StatusName list
   const loadStatusNameList = () => {
+    const capitalize = ([firstLetter, ...restOfWord]) =>
+      firstLetter.toUpperCase() + restOfWord.join('');
     API.getStatusOptions().then(res => {
-      setStatusNames(res.data.map(obj => obj.name));
+      setStatusNames(res.data.map(obj => capitalize(obj.name)));
     }).catch(err => console.error(err));
   };
 

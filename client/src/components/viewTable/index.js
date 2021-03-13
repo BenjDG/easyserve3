@@ -5,7 +5,7 @@ import ViewTableRow from '../viewTableRow';
 
 function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, statusNames }) {
   const messagesEndRef = useRef(null);
-  const { id, notes, orderItems = [], restTableId, statusId, userId } = oneOrder || {};
+  const { id, orderItems = [], restTableId, statusId, userId } = oneOrder || {};
 
   // menuArray for lookup name
   const menuArrayTitles = [];
@@ -34,7 +34,7 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, st
           <div>
             <p>Order Id: {id} | User: {userNames[userId - 1]} | Table: {restTableId} | Status: {statusNames[statusId - 1]}</p>
             <TotalPricePiece orderItems={orderItems} />
-            <p>Order Notes: {notes}</p>
+            {/* <p>Order Notes: {notes}</p> */}
           </div>)
         : (
           <div>Loading Order...Are you logged on?</div>)}
