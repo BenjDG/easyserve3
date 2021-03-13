@@ -32,7 +32,7 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, st
       {id
         ? (
           <div>
-            <p>Order Id: {id} | User Id: {userId} | Table: {restTableId} | Status Id: {statusId}</p>
+            <p>Order Id: {id} | User: {userNames[userId - 1]} | Table: {restTableId} | Status: {statusNames[statusId - 1]}</p>
             <TotalPricePiece orderItems={orderItems} />
             <p>Order Notes: {notes}</p>
           </div>)

@@ -56,15 +56,18 @@ function Order () {
       });
   };
 
-
   // load UserName list
   const loadUserNameList = () => {
-    API.findAllUsers().then(res => console.log(res)).catch(err => console.error(err));
+    API.findAllUsers().then(res => {
+      setUserNames(res.data.map(obj => `${obj.first_name} ${obj.last_name}`));
+    }).catch(err => console.error(err));
   };
-  
+
   // load StatusName list
   const loadStatusNameList = () => {
-    API.getStatusOptions().then(res => console.log(res)).catch(err => console.error(err));
+    API.getStatusOptions().then(res => {
+      setStatusNames(res.data.map(obj => obj.name));
+    }).catch(err => console.error(err));
   };
 
   return (
