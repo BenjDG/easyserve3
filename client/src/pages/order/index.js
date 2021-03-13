@@ -24,6 +24,8 @@ function Order () {
   const [statusNames, setStatusNames] = useState();
 
   useEffect(async () => {
+    await loadUserNameList();
+    await loadStatusNameList();
     await loadItemData();
     await loadOrderData(currentOrder);
   }, [refresh]);
@@ -54,8 +56,16 @@ function Order () {
       });
   };
 
+
   // load UserName list
+  const loadUserNameList = () => {
+    API.findAllUsers().then(res => console.log(res)).catch(err => console.error(err));
+  };
+  
   // load StatusName list
+  const loadStatusNameList = () => {
+    API.getStatusOptions().then(res => console.log(res)).catch(err => console.error(err));
+  };
 
   return (
     <Grid container>
