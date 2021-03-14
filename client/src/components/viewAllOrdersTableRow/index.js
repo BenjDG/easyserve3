@@ -16,26 +16,20 @@ function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
   const [open, setOpen] = useState(false);
   const [itemData, setItemData] = useState([]);
   const classes = useRowStyles();
-  console.log(row);
 
   const handleClick = (event) => {
     // fetch and set order data
-    console.log(event.currentTarget.id);
     loadOrderData(event.currentTarget.id);
     setOpen(!open);
   };
 
   const loadOrderData = (orderId) => {
     API.findOrderByIdWithItems(orderId).then(res => {
-      console.log(res);
-      console.log(res.data.orderItems);
       setItemData(res.data.orderItems);
     }).catch(err => console.error(err));
   };
 
   return (
-  // <tr><td>{row.id}</td></tr>
-
     <>
       <TableRow className={classes.root}>
         <TableCell>
