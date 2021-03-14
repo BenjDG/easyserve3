@@ -2,7 +2,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import React from 'react';
 import ViewAllOrdersTableRow from '../viewAllOrdersTableRow';
 
-function ViewAllOrdersTable ({ allOrders }) {
+function ViewAllOrdersTable ({ allOrders, statusNamesList, userNamesList }) {
   // console.log(allOrders);
   return (
     <div>
@@ -21,7 +21,7 @@ function ViewAllOrdersTable ({ allOrders }) {
                 </TableHead>
                 <TableBody>
                   {allOrders.map((row) => (
-                    <ViewAllOrdersTableRow key={row.id} row={row} />
+                    <ViewAllOrdersTableRow key={row.id} row={row} statusNamesList={statusNamesList} userNamesList={userNamesList} />
                   ))}
                 </TableBody>
               </Table>

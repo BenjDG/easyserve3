@@ -12,11 +12,10 @@ const useRowStyles = makeStyles({
   }
 });
 
-function ViewAllOrdersTableRow ({ row }) {
+function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
   const [open, setOpen] = useState(false);
   const [itemData, setItemData] = useState([]);
   const classes = useRowStyles();
-  const price = 1;
   console.log(row);
 
   const handleClick = (event) => {
@@ -47,8 +46,8 @@ function ViewAllOrdersTableRow ({ row }) {
         <TableCell component='th' scope='row'>
           {row.id}
         </TableCell>
-        <TableCell align='right'>{row.userId}</TableCell>
-        <TableCell align='right'>{row.statusId}</TableCell>
+        <TableCell align='right'>{userNamesList[row.userId - 1]}</TableCell>
+        <TableCell align='right'>{statusNamesList[row.statusId - 1]}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -65,13 +64,13 @@ function ViewAllOrdersTableRow ({ row }) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {itemData.map(row => (
-                    <TableRow key={row.menuItem.id}>
+                  {itemData.map((row, idx) => (
+                    <TableRow key={idx}>
                       <TableCell component='th' scope='row'>
                         {row.menuItem.title}
                       </TableCell>
                       <TableCell align='right'>
-                        {Math.round(row.menuItem.price * price * 100) / 100}
+                        {Math.round(row.menuItem.price * 100) / 100}
                       </TableCell>
                     </TableRow>
                   ))}

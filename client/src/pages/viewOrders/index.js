@@ -11,9 +11,13 @@ const useStyles = makeStyles((theme) => ({
 function AllOrders () {
   const classes = useStyles();
   const [allOrders, setAllOrders] = useState([]);
+  const [userNames, setUserNames] = useState();
+  const [statusNames, setStatusNames] = useState();
 
-  useEffect(() => {
-    loadData();
+  useEffect(async () => {
+    await loadUserNameList();
+    await loadStatusNameList();
+    await loadData();
   }, []);
 
   const loadData = () => {
@@ -27,37 +31,28 @@ function AllOrders () {
       });
   };
 
+  // load UserName list
+  const loadUserNameList = () => {
+    API.findAllUsers().then(res => {
+      setUserNames(res.data.map(obj => `${obj.first_name} ${obj.last_name}`));
+    }).catch(err => console.error(err));
+  };
+
+  // load StatusName list
+  const loadStatusNameList = () => {
+    const capitalize = ([firstLetter, ...restOfWord]) =>
+      firstLetter.toUpperCase() + restOfWord.join('');
+    API.getStatusOptions().then(res => {
+      setStatusNames(res.data.map(obj => capitalize(obj.name)));
+    }).catch(err => console.error(err));
+  };
+
   return (
     <Grid container>
       <Grid item xs={2} />
       <Grid item xs={8}>
         <Box m={2}>
-          <Grid item container>
-            <Grid item>
-              <Typography className={classes.root}>View All Orders</Typography>
-              <Grid item>
-                <ViewAllOrdersTable allOrders={allOrders} />
-                {/* {allorders.length
-                  ? (
-                    <div>
-                      {allorders.map((item) => {
-                        console.log(item);
-                        return (
-                          <Grid item xs={3} key={item.id}>
-                            {item.id}
-                            {item.userId}
-                            {item.restTableId}
-                            {item.statusId}
-                            {item.notes}
-                          </Grid>
-                        );
-                      })}
-                    </div>)
-                  : (<div>Loading Orders...Are you logged on?</div>)} */}
-
-              </Grid>
-            </Grid>
-          </Grid>
+          <ViewAllOrdersTable allOrders={allOrders} statusNamesList={statusNames} userNamesList={userNames} />
         </Box>
       </Grid>
       <Grid item xs={2} />
