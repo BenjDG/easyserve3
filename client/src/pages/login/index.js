@@ -2,9 +2,23 @@ import React, { useState } from 'react';
 import API from '../../services/API';
 import { useHistory } from 'react-router-dom';
 import { UseUserProvider } from '../../services/userContext';
-import './style.css';
+import Typography from '@material-ui/core/Typography';
+import { Box, Button, Grid, makeStyles, Paper, TextField } from '@material-ui/core';
+import DemoCredDialog from '../../components/demoCredDialog';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: theme.spacing(2, 1),
+    height: 400,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    alignItems: 'center'
+  }
+}));
 
 function Login () {
+  const classes = useStyles();
   const history = useHistory();
   const { setUser } = UseUserProvider();
   // Setting the component's initial login
@@ -26,11 +40,13 @@ function Login () {
         if (result.status === 200) {
           // console.log(result);
           sessionStorage.setItem('userId', result?.data?.id); // eslint-disable-line
+          sessionStorage.setItem('userRole', result?.data?.role); // eslint-disable-line
           setUser({
             id: result?.data?.id,
             first_name: result?.data?.first_name,
             last_name: result?.data?.last_name,
-            email: result?.data?.email
+            email: result?.data?.email,
+            role: result?.data?.role
           });
           history.push('/mainmenu');
         } else {
@@ -48,36 +64,60 @@ function Login () {
   };
 
   return (
-    <div>
-      <form className='form'>
-        <input
-          value={login.email}
-          name='email'
-          onChange={handleInputChange}
-          type='email'
-          placeholder='Email'
-        />
-        <input
-          value={login.password}
-          name='password'
-          onChange={handleInputChange}
-          type='password'
-          placeholder='Password'
-        />
-        <button onClick={handleFormSubmit}>Submit</button>
-        <h2 className='error'>{err}</h2>
-      </form>
-      <h2>Demo Users:</h2>
-      <h3>Jane</h3>
-      <p>Email: 1@1.com</p>
-      <p>Password: 1234</p>
-      <h3>Billy</h3>
-      <p>Email: 1@2.com</p>
-      <p>Password: 1234</p>
-      <h3>Lloyd</h3>
-      <p>Email: 1@3.com</p>
-      <p>Password: 1234</p>
-    </div>
+    <Grid container>
+      <Grid item xs={2} />
+      <Grid item xs={8}>
+        <Paper>
+          <Box m={2}>
+            <Typography variant='h3' align='center'>
+              Please Login
+            </Typography>
+            <Grid
+              container
+              className={classes.root}
+            >
+              <Grid item>
+                <TextField
+                  required
+                  id='outlined-email-required'
+                  name='email'
+                  value={login.email}
+                  onChange={handleInputChange}
+                  label='Email'
+                  type='email'
+                  variant='outlined'
+                />
+              </Grid>
+              <Grid item>
+                <TextField
+                  required
+                  id='outlined-password-input'
+                  name='password'
+                  value={login.password}
+                  onChange={handleInputChange}
+                  label='Password'
+                  type='password'
+                  autoComplete='current-password'
+                  variant='outlined'
+                />
+              </Grid>
+              <Grid item>
+                <Button variant='contained' color='primary' onClick={handleFormSubmit}>
+                  Submit
+                </Button>
+                <h2 className='error'>{err}</h2>
+              </Grid>
+            </Grid>
+          </Box>
+        </Paper>
+      </Grid>
+      <Grid item xs={2} />
+      <Grid item xs={2} />
+      <Grid item xs={8}>
+        <DemoCredDialog />
+      </Grid>
+      <Grid item xs={2} />
+    </Grid>
   );
 }
 

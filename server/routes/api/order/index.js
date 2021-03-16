@@ -4,6 +4,7 @@ const orderItem = require('../../../controllers/orderItem');
 
 // route path 'api/order/'
 router.route('/all').get(order.findAllOrders);
+router.route('/cooking').get(order.findAllOrdersWithItemsWhereCooking);
 router.route('/:id').get(order.findOrderById);
 router.route('/:id/items').get(order.findOrderByIdWithItems);
 router.route('/create').post(order.createNewOrder);

@@ -27,7 +27,7 @@ module.exports = {
       role: role
     })
       .then(result => {
-        console.log(result);
+        // console.log(result);
         const { id, email, first_name, last_name, role } = result; // eslint-disable-line
         const sendBack = { id, email, first_name, last_name, role };
         res.json(sendBack);

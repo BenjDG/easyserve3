@@ -47,6 +47,9 @@ export default {
   findAllOrders: function () {
     return axios.get('/api/order/all');
   },
+  findAllOrdersCooking: function () {
+    return axios.get('/api/order/cooking');
+  },
   findOrderById: function (id) {
     return axios.get(`/api/order/${id}`);
   },
@@ -70,9 +73,9 @@ export default {
     // { orderId, userId, tableId, statusId, notes }
     return axios.put('/api/order/update');
   },
-  deleteOneOrderItem: function () {
+  deleteOneOrderItem: function (orderItemRecId) {
     // { orderItemRecId }
-    return axios.delete('/api/order/delete/item/:orderItemRecId');
+    return axios.delete(`/api/order/delete/item/${orderItemRecId}`);
   },
   deleteOneOrder: function () {
     // { orderId }

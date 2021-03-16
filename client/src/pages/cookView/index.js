@@ -1,10 +1,10 @@
 import { Box, Grid } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import API from '../../services/API';
-import ViewAllOrdersTable from '../../components/viewAllOrdersTable';
+import ViewOrderCooking from '../../components/viewOrderCooking';
 
-function AllOrders () {
-  const [allOrders, setAllOrders] = useState([]);
+function CookView () {
+  const [allOrdersCooking, setAllOrdersCooking] = useState([]);
   const [userNames, setUserNames] = useState();
   const [statusNames, setStatusNames] = useState();
 
@@ -15,10 +15,10 @@ function AllOrders () {
   }, []);
 
   const loadData = () => {
-    API.findAllOrders()
+    API.findAllOrdersCooking()
       .then((res) => {
         // console.log(res.data);
-        setAllOrders(res.data);
+        setAllOrdersCooking(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -46,7 +46,15 @@ function AllOrders () {
       <Grid item xs={2} />
       <Grid item xs={8}>
         <Box m={2}>
-          <ViewAllOrdersTable allOrders={allOrders} statusNamesList={statusNames} userNamesList={userNames} />
+          Orders Cooking
+          {
+            allOrdersCooking.length
+              ? (
+                <div>
+                  {allOrdersCooking.map((order, idx) => <ViewOrderCooking key={idx} order={order} />)}
+                </div>)
+              : (<div>No Orders to Cook</div>)
+          }
         </Box>
       </Grid>
       <Grid item xs={2} />
@@ -54,4 +62,4 @@ function AllOrders () {
   );
 }
 
-export default AllOrders;
+export default CookView;

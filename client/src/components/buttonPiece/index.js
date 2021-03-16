@@ -1,12 +1,11 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
-import PricePiece from '../pricePiece';
 import { useOrderButtonContext } from '../../services/globalOrderButton';
 
 function ButtonPiece ({ orderId, itemId, title, price, setRefresh, refresh }) {
   const [_, dispatch] = useOrderButtonContext(); // eslint-disable-line
 
-  const handleClick = async (event) => {
+  const handleClick = async (_event) => {
     // console.log(event);
     if (refresh) {
       setRefresh(false);
@@ -29,7 +28,6 @@ function ButtonPiece ({ orderId, itemId, title, price, setRefresh, refresh }) {
   return (
     <div>
       <Button onClick={handleClick} variant='outlined'>{title}</Button>
-      <PricePiece price={price} />
     </div>
   );
 }

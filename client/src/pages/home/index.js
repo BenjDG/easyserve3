@@ -21,7 +21,7 @@ function Home () {
       <Grid item xs={8}>
         <Paper className={classes.root}>
           <Typography variant='h1' align='center'>
-            Easy Serve
+            Easy Order
           </Typography>
         </Paper>
       </Grid>

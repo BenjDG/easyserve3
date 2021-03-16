@@ -32,7 +32,8 @@ const useUserModel = () => {
     id: '',
     first_name: '',
     last_name: '',
-    email: ''
+    email: '',
+    role: ''
   });
   return {
     user, setUser

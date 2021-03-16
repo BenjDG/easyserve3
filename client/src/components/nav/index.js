@@ -1,17 +1,22 @@
 import React from 'react';
 import { AppBar, Grid, Link, Toolbar } from '@material-ui/core';
 import { useHistory, Link as RouterLink } from 'react-router-dom';
+import API from '../../services/API';
+import { UseUserProvider } from '../../services/userContext';
 
 function Nav () {
+  const { setUser } = UseUserProvider();
   const history = useHistory();
   const logout = () => {
     sessionStorage.removeItem('userId'); // eslint-disable-line
-    history.push('/');
+    API.logout();
+    setUser('');
+    history.replace('/');
   };
 
   return (
     <div>
-      <AppBar position='sticky' style={{ background: 'red' }}>
+      <AppBar position='sticky' style={{ background: 'blue' }}>
         <Toolbar>
           <Grid container>
             <Grid item xs={2} />
@@ -32,25 +37,18 @@ function Nav () {
               <Link component={RouterLink} to='/mainmenu' color='inherit'>
                 Mainmenu
               </Link>
-              <Link component={RouterLink} to='/neworder' color='inherit'>
-                New Order
-              </Link>
-              <Link component={RouterLink} to='/currentorder' color='inherit'>
-                Current Order
+              <Link component={RouterLink} to='/order' color='inherit'>
+                Order
               </Link>
               <Link component={RouterLink} to='/vieworders' color='inherit'>
                 View All Orders
               </Link>
-              <Link component={RouterLink} to='/tables' color='inherit'>
-                Tables
+              <Link component={RouterLink} to='/cookview' color='inherit'>
+                Cook View
               </Link>
               <Link onClick={logout} color='inherit'>
                 Logout
               </Link>
-              {/* <Link href='/hotdogs' color='inherit'> Hotdogs </Link>
-              <Link href='/sides' color='inherit'> Sides </Link>
-              <Link href='/drinks' color='inherit'> Drinks </Link>
-              <Link href='/icecream' color='inherit'> Icecream </Link> */}
             </Grid>
             <Grid item xs={2} />
           </Grid>

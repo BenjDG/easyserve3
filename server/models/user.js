@@ -35,7 +35,7 @@ module.exports = function (sequelize, DataTypes) {
 
   User.associate = models => {
     User.hasMany(models.order, {
-      targetKey: 'userId',
+      sourceKey: 'id',
       foreignKey: 'userId',
       onDelete: 'set null'
     });

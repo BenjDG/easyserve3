@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false
   });
   Status.associate = function (models) {
-    Status.hasMany(models.order, { targetKey: 'statusId', foreignKey: 'id' });
+    Status.hasMany(models.order, { sourceKey: 'id', foreignKey: 'statusId' });
   };
   return Status;
 };

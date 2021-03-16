@@ -1,7 +1,7 @@
 {
-  "name": "easy-serve-2",
+  "name": "easy-order",
   "version": "0.1.0",
-  "description": "easy-serve-2",
+  "description": "easy-order",
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {

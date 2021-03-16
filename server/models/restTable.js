@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     underscored: false
   });
   RestTable.associate = function (models) {
-    RestTable.hasMany(models.order, { targetKey: 'restTableId', foreignKey: 'id' });
+    RestTable.hasMany(models.order, { sourceKey: 'id', foreignKey: 'restTableId' });
   };
   return RestTable;
 };
