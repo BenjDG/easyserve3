@@ -1,10 +1,10 @@
 import { Box, Grid } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import API from '../../services/API';
-import ViewOrdersCooking from '../../components/viewOrdersCooking';
+import ViewOrderCooking from '../../components/viewOrderCooking';
 
 function CookView () {
-  const [allOrders, setAllOrders] = useState([]);
+  const [allOrdersCooking, setAllOrdersCooking] = useState([]);
   const [userNames, setUserNames] = useState();
   const [statusNames, setStatusNames] = useState();
 
@@ -15,10 +15,10 @@ function CookView () {
   }, []);
 
   const loadData = () => {
-    API.findAllOrders()
+    API.findAllOrdersCooking()
       .then((res) => {
         // console.log(res.data);
-        setAllOrders(res.data);
+        setAllOrdersCooking(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -47,7 +47,14 @@ function CookView () {
       <Grid item xs={8}>
         <Box m={2}>
           Orders Cooking
-          <ViewOrdersCooking />
+          {
+            allOrdersCooking.length
+              ? (
+                <div>
+                  {allOrdersCooking.map((order, idx) => <ViewOrderCooking key={idx} order={order} />)}
+                </div>)
+              : (<div>No Orders to Cook</div>)
+          }
         </Box>
       </Grid>
       <Grid item xs={2} />

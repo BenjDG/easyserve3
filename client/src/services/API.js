@@ -47,6 +47,9 @@ export default {
   findAllOrders: function () {
     return axios.get('/api/order/all');
   },
+  findAllOrdersCooking: function () {
+    return axios.get('/api/order/cooking');
+  },
   findOrderById: function (id) {
     return axios.get(`/api/order/${id}`);
   },
