@@ -1,7 +1,7 @@
 import { Box, Grid } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import API from '../../services/API';
-import ViewAllOrdersTable from '../../components/viewAllOrdersTable';
+import ViewOrdersCooking from '../../components/viewOrdersCooking';
 
 function CookView () {
   const [allOrders, setAllOrders] = useState([]);
@@ -46,7 +46,8 @@ function CookView () {
       <Grid item xs={2} />
       <Grid item xs={8}>
         <Box m={2}>
-          <ViewAllOrdersTable allOrders={allOrders} statusNamesList={statusNames} userNamesList={userNames} />
+          Orders Cooking
+          <ViewOrdersCooking />
         </Box>
       </Grid>
       <Grid item xs={2} />

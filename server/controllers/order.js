@@ -6,6 +6,25 @@ module.exports = {
       .then(result => res.json(result))
       .catch(err => res.status(500).json(err));
   },
+  findAllOrdersWithItemsWhereCooking: function (_req, res) {
+    db.order.findAll({
+      where: {
+        status_id: 2
+      },
+      include: [
+        {
+          model: db.orderItem,
+          include: [
+            {
+              model: db.menuItem
+            }
+          ]
+        }
+      ]
+    })
+      .then(result => res.json(result))
+      .catch(err => res.status(500).json(err));
+  },
   findOrderById: function (req, res) {
     db.order.findByPk(req.params.id)
       .then(result => res.json(result))
