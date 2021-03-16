@@ -5,8 +5,8 @@ import ViewOrderCooking from '../../components/viewOrderCooking';
 
 function CookView () {
   const [allOrdersCooking, setAllOrdersCooking] = useState([]);
-  const [userNames, setUserNames] = useState();
-  const [statusNames, setStatusNames] = useState();
+  // const [userNames, setUserNames] = useState();
+  // const [statusNames, setStatusNames] = useState();
   const [refresh, setRefresh] = useState(false);
 
   useEffect(async () => {
