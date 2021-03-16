@@ -69,9 +69,16 @@ export default {
   createNewOrderItem: function (orderId, itemId) {
     return axios.post(`/api/order/add/${orderId}/${itemId}`);
   },
-  updateOrderInfo: function () {
+  updateOrderInfo: function (orderId, userId, tableId, statusId, notes) {
     // { orderId, userId, tableId, statusId, notes }
-    return axios.put('/api/order/update');
+    const obj = {
+      orderId: orderId,
+      userId: userId,
+      tableId: tableId,
+      statusId: statusId,
+      notes: notes
+    };
+    return axios.put('/api/order/update', obj);
   },
   deleteOneOrderItem: function (orderItemRecId) {
     // { orderItemRecId }

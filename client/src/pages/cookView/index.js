@@ -7,12 +7,13 @@ function CookView () {
   const [allOrdersCooking, setAllOrdersCooking] = useState([]);
   const [userNames, setUserNames] = useState();
   const [statusNames, setStatusNames] = useState();
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(async () => {
     await loadUserNameList();
     await loadStatusNameList();
     await loadData();
-  }, []);
+  }, [refresh]);
 
   const loadData = () => {
     API.findAllOrdersCooking()
@@ -51,7 +52,7 @@ function CookView () {
             allOrdersCooking.length
               ? (
                 <div>
-                  {allOrdersCooking.map((order, idx) => <ViewOrderCooking key={idx} order={order} />)}
+                  {allOrdersCooking.map((order, idx) => <ViewOrderCooking key={idx} order={order} refresh={refresh} setRefresh={setRefresh} />)}
                 </div>)
               : (<div>No Orders to Cook</div>)
           }

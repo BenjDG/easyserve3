@@ -1,5 +1,6 @@
-import { Grid, List, ListItem, ListItemText, makeStyles, Paper } from '@material-ui/core';
 import React from 'react';
+import { Box, Button, Grid, List, ListItem, ListItemText, makeStyles, Paper } from '@material-ui/core';
+import API from '../../services/API';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,9 +12,21 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function ViewOrderCooking ({ order }) {
+export default function ViewOrderCooking ({ order, refresh, setRefresh }) {
   const classes = useStyles();
   console.log(order);
+
+  const handleClick = () => {
+    API.updateOrderInfo(order.id, order.userId, order.restTableId, '3', order.notes)
+      .then(res => {
+        console.log(res);
+        refresh ? setRefresh(false) : setRefresh(true);
+      })
+      .catch(err => console.error(err));
+  };
+
+  // { orderId, userId, tableId, statusId, notes }
+
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
@@ -28,6 +41,9 @@ export default function ViewOrderCooking ({ order }) {
                   </ListItem>
                 );
               })}
+              <Box pt={4}>
+                <Button onClick={handleClick} variant='contained' fullWidth>Done</Button>
+              </Box>
             </List>
           </Paper>
         </Grid>
