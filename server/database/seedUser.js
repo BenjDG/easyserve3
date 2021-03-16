@@ -14,14 +14,14 @@ const testUsers = [
     last_name: 'Joel',
     email: '1@2.com',
     password: process.env.BILLY_PASSWORD,
-    role: 'admin'
+    role: 'server'
   },
   {
     first_name: 'Lloyd',
     last_name: 'Christmas',
     email: '1@3.com',
     password: process.env.LLOYD_PASSWORD,
-    role: 'admin'
+    role: 'cook'
   }
 ];
 

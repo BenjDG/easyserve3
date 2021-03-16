@@ -43,6 +43,9 @@ function Nav () {
               <Link component={RouterLink} to='/vieworders' color='inherit'>
                 View All Orders
               </Link>
+              <Link component={RouterLink} to='/cookview' color='inherit'>
+                Cook View
+              </Link>
               <Link onClick={logout} color='inherit'>
                 Logout
               </Link>

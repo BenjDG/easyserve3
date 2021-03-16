@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import API from '../../services/API';
 import ViewAllOrdersTable from '../../components/viewAllOrdersTable';
 
-function AllOrders () {
+function CookView () {
   const [allOrders, setAllOrders] = useState([]);
   const [userNames, setUserNames] = useState();
   const [statusNames, setStatusNames] = useState();
@@ -54,4 +54,4 @@ function AllOrders () {
   );
 }
 
-export default AllOrders;
+export default CookView;

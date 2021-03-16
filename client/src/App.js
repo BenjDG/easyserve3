@@ -13,6 +13,7 @@ import { OrderProviderButton } from './services/globalOrderButton';
 import { UserProvider, UseUserProvider } from './services/userContext';
 import { CurrentOrderProvider } from './services/orderContext';
 import API from './services/API';
+import CookView from './pages/cookView';
 
 const theme = createMuiTheme({
   spacing: 12
@@ -21,6 +22,7 @@ const theme = createMuiTheme({
 function App () {
   const { user, setUser } = UseUserProvider();
   const userId = sessionStorage.getItem('userId'); // eslint-disable-line
+  const userRole = sessionStorage.getItem('userRole'); // eslint-disable-line
 
   useEffect(() => {
     // add api call to get user info by userId
@@ -66,6 +68,9 @@ function App () {
               </Route>
               <Route exact strict path='/vieworders'>
                 <ViewOrders />
+              </Route>
+              <Route exact strict path='/cookview'>
+                <CookView />
               </Route>
               <Route exact strict path='/checkout'>
                 <Checkout />
