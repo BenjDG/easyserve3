@@ -38,13 +38,14 @@ function Login () {
     API.login(login.email, login.password)
       .then(result => {
         if (result.status === 200) {
-          // console.log(result);
+          console.log(result);
           sessionStorage.setItem('userId', result?.data?.id); // eslint-disable-line
           setUser({
             id: result?.data?.id,
             first_name: result?.data?.first_name,
             last_name: result?.data?.last_name,
-            email: result?.data?.email
+            email: result?.data?.email,
+            role: result?.data?.role
           });
           history.push('/mainmenu');
         } else {

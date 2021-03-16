@@ -1,10 +1,10 @@
 const login = async (req, res) => {
-  console.log('login');
   res.json({
     email: req.user.email,
     id: req.user.id,
     first_name: req.user.first_name,
-    last_name: req.user.last_name
+    last_name: req.user.last_name,
+    role: req.user.role
   });
 };
 
