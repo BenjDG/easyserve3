@@ -5,13 +5,13 @@ import ViewOrderCooking from '../../components/viewOrderCooking';
 
 function CookView () {
   const [allOrdersCooking, setAllOrdersCooking] = useState([]);
-  const [userNames, setUserNames] = useState();
-  const [statusNames, setStatusNames] = useState();
+  // const [userNames, setUserNames] = useState();
+  // const [statusNames, setStatusNames] = useState();
   const [refresh, setRefresh] = useState(false);
 
   useEffect(async () => {
-    await loadUserNameList();
-    await loadStatusNameList();
+    // await loadUserNameList();
+    // await loadStatusNameList();
     await loadData();
   }, [refresh]);
 
@@ -27,20 +27,20 @@ function CookView () {
   };
 
   // load UserName list
-  const loadUserNameList = () => {
-    API.findAllUsers().then(res => {
-      setUserNames(res.data.map(obj => `${obj.first_name} ${obj.last_name}`));
-    }).catch(err => console.error(err));
-  };
+  // const loadUserNameList = () => {
+  //   API.findAllUsers().then(res => {
+  //     setUserNames(res.data.map(obj => `${obj.first_name} ${obj.last_name}`));
+  //   }).catch(err => console.error(err));
+  // };
 
   // load StatusName list
-  const loadStatusNameList = () => {
-    const capitalize = ([firstLetter, ...restOfWord]) =>
-      firstLetter.toUpperCase() + restOfWord.join('');
-    API.getStatusOptions().then(res => {
-      setStatusNames(res.data.map(obj => capitalize(obj.name)));
-    }).catch(err => console.error(err));
-  };
+  // const loadStatusNameList = () => {
+  //   const capitalize = ([firstLetter, ...restOfWord]) =>
+  //     firstLetter.toUpperCase() + restOfWord.join('');
+  //   API.getStatusOptions().then(res => {
+  //     setStatusNames(res.data.map(obj => capitalize(obj.name)));
+  //   }).catch(err => console.error(err));
+  // };
 
   return (
     <Grid container>
