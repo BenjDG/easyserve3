@@ -26,14 +26,23 @@ function App () {
     // add api call to get user info by userId
     // logout needs to remove session Id from localstorage
     // console.log(user.id);
-    user.id &&
-      API.findUserById(user.id)
+
+    if (!user.id) {
+      API.findUserById(userId)
         .then((result) => {
-          setUser(result.data.id);
+          console.log(result);
+          setUser({
+            id: result?.data?.id,
+            first_name: result?.data?.first_name,
+            last_name: result?.data?.last_name,
+            email: result?.data?.email,
+            role: result?.data?.role
+          });
         })
         .catch((err) => {
           console.error(err);
         });
+    }
   }, [userId, user]);
 
   return (

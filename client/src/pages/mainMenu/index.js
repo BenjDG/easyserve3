@@ -14,7 +14,7 @@ function MainMenu () {
 
   const handleNewOrderClick = async () => {
     // console.log(user);
-    await API.createNewOrder(user, '1', '1', null)
+    await API.createNewOrder(user.id, '1', '1', null)
       .then(async (result) => {
         // console.log(result);
         await setCurrentOrder(result.data.id);

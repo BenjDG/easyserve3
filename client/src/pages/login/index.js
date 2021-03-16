@@ -38,8 +38,9 @@ function Login () {
     API.login(login.email, login.password)
       .then(result => {
         if (result.status === 200) {
-          console.log(result);
+          // console.log(result);
           sessionStorage.setItem('userId', result?.data?.id); // eslint-disable-line
+          sessionStorage.setItem('userRole', result?.data?.role); // eslint-disable-line
           setUser({
             id: result?.data?.id,
             first_name: result?.data?.first_name,
