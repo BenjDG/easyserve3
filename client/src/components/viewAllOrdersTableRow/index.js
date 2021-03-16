@@ -23,8 +23,8 @@ function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
     setOpen(!open);
   };
 
-  const loadOrderData = (orderId) => {
-    API.findOrderByIdWithItems(orderId).then(res => {
+  const loadOrderData = async (orderId) => {
+    await API.findOrderByIdWithItems(orderId).then(res => {
       setItemData(res.data.orderItems);
     }).catch(err => console.error(err));
   };

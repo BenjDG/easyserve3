@@ -30,8 +30,8 @@ function Order () {
     await loadOrderData(currentOrder);
   }, [refresh]);
 
-  const loadItemData = () => {
-    API.getAllMenuItems()
+  const loadItemData = async () => {
+    await API.getAllMenuItems()
       .then((res) => {
         // console.log(res.data);
         setItems(res.data);
@@ -43,8 +43,8 @@ function Order () {
       });
   };
 
-  const loadOrderData = (orderId) => {
-    API.findOrderByIdWithItems(orderId)
+  const loadOrderData = async (orderId) => {
+    await API.findOrderByIdWithItems(orderId)
       .then((res) => {
         // console.log(res.data);
         setOrderByIdWithItems(res.data);
@@ -57,17 +57,17 @@ function Order () {
   };
 
   // load UserName list
-  const loadUserNameList = () => {
-    API.findAllUsers().then(res => {
+  const loadUserNameList = async () => {
+    await API.findAllUsers().then(res => {
       setUserNames(res.data.map(obj => `${obj.first_name} ${obj.last_name}`));
     }).catch(err => console.error(err));
   };
 
   // load StatusName list
-  const loadStatusNameList = () => {
+  const loadStatusNameList = async () => {
     const capitalize = ([firstLetter, ...restOfWord]) =>
       firstLetter.toUpperCase() + restOfWord.join('');
-    API.getStatusOptions().then(res => {
+    await API.getStatusOptions().then(res => {
       setStatusNames(res.data.map(obj => capitalize(obj.name)));
     }).catch(err => console.error(err));
   };
