@@ -15,14 +15,12 @@ export default function SelectStatus ({ currentStatus, statusOptions, orderId, r
   };
 
   return (
-    
-      <Select
-        id='select-status'
-        value={status}
-        onChange={handleChange}
-      >
-        {statusOptions && statusOptions.map((option, idx) => (<MenuItem key={idx} value={idx}>{option}</MenuItem>))}
-      </Select>
-
+    <Select
+      id='select-status'
+      value={status}
+      onChange={handleChange}
+    >
+      {statusOptions && statusOptions.map((option, idx) => (<MenuItem key={idx} value={idx}>{option}</MenuItem>))}
+    </Select>
   );
 }

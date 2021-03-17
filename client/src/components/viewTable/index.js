@@ -45,7 +45,7 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, st
         ? (
           <div>
             <FormControl className={classes.formControl}>
-              <Typography>Order Id: {id} | User: {userNames[userId - 1]} | Status:{' '}
+              <Typography component='span'>Order Id: {id} | User: {userNames[userId - 1]} | Status:{' '}
                 <SelectStatus
                   currentStatus={statusId}
                   statusOptions={statusNames}
