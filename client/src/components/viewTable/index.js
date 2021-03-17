@@ -1,4 +1,4 @@
-import { Box, FormControl, makeStyles, Paper, Table, TableBody, Typography } from '@material-ui/core';
+import { FormControl, makeStyles, Paper, Table, TableBody, Typography } from '@material-ui/core';
 import React, { useEffect, useRef } from 'react';
 import SelectStatus from '../selectStatus';
 import TotalPricePiece from '../totalPricePiece';
@@ -84,10 +84,10 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, st
               </TableBody>
             </Table>
           </Paper>
-        )
+          )
         : (
           <Paper variant='outlined' style={{ height: 200, overflow: 'auto' }} />
-        )}
+          )}
     </div>
   );
 }
