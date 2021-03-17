@@ -30,6 +30,14 @@ function MainMenu () {
     history.push('/vieworders');
   };
 
+  const handleCookViewClick = () => {
+    history.push('/cookview');
+  };
+
+  // const handleAdminClick = () => {
+  //   history.push('/');
+  // };
+
   return (
     <Grid container>
       <Grid item xs={2} />
@@ -55,7 +63,7 @@ function MainMenu () {
               </Button>
             </Grid>
             <Grid item>
-              <Button href='#' variant='outlined' color='inherit' disabled>
+              <Button onClick={handleCookViewClick} variant='outlined' color='inherit'>
                 Cook View
               </Button>
             </Grid>

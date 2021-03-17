@@ -3,6 +3,7 @@ import { Box, Collapse, IconButton, makeStyles, Table, TableBody, TableCell, Tab
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import API from '../../services/API';
+import UpdateButton from '../updateButton';
 
 const useRowStyles = makeStyles({
   root: {
@@ -17,9 +18,9 @@ function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
   const [itemData, setItemData] = useState([]);
   const classes = useRowStyles();
 
-  const handleClick = (event) => {
+  const handleClick = async (event) => {
     // fetch and set order data
-    loadOrderData(event.currentTarget.id);
+    await loadOrderData(event.currentTarget.id);
     setOpen(!open);
   };
 
@@ -42,6 +43,7 @@ function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
         </TableCell>
         <TableCell align='right'>{userNamesList[row.userId - 1]}</TableCell>
         <TableCell align='right'>{statusNamesList[row.statusId - 1]}</TableCell>
+        <TableCell align='right'><UpdateButton id={row.id} /></TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>

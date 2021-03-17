@@ -32,7 +32,7 @@ function App () {
     if (!user.id) {
       API.findUserById(userId)
         .then((result) => {
-          console.log(result);
+          // console.log(result);
           setUser({
             id: result?.data?.id,
             first_name: result?.data?.first_name,
