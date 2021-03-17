@@ -1,10 +1,21 @@
-import { Paper, Table, TableBody } from '@material-ui/core';
+import { Box, FormControl, makeStyles, Paper, Table, TableBody, Typography } from '@material-ui/core';
 import React, { useEffect, useRef } from 'react';
 import SelectStatus from '../selectStatus';
 import TotalPricePiece from '../totalPricePiece';
 import ViewTableRow from '../viewTableRow';
 
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(0),
+    minWidth: 120
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(0)
+  }
+}));
+
 function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, statusNames }) {
+  const classes = useStyles();
   const messagesEndRef = useRef(null);
   const { id, orderItems = [], statusId, userId } = oneOrder || {};
 
@@ -33,14 +44,17 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, st
       {id
         ? (
           <div>
-            <p>Order Id: {id} | User: {userNames[userId - 1]} | Status: {statusNames[statusId - 1]}</p>
-            <SelectStatus
-              currentStatus={statusId}
-              statusOptions={statusNames}
-              orderId={id}
-              setRefresh={setRefresh}
-              refresh={refresh}
-            />
+            <FormControl className={classes.formControl}>
+              <Typography>Order Id: {id} | User: {userNames[userId - 1]} | Status:{' '}
+                <SelectStatus
+                  currentStatus={statusId}
+                  statusOptions={statusNames}
+                  orderId={id}
+                  setRefresh={setRefresh}
+                  refresh={refresh}
+                />
+              </Typography>
+            </FormControl>
             <TotalPricePiece orderItems={orderItems} />
             {/* <p>Order Notes: {notes}</p> */}
           </div>)
