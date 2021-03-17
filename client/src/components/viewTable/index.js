@@ -1,11 +1,12 @@
 import { Paper, Table, TableBody } from '@material-ui/core';
 import React, { useEffect, useRef } from 'react';
+import SelectStatus from '../selectStatus';
 import TotalPricePiece from '../totalPricePiece';
 import ViewTableRow from '../viewTableRow';
 
 function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, statusNames }) {
   const messagesEndRef = useRef(null);
-  const { id, orderItems = [], restTableId, statusId, userId } = oneOrder || {};
+  const { id, orderItems = [], statusId, userId } = oneOrder || {};
 
   // menuArray for lookup name
   const menuArrayTitles = [];
@@ -32,7 +33,8 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, st
       {id
         ? (
           <div>
-            <p>Order Id: {id} | User: {userNames[userId - 1]} | Table: {restTableId} | Status: {statusNames[statusId - 1]}</p>
+            <p>Order Id: {id} | User: {userNames[userId - 1]} | Status: {statusNames[statusId - 1]}</p>
+            <SelectStatus currentStatus={statusId} statusOptions={statusNames} />
             <TotalPricePiece orderItems={orderItems} />
             {/* <p>Order Notes: {notes}</p> */}
           </div>)

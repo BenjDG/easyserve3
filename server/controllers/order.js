@@ -76,6 +76,18 @@ module.exports = {
       .then(result => res.json(result))
       .catch(err => res.status(500).json(err));
   },
+  updateOrderStatus: async function (req, res) {
+    const { orderId, statusId } = req.body;
+    db.order.update({
+      statusId: statusId
+    }, {
+      where: {
+        id: orderId
+      }
+    })
+      .then(result => res.json(result))
+      .catch(err => res.status(500).json(err));
+  },
   deleteOneOrder: async function (req, res) {
     const { orderId } = req.body;
     db.order.destroy({

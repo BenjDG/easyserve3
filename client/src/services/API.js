@@ -80,6 +80,14 @@ export default {
     };
     return axios.put('/api/order/update', obj);
   },
+  updateOrderStatus: function (orderId, statusId) {
+    // { orderId, statusId }
+    const obj = {
+      orderId: orderId,
+      statusId: statusId
+    };
+    return axios.put('/api/order/updateStatus', obj);
+  },
   deleteOneOrderItem: function (orderItemRecId) {
     // { orderItemRecId }
     return axios.delete(`/api/order/delete/item/${orderItemRecId}`);
