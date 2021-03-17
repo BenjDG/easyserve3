@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function ViewOrderCooking ({ order, refresh, setRefresh }) {
+export default function ViewOrderCooking ({ order, refresh, setRefresh, userName, statusName }) {
   const classes = useStyles();
   const handleClick = () => {
     API.updateOrderInfo(order.id, order.userId, order.restTableId, '3', order.notes)
@@ -30,7 +30,7 @@ export default function ViewOrderCooking ({ order, refresh, setRefresh }) {
         <Grid item xs={6}>
           <Paper className={classes.paper}>
             <List>
-              <h3>Order Id: {order.id} | Server: {order.userId} | Status: {order.statusId}</h3>
+              <h3>Order Id: {order.id} | Server: {userName} | Status: {statusName}</h3>
               {order.orderItems.map((item, idx) => {
                 return (
                   <ListItem key={idx}>

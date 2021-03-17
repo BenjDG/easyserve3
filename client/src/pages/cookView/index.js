@@ -5,21 +5,21 @@ import ViewOrderCooking from '../../components/viewOrderCooking';
 
 function CookView () {
   const [allOrdersCooking, setAllOrdersCooking] = useState([]);
-  // const [userNames, setUserNames] = useState();
-  // const [statusNames, setStatusNames] = useState();
+  const [userNames, setUserNames] = useState();
+  const [statusNames, setStatusNames] = useState();
   const [refresh, setRefresh] = useState(false);
 
   useEffect(async () => {
-    // await loadUserNameList();
-    // await loadStatusNameList();
+    await loadUserNameList();
+    await loadStatusNameList();
     await loadData();
   }, [refresh]);
 
-  const loadData = () => {
-    API.findAllOrdersCooking()
-      .then((res) => {
+  const loadData = async () => {
+    await API.findAllOrdersCooking()
+      .then(async (res) => {
         // console.log(res.data);
-        setAllOrdersCooking(res.data);
+        await setAllOrdersCooking(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -27,21 +27,21 @@ function CookView () {
   };
 
   // load UserName list
-  // const loadUserNameList = () => {
-  //   API.findAllUsers().then(res => {
-  //     setUserNames(res.data.map(obj => `${obj.first_name} ${obj.last_name}`));
-  //   }).catch(err => console.error(err));
-  // };
+  const loadUserNameList = async () => {
+    await API.findAllUsers().then(async (res) => {
+      await setUserNames(res.data.map(obj => `${obj.first_name} ${obj.last_name}`));
+    }).catch(err => console.error(err));
+  };
 
   // load StatusName list
-  // const loadStatusNameList = () => {
-  //   const capitalize = ([firstLetter, ...restOfWord]) =>
-  //     firstLetter.toUpperCase() + restOfWord.join('');
-  //   API.getStatusOptions().then(res => {
-  //     setStatusNames(res.data.map(obj => capitalize(obj.name)));
-  //   }).catch(err => console.error(err));
-  // };
-
+  const loadStatusNameList = async () => {
+    const capitalize = ([firstLetter, ...restOfWord]) =>
+      firstLetter.toUpperCase() + restOfWord.join('');
+    await API.getStatusOptions().then(async (res) => {
+      await setStatusNames(res.data.map(obj => capitalize(obj.name)));
+    }).catch(err => console.error(err));
+  };
+console.log(allOrdersCooking);
   return (
     <Grid container>
       <Grid item xs={2} />
@@ -52,7 +52,7 @@ function CookView () {
             allOrdersCooking.length
               ? (
                 <div>
-                  {allOrdersCooking.map((order, idx) => <ViewOrderCooking key={idx} order={order} refresh={refresh} setRefresh={setRefresh} />)}
+                  {allOrdersCooking.map((order, idx) => <ViewOrderCooking key={idx} order={order} refresh={refresh} setRefresh={setRefresh} userName={userNames[+order.userId - 1]} statusName={statusNames[+order.statusId - 1]} />)}
                 </div>)
               : (<div>No Orders to Cook</div>)
           }
