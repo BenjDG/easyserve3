@@ -41,7 +41,7 @@ function CookView () {
       await setStatusNames(res.data.map(obj => capitalize(obj.name)));
     }).catch(err => console.error(err));
   };
-console.log(allOrdersCooking);
+  // console.log(allOrdersCooking);
   return (
     <Grid container>
       <Grid item xs={2} />
