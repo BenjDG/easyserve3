@@ -14,12 +14,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ViewOrderCooking ({ order, refresh, setRefresh }) {
   const classes = useStyles();
-  console.log(order);
-
   const handleClick = () => {
     API.updateOrderInfo(order.id, order.userId, order.restTableId, '3', order.notes)
-      .then(res => {
-        console.log(res);
+      .then(() => {
         refresh ? setRefresh(false) : setRefresh(true);
       })
       .catch(err => console.error(err));

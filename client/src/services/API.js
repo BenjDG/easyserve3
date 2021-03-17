@@ -86,7 +86,7 @@ export default {
       orderId: orderId,
       statusId: statusId
     };
-    return axios.put('/api/order/updateStatus', obj);
+    return axios.patch('/api/order/updateStatus', obj);
   },
   deleteOneOrderItem: function (orderItemRecId) {
     // { orderItemRecId }

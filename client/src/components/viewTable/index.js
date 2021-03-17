@@ -34,7 +34,13 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, st
         ? (
           <div>
             <p>Order Id: {id} | User: {userNames[userId - 1]} | Status: {statusNames[statusId - 1]}</p>
-            <SelectStatus currentStatus={statusId} statusOptions={statusNames} />
+            <SelectStatus
+              currentStatus={statusId}
+              statusOptions={statusNames}
+              orderId={id}
+              setRefresh={setRefresh}
+              refresh={refresh}
+            />
             <TotalPricePiece orderItems={orderItems} />
             {/* <p>Order Notes: {notes}</p> */}
           </div>)
@@ -64,10 +70,10 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, st
               </TableBody>
             </Table>
           </Paper>
-          )
+        )
         : (
           <Paper variant='outlined' style={{ height: 200, overflow: 'auto' }} />
-          )}
+        )}
     </div>
   );
 }
