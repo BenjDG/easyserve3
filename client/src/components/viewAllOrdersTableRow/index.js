@@ -18,9 +18,9 @@ function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
   const [itemData, setItemData] = useState([]);
   const classes = useRowStyles();
 
-  const handleClick = (event) => {
+  const handleClick = async (event) => {
     // fetch and set order data
-    loadOrderData(event.currentTarget.id);
+    await loadOrderData(event.currentTarget.id);
     setOpen(!open);
   };
 
