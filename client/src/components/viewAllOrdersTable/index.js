@@ -17,6 +17,7 @@ function ViewAllOrdersTable ({ allOrders, statusNamesList, userNamesList }) {
                     <TableCell>Order ID</TableCell>
                     <TableCell align='right'>User</TableCell>
                     <TableCell align='right'>Status</TableCell>
+                    <TableCell align='right'>Update</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
