@@ -33,17 +33,17 @@ function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
   return (
     <>
       <TableRow className={classes.root}>
-        <TableCell>
+        <TableCell className='table-cell'>
           <IconButton aria-label='expand row' size='small' onClick={handleClick} id={row.id}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component='th' scope='row'>
+        <TableCell className='table-cell' align='center' component='th' scope='row'>
           {row.id}
         </TableCell>
-        <TableCell align='right'>{userNamesList[row.userId - 1]}</TableCell>
-        <TableCell align='right'>{statusNamesList[row.statusId - 1]}</TableCell>
-        <TableCell align='right'><UpdateButton id={row.id} /></TableCell>
+        <TableCell className='table-cell' align='center'>{userNamesList[row.userId - 1]}</TableCell>
+        <TableCell className='table-cell' align='center'>{statusNamesList[row.statusId - 1]}</TableCell>
+        <TableCell className='table-cell' align='center'><UpdateButton id={row.id} /></TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>

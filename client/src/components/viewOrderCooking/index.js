@@ -27,7 +27,7 @@ export default function ViewOrderCooking ({ order, refresh, setRefresh, userName
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={6}>
+        <Grid item xs={12}>
           <Paper className={classes.paper}>
             <List>
               <h3>Order Id: {order.id} | Server: {userName} | Status: {statusName}</h3>

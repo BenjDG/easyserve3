@@ -78,8 +78,8 @@ function Order () {
 
   return (
     <Grid container>
-      <Grid item xs={2} />
-      <Grid item xs={8}>
+      <Grid item xs='auto' sm={2} />
+      <Grid item xs={12} sm={8}>
         <Box m={2}>
           <Grid item container direction='column'>
             {error}
@@ -104,7 +104,7 @@ function Order () {
             >
               {items.map((item) => {
                 return (
-                  <Grid item xs={3} key={item.id}>
+                  <Grid item xs={6} key={item.id}>
                     <ButtonPiece
                       orderId={currentOrder}
                       itemId={item.id}
@@ -120,7 +120,7 @@ function Order () {
           </Grid>
         </Box>
       </Grid>
-      <Grid item xs={2} />
+      <Grid item xs='auto' sm={2} />
     </Grid>
   );
 }
