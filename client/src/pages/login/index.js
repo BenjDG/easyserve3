@@ -65,8 +65,8 @@ function Login () {
 
   return (
     <Grid container>
-      <Grid item xs={2} />
-      <Grid item xs={8}>
+      <Grid item xs='auto' sm={2} />
+      <Grid item xs={12} sm={8}>
         <Paper>
           <Box m={2}>
             <Typography variant='h3' align='center'>
@@ -111,12 +111,12 @@ function Login () {
           </Box>
         </Paper>
       </Grid>
-      <Grid item xs={2} />
-      <Grid item xs={2} />
-      <Grid item xs={8}>
+      <Grid item xs='auto' sm={2} />
+      <Grid item xs='auto' sm={2} />
+      <Grid item xs={12} sm={8}>
         <DemoCredDialog />
       </Grid>
-      <Grid item xs={2} />
+      <Grid item xs='auto' sm={2} />
     </Grid>
   );
 }

@@ -2,6 +2,7 @@ import { Box, Grid } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import API from '../../services/API';
 import ViewAllOrdersTable from '../../components/viewAllOrdersTable';
+import './styles.css';
 
 function AllOrders () {
   const [allOrders, setAllOrders] = useState([]);
@@ -43,13 +44,13 @@ function AllOrders () {
 
   return (
     <Grid container>
-      <Grid item xs={2} />
-      <Grid item xs={8}>
-        <Box m={2}>
+      <Grid item xs='auto' sm={2} />
+      <Grid item xs={12} sm={8}>
+        <Box className='view-all-orders-table'>
           <ViewAllOrdersTable allOrders={allOrders} statusNamesList={statusNames} userNamesList={userNames} />
         </Box>
       </Grid>
-      <Grid item xs={2} />
+      <Grid item xs='auto' sm={2} />
     </Grid>
   );
 }

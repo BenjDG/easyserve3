@@ -44,9 +44,9 @@ function CookView () {
   // console.log(allOrdersCooking);
   return (
     <Grid container>
-      <Grid item xs={2} />
-      <Grid item xs={8}>
-        <Box m={2}>
+      <Grid item xs='auto' sm={2} />
+      <Grid item xs={12} sm={8}>
+        <Box m={1}>
           Orders Cooking
           {
             allOrdersCooking.length
@@ -58,7 +58,7 @@ function CookView () {
           }
         </Box>
       </Grid>
-      <Grid item xs={2} />
+      <Grid item xs='auto' sm={2} />
     </Grid>
   );
 }
