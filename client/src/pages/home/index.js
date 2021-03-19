@@ -17,24 +17,24 @@ function Home () {
   const classes = useStyles();
   return (
     <Grid container direction='row' justify='space-evenly' alignItems='center'>
-      <Grid item xs={2} />
-      <Grid item xs={8}>
+      <Grid item xs='auto' sm={2} />
+      <Grid item xs={12} sm={8}>
         <Paper className={classes.root}>
           <Typography variant='h1' align='center'>
             Easy Order
           </Typography>
         </Paper>
       </Grid>
-      <Grid item xs={2} />
-      <Grid item xs={2} />
-      <Grid item xs={8}>
+      <Grid item xs='auto' sm={2} />
+      <Grid item xs='auto' sm={2} />
+      <Grid item xs={12} sm={8}>
         <Typography variant='h2' align='center'>
           <Link href='/login' color='inherit'>
             Login
           </Link>
         </Typography>
       </Grid>
-      <Grid item xs={2} />
+      <Grid item xs='auto' sm={2} />
     </Grid>
   );
 }

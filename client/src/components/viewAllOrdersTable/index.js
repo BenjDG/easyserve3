@@ -1,6 +1,7 @@
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core';
 import React from 'react';
 import ViewAllOrdersTableRow from '../viewAllOrdersTableRow';
+import './styles.css';
 
 function ViewAllOrdersTable ({ allOrders, statusNamesList, userNamesList }) {
   // console.log(allOrders);
@@ -10,14 +11,14 @@ function ViewAllOrdersTable ({ allOrders, statusNamesList, userNamesList }) {
         ? (
           <div>
             <TableContainer component={Paper}>
-              <Table aria-label='collapsible table'>
-                <TableHead>
+              <Table className='table' aria-label='collapsible table'>
+                <TableHead className='table-head'>
                   <TableRow>
-                    <TableCell />
-                    <TableCell>Order ID</TableCell>
-                    <TableCell align='right'>User</TableCell>
-                    <TableCell align='right'>Status</TableCell>
-                    <TableCell align='right'>Update</TableCell>
+                    <TableCell className='table-cell' />
+                    <TableCell className='table-cell'>Order ID</TableCell>
+                    <TableCell className='table-cell' align='center'>User</TableCell>
+                    <TableCell className='table-cell' align='center'>Status</TableCell>
+                    <TableCell className='table-cell' align='center'>Update</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>

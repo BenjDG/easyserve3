@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { useCurrentOrderContext } from '../../services/orderContext';
+import './styles.css';
 
 export default function UpdateButton ({ id }) {
   const history = useHistory();
@@ -15,6 +16,6 @@ export default function UpdateButton ({ id }) {
   };
 
   return (
-    <Button onClick={handleClick} id={id} variant='outlined'>Update</Button>
+    <Button className='button-padding' onClick={handleClick} id={id} variant='outlined'>Update</Button>
   );
 }
