@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Button, Grid, Hidden, Link, Toolbar } from '@material-ui/core';
+import { AppBar, Grid, Hidden, Link, Toolbar } from '@material-ui/core';
 import { useHistory, Link as RouterLink } from 'react-router-dom';
 import API from '../../services/API';
 import { UseUserProvider } from '../../services/userContext';
