@@ -104,7 +104,7 @@ function Order () {
             >
               {items.map((item) => {
                 return (
-                  <Grid item xs={6} key={item.id}>
+                  <Grid item xs={6} sm={4} md={3} key={item.id}>
                     <ButtonPiece
                       orderId={currentOrder}
                       itemId={item.id}
