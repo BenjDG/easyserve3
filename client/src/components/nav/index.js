@@ -55,8 +55,7 @@ function Nav () {
             </Grid>
             <Grid item xs={2}>
               <Hidden mdUp>
-                
-                <NavDrawer />
+                <NavDrawer logout={logout} />
               </Hidden>
             </Grid>
           </Grid>
