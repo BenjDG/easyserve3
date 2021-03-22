@@ -4,7 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     restTableId: DataTypes.INTEGER,
     statusId: DataTypes.INTEGER,
-    notes: DataTypes.TEXT
+    notes: DataTypes.TEXT,
+    total: DataTypes.DECIMAL(19, 4),
+    paid: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: '0'
+    }
   });
 
   Order.associate = function (models) {
