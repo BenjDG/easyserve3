@@ -11,6 +11,8 @@ router.route('/create').post(order.createNewOrder);
 router.route('/add/:orderId/:itemId').post(orderItem.createNewOrderItem);
 router.route('/update').put(order.updateOrderInfo);
 router.route('/updateStatus').patch(order.updateOrderStatus);
+router.route('/updateTotal').patch(order.updateOrderTotal);
+router.route('/updatePaid').patch(order.updateOrderPaid);
 router.route('/delete/item/:orderItemRecId').delete(orderItem.deleteOneOrderItem);
 router.route('/delete').delete(order.deleteOneOrder);
 
