@@ -4,6 +4,7 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import API from '../../services/API';
 import UpdateButton from '../updateButton';
+import './styles.css';
 
 const useRowStyles = makeStyles({
   root: {

@@ -88,6 +88,22 @@ export default {
     };
     return axios.patch('/api/order/updateStatus', obj);
   },
+  updateOrderPaid: function (orderId, paid) {
+    // { orderId, paid }
+    const obj = {
+      orderId: orderId,
+      paid: paid
+    };
+    return axios.patch('/api/order/updatePaid', obj);
+  },
+  updateOrderTotal: function (orderId, total) {
+    // { orderId, total }
+    const obj = {
+      orderId: orderId,
+      total: total
+    };
+    return axios.patch('/api/order/updateTotal', obj);
+  },
   deleteOneOrderItem: function (orderItemRecId) {
     // { orderItemRecId }
     return axios.delete(`/api/order/delete/item/${orderItemRecId}`);
