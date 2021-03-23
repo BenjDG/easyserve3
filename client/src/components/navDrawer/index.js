@@ -68,11 +68,11 @@ export default function NavDrawer ({ logout }) {
             <ListItemText primary='Main Menu' />
           </ListItem>
         </Link>
-        <Link component={RouterLink} to='/order' color='inherit'>
+        {/* <Link component={RouterLink} to='/order' color='inherit'>
           <ListItem button>
             <ListItemText primary='Order' />
           </ListItem>
-        </Link>
+        </Link> */}
         <Link component={RouterLink} to='/vieworders' color='inherit'>
           <ListItem button>
             <ListItemText primary='View All Orders' />
