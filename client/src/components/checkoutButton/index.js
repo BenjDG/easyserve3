@@ -9,6 +9,8 @@ export default function CheckoutButton () {
     history.push('/checkout');
   };
   return (
-    <Button className='checkout-button' onClick={handleClick} variant='outlined'>Checkout</Button>
+    <div className='checkout-button'>
+      <Button onClick={handleClick} variant='outlined'>Checkout</Button>
+    </div>
   );
 }
