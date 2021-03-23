@@ -1,6 +1,6 @@
 require('dotenv').config();
 const stripe = require('stripe')(process.env.STRIPE);
-const PORT = process.env.PORT || 3000;
+const HEROKUURL = process.env.HEROKUURL || 'http://localhost:3000';
 
 module.exports = {
   createCheckoutSession: async function (_req, res) {
@@ -21,8 +21,8 @@ module.exports = {
           }
         ],
         mode: 'payment',
-        success_url: `http://localhost:${PORT}/vieworders`,
-        cancel_url: `http://localhost:${PORT}/order`
+        success_url: `${HEROKUURL}/vieworders`,
+        cancel_url: `${HEROKUURL}/order`
       });
 
       res.json({ id: session.id });
