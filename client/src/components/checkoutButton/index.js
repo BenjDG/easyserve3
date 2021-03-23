@@ -1,13 +1,9 @@
+import { Button } from '@material-ui/core';
 import React from 'react';
+import './styles.css';
 
-export default function TotalPricePiece ({ orderItems }) {
-  let totalPretty;
-  if (orderItems.length) {
-    const priceArr = orderItems.map(item => +item.menuItem.price);
-    const total = priceArr.reduce((acc, curr) => acc + curr);
-    totalPretty = (Math.round(total * 100) / 100).toFixed(2);
-  }
+export default function CheckoutButton () {
   return (
-    <p>Total: ${totalPretty}</p>
+    <Button className='checkout-button' variant='outlined'>Checkout</Button>
   );
 }

@@ -1,5 +1,6 @@
 import { FormControl, makeStyles, Paper, Table, TableBody, Typography } from '@material-ui/core';
 import React, { useEffect, useRef } from 'react';
+import CheckoutButton from '../checkoutButton';
 import SelectStatus from '../selectStatus';
 import TotalPricePiece from '../totalPricePiece';
 import ViewTableRow from '../viewTableRow';
@@ -55,7 +56,9 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, st
                 />
               </Typography>
             </FormControl>
+            <br />
             <TotalPricePiece orderItems={orderItems} />
+            <CheckoutButton />
             {/* <p>Order Notes: {notes}</p> */}
           </div>)
         : (

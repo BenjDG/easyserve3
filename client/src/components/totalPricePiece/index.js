@@ -1,4 +1,6 @@
+import { Typography } from '@material-ui/core';
 import React from 'react';
+import './styles.css';
 
 export default function TotalPricePiece ({ orderItems }) {
   let totalPretty;
@@ -8,6 +10,8 @@ export default function TotalPricePiece ({ orderItems }) {
     totalPretty = (Math.round(total * 100) / 100).toFixed(2);
   }
   return (
-    <p>Total: ${totalPretty}</p>
+    <div className='total'>
+      <Typography component='span'> Total: ${totalPretty}</Typography>
+    </div>
   );
 }
