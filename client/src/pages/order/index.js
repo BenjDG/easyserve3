@@ -8,7 +8,7 @@ import ButtonPiece from '../../components/buttonPiece';
 
 const useStyles = makeStyles((theme) => ({
   buttonView: {
-    padding: theme.spacing(2, 2)
+    padding: theme.spacing(1, 1)
   }
 }));
 
@@ -80,7 +80,7 @@ function Order () {
     <Grid container>
       <Grid item xs='auto' sm={2} />
       <Grid item xs={12} sm={8}>
-        <Box m={2}>
+        <Box m={1}>
           <Grid item container direction='column'>
             {error}
             <Grid item>

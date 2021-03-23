@@ -39,9 +39,9 @@ function Nav () {
                 <Link component={RouterLink} to='/mainmenu' color='inherit'>
                   Mainmenu
                 </Link>
-                <Link component={RouterLink} to='/order' color='inherit'>
+                {/* <Link component={RouterLink} to='/order' color='inherit'>
                   Order
-                </Link>
+                </Link> */}
                 <Link component={RouterLink} to='/vieworders' color='inherit'>
                   View All Orders
                 </Link>

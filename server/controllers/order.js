@@ -88,6 +88,30 @@ module.exports = {
       .then(result => res.json(result))
       .catch(err => res.status(500).json(err));
   },
+  updateOrderTotal: async function (req, res) {
+    const { orderId, total } = req.body;
+    db.order.update({
+      total: total
+    }, {
+      where: {
+        id: orderId
+      }
+    })
+      .then(result => res.json(result))
+      .catch(err => res.status(500).json(err));
+  },
+  updateOrderPaid: async function (req, res) {
+    const { orderId, paid } = req.body;
+    db.order.update({
+      paid: paid
+    }, {
+      where: {
+        id: orderId
+      }
+    })
+      .then(result => res.json(result))
+      .catch(err => res.status(500).json(err));
+  },
   deleteOneOrder: async function (req, res) {
     const { orderId } = req.body;
     db.order.destroy({

@@ -15,10 +15,10 @@ function ViewAllOrdersTable ({ allOrders, statusNamesList, userNamesList }) {
                 <TableHead className='table-head'>
                   <TableRow>
                     <TableCell className='table-cell' />
-                    <TableCell className='table-cell'>Order ID</TableCell>
+                    <TableCell className='table-cell' align='center'>Order ID</TableCell>
                     <TableCell className='table-cell' align='center'>User</TableCell>
                     <TableCell className='table-cell' align='center'>Status</TableCell>
-                    <TableCell className='table-cell' align='center'>Update</TableCell>
+                    <TableCell className='table-cell' align='center' />
                   </TableRow>
                 </TableHead>
                 <TableBody>
