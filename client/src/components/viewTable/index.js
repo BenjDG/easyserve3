@@ -59,7 +59,7 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, st
             {/* <p>Order Notes: {notes}</p> */}
           </div>)
         : (
-          <div>Loading Order...Are you logged on?</div>)}
+          <div>Loading Order...</div>)}
 
       {orderItems.length
         ? (
