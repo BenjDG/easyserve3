@@ -5,7 +5,7 @@ import { useOrderButtonContext } from '../../services/globalOrderButton';
 const useStyles = makeStyles(() => ({
   button: {
     width: '100%',
-    height: '7vh'
+    height: '6vh'
   }
 }));
 
