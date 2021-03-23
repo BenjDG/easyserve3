@@ -17,5 +17,6 @@ router.use('/menuitems', menuItem);
 router.use('/order', order);
 router.use('/resttable', restTable);
 router.use('/status', status);
+router.use('/payment', status);
 
 module.exports = router;
