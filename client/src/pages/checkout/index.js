@@ -3,7 +3,6 @@ import Grid from '@material-ui/core/Grid';
 import { Box, Button, makeStyles } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
-import API from '../../services/API';
 
 const stripePromise = loadStripe('pk_test_51IXcgsKAaRFhH7wwbW2LxPsTV5zU24rGT6CsF1rR2mZeoizyrSYx5W3jdaLr2RwcHUVghaA9dFn48nOtHlkuwvwQ001NIVmTD5');
 
