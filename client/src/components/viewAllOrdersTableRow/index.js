@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Box, Collapse, IconButton, makeStyles, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@material-ui/core';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import API from '../../services/API';
 import UpdateButton from '../updateButton';
+import './styles.css';
 
 const useRowStyles = makeStyles({
   root: {
@@ -35,7 +36,7 @@ function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
       <TableRow className={classes.root}>
         <TableCell className='table-cell'>
           <IconButton aria-label='expand row' size='small' onClick={handleClick} id={row.id}>
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            {open ? <KeyboardArrowDownIcon /> : <KeyboardArrowRightIcon />}
           </IconButton>
         </TableCell>
         <TableCell className='table-cell' align='center' component='th' scope='row'>

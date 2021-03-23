@@ -88,6 +88,22 @@ export default {
     };
     return axios.patch('/api/order/updateStatus', obj);
   },
+  updateOrderPaid: function (orderId, paid) {
+    // { orderId, paid }
+    const obj = {
+      orderId: orderId,
+      paid: paid
+    };
+    return axios.patch('/api/order/updatePaid', obj);
+  },
+  updateOrderTotal: function (orderId, total) {
+    // { orderId, total }
+    const obj = {
+      orderId: orderId,
+      total: total
+    };
+    return axios.patch('/api/order/updateTotal', obj);
+  },
   deleteOneOrderItem: function (orderItemRecId) {
     // { orderItemRecId }
     return axios.delete(`/api/order/delete/item/${orderItemRecId}`);
@@ -97,9 +113,12 @@ export default {
     return axios.delete('/api/order/delete');
   },
   getTableOptions: function () {
-    return axios.get('api/resttable/');
+    return axios.get('/api/resttable/');
   },
   getStatusOptions: function () {
-    return axios.get('api/status/');
+    return axios.get('/api/status/');
+  },
+  postPayment: function () {
+    return axios.post('/api/payment/');
   }
 };

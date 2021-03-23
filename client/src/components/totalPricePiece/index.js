@@ -1,6 +1,8 @@
+import { Typography } from '@material-ui/core';
 import React from 'react';
+import './styles.css';
 
-function TotalPricePiece ({ orderItems }) {
+export default function TotalPricePiece ({ orderItems }) {
   let totalPretty;
   if (orderItems.length) {
     const priceArr = orderItems.map(item => +item.menuItem.price);
@@ -8,8 +10,8 @@ function TotalPricePiece ({ orderItems }) {
     totalPretty = (Math.round(total * 100) / 100).toFixed(2);
   }
   return (
-    <p>Total: ${totalPretty}</p>
+    <div className='total'>
+      <Typography component='span'> Total: ${totalPretty}</Typography>
+    </div>
   );
 }
-
-export default TotalPricePiece;
