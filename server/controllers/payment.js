@@ -1,5 +1,6 @@
 require('dotenv').config();
 const stripe = require('stripe')(process.env.STRIPE);
+const PORT = process.env.PORT || 3000;
 
 module.exports = {
   createCheckoutSession: async function (_req, res) {
@@ -20,8 +21,8 @@ module.exports = {
           }
         ],
         mode: 'payment',
-        success_url: 'https://example.com/success',
-        cancel_url: 'https://example.com/cancel'
+        success_url: `http://localhost:${PORT}/vieworders`,
+        cancel_url: `http://localhost:${PORT}/order`
       });
 
       res.json({ id: session.id });

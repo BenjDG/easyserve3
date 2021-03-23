@@ -113,9 +113,12 @@ export default {
     return axios.delete('/api/order/delete');
   },
   getTableOptions: function () {
-    return axios.get('api/resttable/');
+    return axios.get('/api/resttable/');
   },
   getStatusOptions: function () {
-    return axios.get('api/status/');
+    return axios.get('/api/status/');
+  },
+  postPayment: function () {
+    return axios.post('/api/payment/');
   }
 };
