@@ -3,7 +3,8 @@ const stripe = require('stripe')(process.env.STRIPE);
 const HEROKUURL = process.env.HEROKUURL || 'http://localhost:3000';
 
 module.exports = {
-  createCheckoutSession: async function (_req, res) {
+  createCheckoutSession: async function (req, res) {
+    const { orderId, itemsOrderedArray } = req.body;
     try {
       console.log('stripe');
       const session = await stripe.checkout.sessions.create({

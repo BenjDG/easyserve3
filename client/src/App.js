@@ -3,7 +3,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Home from './pages/home';
 import MainMenu from './pages/mainMenu';
-import Checkout from './pages/checkout';
 
 import Login from './pages/login';
 import Nav from './components/nav';
@@ -71,9 +70,6 @@ function App () {
               </Route>
               <Route exact strict path='/cookview'>
                 <CookView />
-              </Route>
-              <Route exact strict path='/checkout'>
-                <Checkout />
               </Route>
             </>
           )}

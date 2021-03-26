@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, statusNames }) {
+function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, statusNames, totalPrice, handleStripeClick }) {
   const classes = useStyles();
   const messagesEndRef = useRef(null);
   const { id, orderItems = [], statusId, userId } = oneOrder || {};
@@ -57,8 +57,8 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, st
               </Typography>
             </FormControl>
             <br />
-            <TotalPricePiece orderItems={orderItems} />
-            <CheckoutButton />
+            <TotalPricePiece totalPrice={totalPrice} />
+            <CheckoutButton handleStripeClick={handleStripeClick} orderItems={orderItems} orderId={id} />
             {/* <p>Order Notes: {notes}</p> */}
           </div>)
         : (
