@@ -1,45 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { loadStripe } from '@stripe/stripe-js';
+
 import { Box, Grid } from '@material-ui/core';
 import API from '../../services/API';
 import ViewTable from '../../components/viewTable';
 import { useCurrentOrderContext } from '../../services/orderContext';
 import ButtonPiece from '../../components/buttonPiece';
 
-const stripePromise = loadStripe('pk_test_51IXcgsKAaRFhH7wwbW2LxPsTV5zU24rGT6CsF1rR2mZeoizyrSYx5W3jdaLr2RwcHUVghaA9dFn48nOtHlkuwvwQ001NIVmTD5');
-
 const useStyles = makeStyles((theme) => ({
   buttonView: {
     padding: theme.spacing(1, 1)
   }
 }));
-
-const handleStripeClick = async (event) => {
-  console.log(event.target.value);
-  // Get Stripe.js instance
-  const stripe = await stripePromise;
-
-  // Call your backend to create the Checkout Session
-  const response = await fetch('/api/payment/', { // eslint-disable-line
-    method: 'POST'
-    // body: JSON.stringify(data)
-  });
-  console.log(response);
-
-  const session = await response.json();
-
-  // When the customer clicks on the button, redirect them to Checkout.
-  const result = await stripe.redirectToCheckout({
-    sessionId: session.id
-  });
-
-  if (result.error) {
-    // If `redirectToCheckout` fails due to a browser or network
-    // error, display the localized error message to your customer
-    // using `result.error.message`.
-  }
-};
 
 function Order () {
   const classes = useStyles();
@@ -76,7 +48,7 @@ function Order () {
   const loadOrderData = async (orderId) => {
     await API.findOrderByIdWithItems(orderId)
       .then(async (res) => {
-        // console.log(res.data);
+        console.log(res.data);
         await setOrderByIdWithItems(res.data);
       })
       .then(async (res) => {
@@ -135,7 +107,6 @@ function Order () {
                 refresh={refresh}
                 userNames={userNames}
                 statusNames={statusNames}
-                handleStripeClick={handleStripeClick}
               />
             </Grid>
             <Grid

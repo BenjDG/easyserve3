@@ -1,9 +1,12 @@
 import { FormControl, makeStyles, Paper, Table, TableBody, Typography } from '@material-ui/core';
 import React, { useEffect, useRef } from 'react';
+import { loadStripe } from '@stripe/stripe-js';
 import CheckoutButton from '../checkoutButton';
 import SelectStatus from '../selectStatus';
 import TotalPricePiece from '../totalPricePiece';
 import ViewTableRow from '../viewTableRow';
+
+const stripePromise = loadStripe('pk_test_51IXcgsKAaRFhH7wwbW2LxPsTV5zU24rGT6CsF1rR2mZeoizyrSYx5W3jdaLr2RwcHUVghaA9dFn48nOtHlkuwvwQ001NIVmTD5');
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -15,10 +18,39 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, statusNames, totalPrice, handleStripeClick }) {
+function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, statusNames, totalPrice }) {
   const classes = useStyles();
   const messagesEndRef = useRef(null);
   const { id, orderItems = [], statusId, userId } = oneOrder || {};
+
+  const handleStripeClick = async (_event) => {
+    // Get Stripe.js instance
+    const stripe = await stripePromise;
+    const data = {
+      id: id
+    };
+    // Call your backend to create the Checkout Session
+    const response = await fetch('/api/payment/', { // eslint-disable-line
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    console.log(response);
+
+    const session = await response.json();
+
+    // When the customer clicks on the button, redirect them to Checkout.
+
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.id
+    });
+
+    if (result.error) {
+      // If `redirectToCheckout` fails due to a browser or network
+      // error, display the localized error message to your customer
+      // using `result.error.message`.
+    }
+  };
 
   // menuArray for lookup name
   const menuArrayTitles = [];
