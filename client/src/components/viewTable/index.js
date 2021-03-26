@@ -35,12 +35,11 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, st
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
-    console.log(response);
+    // console.log(response);
 
     const session = await response.json();
 
     // When the customer clicks on the button, redirect them to Checkout.
-
     const result = await stripe.redirectToCheckout({
       sessionId: session.id
     });
@@ -66,7 +65,7 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, st
   useEffect(() => {
     // scroll to bottom
     scrollToBottom();
-  }, [allMenuItems, menuArrayTitles]);
+  }, [menuArrayTitles]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });

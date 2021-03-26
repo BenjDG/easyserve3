@@ -51,7 +51,7 @@ function Order () {
         console.log(res.data);
         await setOrderByIdWithItems(res.data);
       })
-      .then(async (res) => {
+      .then(async () => {
         // console.log(res.data);
         await calculateTotalPrice();
       })
