@@ -26,10 +26,24 @@ function Order () {
   const [totalPrice, setTotalPrice] = useState();
 
   useEffect(() => {
-    loadUserNameList();
-    loadStatusNameList();
-    loadItemData();
+    // refresh is toggled refresh on item button click
+    // refresh is toggled refresh on status change
+    // refresh is toggled refresh on delete button click
+    // if refresh is toggled do all these
+
+    // load order data for current order & calculate price?
     loadOrderData(currentOrder);
+
+    // load a reference list of all users
+    loadUserNameList();
+
+    // load a reference list of all status names
+    loadStatusNameList();
+
+    // load a reference list of all menu items
+    loadItemData();
+
+    calculateTotalPrice();
   }, [refresh]);
 
   const loadItemData = async () => {
@@ -48,12 +62,8 @@ function Order () {
   const loadOrderData = async (orderId) => {
     await API.findOrderByIdWithItems(orderId)
       .then(async (res) => {
-        console.log(res.data);
-        await setOrderByIdWithItems(res.data);
-      })
-      .then(async () => {
         // console.log(res.data);
-        await calculateTotalPrice();
+        await setOrderByIdWithItems(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -61,14 +71,17 @@ function Order () {
         setError(error.message + ' - Please login');
       });
   };
-
-  const calculateTotalPrice = async () => {
+  // ##########################
+  // start here - get price to render on change
+  // ##########################
+  const calculateTotalPrice = () => {
     try {
       if (orderByIdWithItems && orderByIdWithItems.orderItems && orderByIdWithItems.orderItems.length) {
         const itemPrices = orderByIdWithItems.orderItems.map(item => +item.menuItem.price);
         const total = itemPrices.reduce((acc, curr) => acc + curr);
         const totalPretty = (Math.round(total * 100) / 100).toFixed(2);
-        await setTotalPrice(totalPretty);
+        console.log('calc');
+        setTotalPrice(totalPretty);
       }
     } catch (error) {
       console.error(error);
