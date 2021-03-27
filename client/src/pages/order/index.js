@@ -6,6 +6,7 @@ import API from '../../services/API';
 import ViewTable from '../../components/viewTable';
 import { useCurrentOrderContext } from '../../services/orderContext';
 import ButtonPiece from '../../components/buttonPiece';
+import ErrorBoundary from '../../components/errorBoundary';
 
 const useStyles = makeStyles((theme) => ({
   buttonView: {
@@ -26,14 +27,6 @@ function Order () {
   const [totalPrice, setTotalPrice] = useState();
 
   useEffect(() => {
-    // refresh is toggled refresh on item button click
-    // refresh is toggled refresh on status change
-    // refresh is toggled refresh on delete button click
-    // if refresh is toggled do all these
-
-    // load order data for current order & calculate price?
-    loadOrderData(currentOrder);
-
     // load a reference list of all users
     loadUserNameList();
 
@@ -42,9 +35,15 @@ function Order () {
 
     // load a reference list of all menu items
     loadItemData();
+  }, []);
 
-    calculateTotalPrice();
+  useEffect(() => {
+    loadOrderData(currentOrder);
   }, [refresh]);
+
+  useEffect(() => {
+    calculateTotalPrice();
+  }, [orderByIdWithItems]);
 
   const loadItemData = async () => {
     await API.getAllMenuItems()
@@ -81,6 +80,7 @@ function Order () {
         const total = itemPrices.reduce((acc, curr) => acc + curr);
         const totalPretty = (Math.round(total * 100) / 100).toFixed(2);
         console.log('calc');
+        console.log(totalPretty);
         setTotalPrice(totalPretty);
       }
     } catch (error) {
@@ -112,40 +112,44 @@ function Order () {
           <Grid item container direction='column'>
             {error}
             <Grid item>
-              <ViewTable
-                totalPrice={totalPrice}
-                oneOrder={orderByIdWithItems}
-                allMenuItems={items}
-                setRefresh={setRefresh}
-                refresh={refresh}
-                userNames={userNames}
-                statusNames={statusNames}
-              />
+              <ErrorBoundary>
+                <ViewTable
+                  totalPrice={totalPrice}
+                  oneOrder={orderByIdWithItems}
+                  allMenuItems={items}
+                  setRefresh={setRefresh}
+                  refresh={refresh}
+                  userNames={userNames}
+                  statusNames={statusNames}
+                />
+              </ErrorBoundary>
             </Grid>
-            <Grid
-              item
-              container
-              direction='row'
-              justify='center'
-              alignItems='center'
-              className={classes.buttonView}
-              spacing={1}
-            >
-              {items.map((item) => {
-                return (
-                  <Grid item xs={6} sm={4} md={3} key={item.id}>
-                    <ButtonPiece
-                      orderId={currentOrder}
-                      itemId={item.id}
-                      title={item.title}
-                      price={item.price}
-                      setRefresh={setRefresh}
-                      refresh={refresh}
-                    />
-                  </Grid>
-                );
-              })}
-            </Grid>
+            <ErrorBoundary>
+              <Grid
+                item
+                container
+                direction='row'
+                justify='center'
+                alignItems='center'
+                className={classes.buttonView}
+                spacing={1}
+              >
+                {items.map((item) => {
+                  return (
+                    <Grid item xs={6} sm={4} md={3} key={item.id}>
+                      <ButtonPiece
+                        orderId={currentOrder}
+                        itemId={item.id}
+                        title={item.title}
+                        price={item.price}
+                        setRefresh={setRefresh}
+                        refresh={refresh}
+                      />
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            </ErrorBoundary>
           </Grid>
         </Box>
       </Grid>

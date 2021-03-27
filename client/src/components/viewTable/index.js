@@ -1,5 +1,6 @@
 import { FormControl, makeStyles, Paper, Table, TableBody, Typography } from '@material-ui/core';
 import React, { useEffect, useRef } from 'react';
+import ErrorBoundary from '../errorBoundary';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutButton from '../checkoutButton';
 import SelectStatus from '../selectStatus';
@@ -73,23 +74,27 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, st
 
   return (
     <div>
-      {id
+      {typeof id !== 'undefined' && id
         ? (
           <div>
             <FormControl className={classes.formControl}>
               <Typography component='span'>Order Id: {id} | User: {userNames[userId - 1]} | Status:{' '}
-                <SelectStatus
-                  currentStatus={statusId}
-                  statusOptions={statusNames}
-                  orderId={id}
-                  setRefresh={setRefresh}
-                  refresh={refresh}
-                />
+                <ErrorBoundary>
+                  <SelectStatus
+                    currentStatus={statusId}
+                    statusOptions={statusNames}
+                    orderId={id}
+                    setRefresh={setRefresh}
+                    refresh={refresh}
+                  />
+                </ErrorBoundary>
               </Typography>
             </FormControl>
             <br />
-            <TotalPricePiece totalPrice={totalPrice} />
-            <CheckoutButton handleStripeClick={handleStripeClick} orderItems={orderItems} orderId={id} />
+            <ErrorBoundary>
+              <TotalPricePiece totalPrice={totalPrice} />
+              <CheckoutButton handleStripeClick={handleStripeClick} orderItems={orderItems} orderId={id} />
+            </ErrorBoundary>
             {/* <p>Order Notes: {notes}</p> */}
           </div>)
         : (
@@ -99,23 +104,25 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, st
         ? (
           <Paper variant='outlined' style={{ height: 200, overflow: 'auto' }}>
             <Table size='small'>
-              <TableBody>
-                {orderItems.map((obj, idx) => {
-                  // console.log('repaint orderItems');
-                  // console.log(obj);
-                  return (
-                    <ViewTableRow
-                      key={idx}
-                      item={menuArrayTitles[obj.menu_itemId - 1]}
-                      price={menuArrayPrices[obj.menu_itemId - 1]}
-                      itemRecId={obj.id}
-                      setRefresh={setRefresh}
-                      refresh={refresh}
-                    />
-                  );
-                })}
-                <tr ref={messagesEndRef} />
-              </TableBody>
+              <ErrorBoundary>
+                <TableBody>
+                  {orderItems.map((obj, idx) => {
+                    // console.log('repaint orderItems');
+                    // console.log(obj);
+                    return (
+                      <ViewTableRow
+                        key={idx}
+                        item={menuArrayTitles[obj.menu_itemId - 1]}
+                        price={menuArrayPrices[obj.menu_itemId - 1]}
+                        itemRecId={obj.id}
+                        setRefresh={setRefresh}
+                        refresh={refresh}
+                      />
+                    );
+                  })}
+                  <tr ref={messagesEndRef} />
+                </TableBody>
+              </ErrorBoundary>
             </Table>
           </Paper>
           )
