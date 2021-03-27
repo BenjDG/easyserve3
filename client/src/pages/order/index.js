@@ -70,17 +70,15 @@ function Order () {
         setError(error.message + ' - Please login');
       });
   };
-  // ##########################
-  // start here - get price to render on change
-  // ##########################
+
   const calculateTotalPrice = () => {
     try {
       if (orderByIdWithItems && orderByIdWithItems.orderItems && orderByIdWithItems.orderItems.length) {
         const itemPrices = orderByIdWithItems.orderItems.map(item => +item.menuItem.price);
         const total = itemPrices.reduce((acc, curr) => acc + curr);
         const totalPretty = (Math.round(total * 100) / 100).toFixed(2);
-        console.log('calc');
-        console.log(totalPretty);
+        // console.log('calc');
+        // console.log(totalPretty);
         setTotalPrice(totalPretty);
       }
     } catch (error) {

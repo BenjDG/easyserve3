@@ -6,6 +6,7 @@ import CheckoutButton from '../checkoutButton';
 import SelectStatus from '../selectStatus';
 import TotalPricePiece from '../totalPricePiece';
 import ViewTableRow from '../viewTableRow';
+import DemoCredCard from '../demoCreditCard';
 
 const stripePromise = loadStripe('pk_test_51IXcgsKAaRFhH7wwbW2LxPsTV5zU24rGT6CsF1rR2mZeoizyrSYx5W3jdaLr2RwcHUVghaA9dFn48nOtHlkuwvwQ001NIVmTD5');
 
@@ -94,6 +95,7 @@ function ViewTable ({ oneOrder, allMenuItems, setRefresh, refresh, userNames, st
             <ErrorBoundary>
               <TotalPricePiece totalPrice={totalPrice} />
               <CheckoutButton handleStripeClick={handleStripeClick} orderItems={orderItems} orderId={id} />
+              <DemoCredCard />
             </ErrorBoundary>
             {/* <p>Order Notes: {notes}</p> */}
           </div>)

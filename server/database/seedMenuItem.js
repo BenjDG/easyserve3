@@ -114,7 +114,7 @@ const seedData = [
     updated_at: new Date()
   },
   {
-    title: 'Bud Light',
+    title: 'Fuzzy Navel',
     category: 'drink',
     price: '3.99',
     created_at: new Date(),
