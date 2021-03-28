@@ -15,7 +15,15 @@ import API from './services/API';
 import CookView from './pages/cookView';
 
 const theme = createMuiTheme({
-  spacing: 12
+  spacing: 12,
+  overrides: {
+    MuiTableCell: {
+      root: {
+        paddingRight: 1,
+        paddingLeft: 1
+      }
+    }
+  }
 });
 
 function App () {

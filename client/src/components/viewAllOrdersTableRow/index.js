@@ -6,18 +6,9 @@ import API from '../../services/API';
 import UpdateButton from '../updateButton';
 import './styles.css';
 
-const useRowStyles = makeStyles({
-  root: {
-    '& > *': {
-      borderBottom: 'unset'
-    }
-  }
-});
-
 function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
   const [open, setOpen] = useState(false);
   const [itemData, setItemData] = useState([]);
-  const classes = useRowStyles();
 
   const handleClick = async (event) => {
     // fetch and set order data
@@ -33,18 +24,18 @@ function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
 
   return (
     <>
-      <TableRow className={classes.root}>
-        <TableCell className='table-cell'>
+      <TableRow className='table-row-2'>
+        <TableCell>
           <IconButton aria-label='expand row' size='small' onClick={handleClick} id={row.id}>
             {open ? <KeyboardArrowDownIcon /> : <KeyboardArrowRightIcon />}
           </IconButton>
         </TableCell>
-        <TableCell className='table-cell' align='center' component='th' scope='row'>
+        <TableCell align='center' scope='row'>
           {row.id}
         </TableCell>
-        <TableCell className='table-cell' align='center'>{userNamesList[row.userId - 1]}</TableCell>
-        <TableCell className='table-cell' align='center'>{statusNamesList[row.statusId - 1]}</TableCell>
-        <TableCell className='table-cell' align='center'><UpdateButton id={row.id} /></TableCell>
+        <TableCell align='center'>{userNamesList[row.userId - 1]}</TableCell>
+        <TableCell align='center'>{statusNamesList[row.statusId - 1]}</TableCell>
+        <TableCell align='center'><UpdateButton id={row.id} /></TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
