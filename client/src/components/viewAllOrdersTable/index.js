@@ -6,8 +6,8 @@ import './styles.css';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    marginTop: theme.spacing.unit * 1,
-    overflowX: 'scroll'
+    marginTop: theme.spacing(1),
+    overflowX: 'hide'
   },
   table: {
     minWidth: 340
