@@ -9,12 +9,11 @@ import { makeStyles, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   root: {
-    display: 'flex',
-    justifyContent: 'flex-end'
+    display: 'inline'
   }
 }));
 
-function DemoCredDialog () {
+function DemoCredCard () {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -28,8 +27,8 @@ function DemoCredDialog () {
 
   return (
     <div className={classes.root}>
-      <Button variant='outlined' color='primary' onClick={handleClickOpen}>
-        Demo Credentials
+      <Button variant='outlined' onClick={handleClickOpen}>
+        Demo Credit Card
       </Button>
       <Dialog
         open={open}
@@ -37,26 +36,14 @@ function DemoCredDialog () {
         aria-labelledby='alert-dialog-title'
         aria-describedby='alert-dialog-description'
       >
-        <DialogTitle id='alert-dialog-title'>Demo Credentials</DialogTitle>
+        <DialogTitle id='alert-dialog-title'>Demo Credit Card</DialogTitle>
         <DialogContent dividers>
           <DialogContentText component='span' variant='body2' id='alert-dialog-description'>
             <Typography component='span' variant='body2' gutterBottom>
-              <h3>Jane</h3>
-              <p>Email: 1@1.com</p>
-              <p>Password: 1234</p>
-              <p>Role: admin</p>
-            </Typography>
-            <Typography component='span' variant='body2' gutterBottom>
-              <h3>Billy</h3>
-              <p>Email: 1@2.com</p>
-              <p>Password: 1234</p>
-              <p>Role: server</p>
-            </Typography>
-            <Typography component='span' variant='body2' gutterBottom>
-              <h3>Lloyd</h3>
-              <p>Email: 1@3.com</p>
-              <p>Password: 1234</p>
-              <p>Role: cook</p>
+              <p>To see a successful transaction use the credit card number</p>
+              <p>4242424242424242</p>
+              <p>The other information can contain anything.</p>
+              <p>For more test cards go to: <a href='https://stripe.com/docs/testing' target='_blank' rel='noreferrer'>https://stripe.com/docs/testing</a></p>
             </Typography>
           </DialogContentText>
         </DialogContent>
@@ -70,4 +57,4 @@ function DemoCredDialog () {
   );
 }
 
-export default DemoCredDialog;
+export default DemoCredCard;
