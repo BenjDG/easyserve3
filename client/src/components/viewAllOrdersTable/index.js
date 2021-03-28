@@ -49,7 +49,7 @@ function ViewAllOrdersTable ({ allOrders, statusNamesList, userNamesList }) {
               </Table>
             </TableContainer>
           </div>
-        )
+          )
         : (<div>Loading Orders...Are you logged on?</div>)}
     </div>
   );
