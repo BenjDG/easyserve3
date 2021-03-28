@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+
 import { Box, Grid } from '@material-ui/core';
 import API from '../../services/API';
 import ViewTable from '../../components/viewTable';
 import { useCurrentOrderContext } from '../../services/orderContext';
 import ButtonPiece from '../../components/buttonPiece';
+import ErrorBoundary from '../../components/errorBoundary';
 
 const useStyles = makeStyles((theme) => ({
   buttonView: {
@@ -16,19 +18,32 @@ function Order () {
   const classes = useStyles();
   // eslint-disable-next-line no-unused-vars
   const [currentOrder, _setCurrentOrder] = useCurrentOrderContext();
-  const [orderByIdWithItems, setOrderByIdWithItems] = useState({});
+  const [orderByIdWithItems, setOrderByIdWithItems] = useState(null);
   const [error, setError] = useState('');
   const [refresh, setRefresh] = useState();
   const [items, setItems] = useState([]);
   const [userNames, setUserNames] = useState();
   const [statusNames, setStatusNames] = useState();
+  const [totalPrice, setTotalPrice] = useState();
 
-  useEffect(async () => {
-    await loadUserNameList();
-    await loadStatusNameList();
-    await loadItemData();
-    await loadOrderData(currentOrder);
+  useEffect(() => {
+    // load a reference list of all users
+    loadUserNameList();
+
+    // load a reference list of all status names
+    loadStatusNameList();
+
+    // load a reference list of all menu items
+    loadItemData();
+  }, []);
+
+  useEffect(() => {
+    loadOrderData(currentOrder);
   }, [refresh]);
+
+  useEffect(() => {
+    calculateTotalPrice();
+  }, [orderByIdWithItems]);
 
   const loadItemData = async () => {
     await API.getAllMenuItems()
@@ -45,15 +60,30 @@ function Order () {
 
   const loadOrderData = async (orderId) => {
     await API.findOrderByIdWithItems(orderId)
-      .then((res) => {
+      .then(async (res) => {
         // console.log(res.data);
-        setOrderByIdWithItems(res.data);
+        await setOrderByIdWithItems(res.data);
       })
       .catch((err) => {
         console.error(err);
         const error = new Error(err);
         setError(error.message + ' - Please login');
       });
+  };
+
+  const calculateTotalPrice = () => {
+    try {
+      if (orderByIdWithItems && orderByIdWithItems.orderItems && orderByIdWithItems.orderItems.length) {
+        const itemPrices = orderByIdWithItems.orderItems.map(item => +item.menuItem.price);
+        const total = itemPrices.reduce((acc, curr) => acc + curr);
+        const totalPretty = (Math.round(total * 100) / 100).toFixed(2);
+        // console.log('calc');
+        // console.log(totalPretty);
+        setTotalPrice(totalPretty);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   // load UserName list
@@ -72,10 +102,6 @@ function Order () {
     }).catch(err => console.error(err));
   };
 
-  // const handleSubmit = () => {
-
-  // }
-
   return (
     <Grid container>
       <Grid item xs='auto' sm={2} />
@@ -84,39 +110,44 @@ function Order () {
           <Grid item container direction='column'>
             {error}
             <Grid item>
-              <ViewTable
-                oneOrder={orderByIdWithItems}
-                allMenuItems={items}
-                setRefresh={setRefresh}
-                refresh={refresh}
-                userNames={userNames}
-                statusNames={statusNames}
-              />
+              <ErrorBoundary>
+                <ViewTable
+                  totalPrice={totalPrice}
+                  oneOrder={orderByIdWithItems}
+                  allMenuItems={items}
+                  setRefresh={setRefresh}
+                  refresh={refresh}
+                  userNames={userNames}
+                  statusNames={statusNames}
+                />
+              </ErrorBoundary>
             </Grid>
-            <Grid
-              item
-              container
-              direction='row'
-              justify='center'
-              alignItems='center'
-              className={classes.buttonView}
-              spacing={1}
-            >
-              {items.map((item) => {
-                return (
-                  <Grid item xs={6} sm={4} md={3} key={item.id}>
-                    <ButtonPiece
-                      orderId={currentOrder}
-                      itemId={item.id}
-                      title={item.title}
-                      price={item.price}
-                      setRefresh={setRefresh}
-                      refresh={refresh}
-                    />
-                  </Grid>
-                );
-              })}
-            </Grid>
+            <ErrorBoundary>
+              <Grid
+                item
+                container
+                direction='row'
+                justify='center'
+                alignItems='center'
+                className={classes.buttonView}
+                spacing={1}
+              >
+                {items.map((item) => {
+                  return (
+                    <Grid item xs={6} sm={4} md={3} key={item.id}>
+                      <ButtonPiece
+                        orderId={currentOrder}
+                        itemId={item.id}
+                        title={item.title}
+                        price={item.price}
+                        setRefresh={setRefresh}
+                        refresh={refresh}
+                      />
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            </ErrorBoundary>
           </Grid>
         </Box>
       </Grid>

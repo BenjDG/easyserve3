@@ -1,27 +1,47 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, makeStyles } from '@material-ui/core';
 import React from 'react';
 import ViewAllOrdersTableRow from '../viewAllOrdersTableRow';
 import './styles.css';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    marginTop: theme.spacing(1),
+    overflowX: 'hide'
+  },
+  table: {
+    minWidth: 340
+  },
+  tableCell: {
+    paddingRight: 0,
+    paddingLeft: 0
+  },
+  tableBody: {
+    minWidth: 340
+  }
+}));
+
 function ViewAllOrdersTable ({ allOrders, statusNamesList, userNamesList }) {
+  const classes = useStyles();
   // console.log(allOrders);
   return (
-    <div>
+    <div className='table-container'>
       {allOrders.length
         ? (
           <div>
-            <TableContainer component={Paper}>
-              <Table className='table' aria-label='collapsible table'>
-                <TableHead className='table-head'>
+            <TableContainer className={classes.root} component={Paper}>
+              {/* table too big on mobile */}
+              <Table className={classes.table} aria-label='collapsible table'>
+                <TableHead>
                   <TableRow>
-                    <TableCell className='table-cell' />
-                    <TableCell className='table-cell' align='center'>Order ID</TableCell>
-                    <TableCell className='table-cell' align='center'>User</TableCell>
-                    <TableCell className='table-cell' align='center'>Status</TableCell>
-                    <TableCell className='table-cell' align='center' />
+                    <TableCell className={classes.tableCell} />
+                    <TableCell className={classes.tableCell} align='center'>Order ID</TableCell>
+                    <TableCell className={classes.tableCell} align='center'>User</TableCell>
+                    <TableCell className={classes.tableCell} align='center'>Status</TableCell>
+                    <TableCell className={classes.tableCell} align='center' />
                   </TableRow>
                 </TableHead>
-                <TableBody>
+                <TableBody className={classes.tableBody}>
                   {allOrders.map((row) => (
                     <ViewAllOrdersTableRow key={row.id} row={row} statusNamesList={statusNamesList} userNamesList={userNamesList} />
                   ))}
