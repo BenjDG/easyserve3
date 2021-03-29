@@ -1,7 +1,7 @@
 
 #  Easy Order
 
-![GNU GPLv3 license](https://img.shields.io/badge/license-GNU%20GPLv3-brightgreen)[![Node Continuous Integration](https://github.com/BenjDG/easyserve3/actions/workflows/integrate.yml/badge.svg)](https://github.com/BenjDG/easyserve3/actions/workflows/integrate.yml)[![Heroku Continuous Deployment](https://github.com/BenjDG/easyserve3/actions/workflows/deploy.yml/badge.svg)](https://github.com/BenjDG/easyserve3/actions/workflows/deploy.yml)
+![GNU GPLv3 license](https://img.shields.io/badge/license-GNU%20GPLv3-brightgreen)  [![Node Continuous Integration](https://github.com/BenjDG/easyserve3/actions/workflows/integrate.yml/badge.svg)](https://github.com/BenjDG/easyserve3/actions/workflows/integrate.yml)  [![Heroku Continuous Deployment](https://github.com/BenjDG/easyserve3/actions/workflows/deploy.yml/badge.svg)](https://github.com/BenjDG/easyserve3/actions/workflows/deploy.yml)
 
 This is a point of sale MERN application for a small restaurant.  It handles order taking, order views and order payment.
 
