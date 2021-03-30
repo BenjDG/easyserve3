@@ -24,7 +24,7 @@ module.exports = {
             // console.log(item.menuItem.title);
             // console.log(item.menuItem.price);
             const price = +item.menuItem.price * 100;
-            console.log(price);
+            // console.log(price);
             return {
               price_data: {
                 currency: 'usd',
@@ -36,15 +36,17 @@ module.exports = {
               quantity: 1
             };
           });
-          console.log('stripe');
+          console.log(orderId.id);
           const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             line_items: data,
             mode: 'payment',
             success_url: `${HEROKUURL}/vieworders`,
             cancel_url: `${HEROKUURL}/order`,
-            metadata: {
-              orderId: orderId.id
+            payment_intent_data: {
+              metadata: {
+                orderId: orderId.id
+              }
             }
           });
           res.json({ id: session.id });
