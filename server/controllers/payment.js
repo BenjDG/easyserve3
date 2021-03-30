@@ -42,7 +42,10 @@ module.exports = {
             line_items: data,
             mode: 'payment',
             success_url: `${HEROKUURL}/vieworders`,
-            cancel_url: `${HEROKUURL}/order`
+            cancel_url: `${HEROKUURL}/order`,
+            metadata: {
+              orderId: orderId.id
+            }
           });
           res.json({ id: session.id });
         })

@@ -1,11 +1,24 @@
+const db = require('../models');
+
 module.exports = {
   webhook: function (req, res) {
     const event = req.body;
     // Handle the event
     switch (event.type) {
       case 'payment_intent.succeeded': {
-        // const paymentIntent = event.data.object;
+        const paymentIntent = event.data.object;
+
+        db.order.update({
+          paid: 1
+        }, {
+          where: {
+            id: paymentIntent.metadata.orderId
+          }
+        })
+          .then(result => res.json(result))
+          .catch(err => res.status(500).json(err));
         console.log('PaymentIntent was successful!');
+        console.log(`Order ${paymentIntent.metadata.orderId} updated!`);
         break;
       }
       case 'payment_method.attached': {
