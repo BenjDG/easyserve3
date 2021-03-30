@@ -2,14 +2,14 @@ import { MenuItem, Select } from '@material-ui/core';
 import React, { useState } from 'react';
 import API from '../../services/API';
 
-export default function SelectStatus ({ currentStatus, statusOptions, orderId, refresh, setRefresh }) {
+export default function SelectStatus ({ currentStatus, statusOptions, orderId }) {
   const [status, setStatus] = useState(currentStatus - 1);
 
   const handleChange = (event) => {
     setStatus(event.target.value);
     API.updateOrderStatus(orderId, event.target.value + 1)
       .then(() => {
-        refresh ? setRefresh(false) : setRefresh(true);
+        // refresh ? setRefresh(false) : setRefresh(true);
       })
       .catch(err => console.error(err));
   };

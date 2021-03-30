@@ -5,6 +5,7 @@ import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import API from '../../services/API';
 import UpdateButton from '../updateButton';
 import './styles.css';
+import SelectStatus from '../selectStatus';
 
 function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
   const [open, setOpen] = useState(false);
@@ -34,7 +35,14 @@ function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
           {row.id}
         </TableCell>
         <TableCell align='center'>{userNamesList[row.userId - 1]}</TableCell>
-        <TableCell align='center'>{statusNamesList[row.statusId - 1]}</TableCell>
+        <TableCell align='center'>
+          <SelectStatus
+            currentStatus={row.statusId}
+            statusOptions={statusNamesList}
+            orderId={row.id}
+          />
+        </TableCell>
+        {/* <TableCell align='center'>{statusNamesList[row.statusId - 1]}</TableCell> */}
         <TableCell align='center'><UpdateButton id={row.id} /></TableCell>
       </TableRow>
       <TableRow>
