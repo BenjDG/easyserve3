@@ -6,14 +6,16 @@ const SeedData = [
     statusId: 1,
     restTableId: 1,
     notes: 'Extra ketchup on all hotdogs.',
-    total: 10.96
+    total: 10.96,
+    paid: 1
   },
   {
     userId: 2,
     statusId: 2,
     restTableId: 2,
     notes: 'Extra mustard on all hotdogs.',
-    total: 11.56
+    total: 11.56,
+    paid: 1
   }
 ];
 

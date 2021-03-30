@@ -26,7 +26,7 @@ function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
 
   return (
     <>
-      <TableRow className='table-row-2'>
+      <TableRow style={row.paid ? { backgroundColor: '#e6f0ff' } : { backgroundColor: '#ffe5e3' }} className='table-row-2'>
         <TableCell>
           <IconButton aria-label='expand row' size='small' onClick={handleClick} id={row.id}>
             {open ? <KeyboardArrowDownIcon /> : <KeyboardArrowRightIcon />}
