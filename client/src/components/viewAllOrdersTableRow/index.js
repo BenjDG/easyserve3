@@ -10,6 +10,7 @@ import SelectStatus from '../selectStatus';
 function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
   const [open, setOpen] = useState(false);
   const [itemData, setItemData] = useState([]);
+  console.log(row);
 
   const handleClick = async (event) => {
     // fetch and set order data
@@ -73,7 +74,7 @@ function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
                     <TableCell align='right'>Total: {row.total && (Math.round(row.total * 100) / 100).toFixed(2)}</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell align='right'>Paid:</TableCell>
+                    {row.paid ? (<TableCell align='right'>Paid: yes</TableCell>) : (<TableCell align='right'>Paid: no</TableCell>)}
                   </TableRow>
                 </TableBody>
               </Table>
