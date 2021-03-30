@@ -15,12 +15,12 @@ app.post('/webhook', bodyParser.raw({ type: 'application/json' }), (request, res
   // Handle the event
   switch (event.type) {
     case 'payment_intent.succeeded': {
-      const paymentIntent = event.data.object;
+      // const paymentIntent = event.data.object;
       console.log('PaymentIntent was successful!');
       break;
     }
     case 'payment_method.attached': {
-      const paymentMethod = event.data.object;
+      // const paymentMethod = event.data.object;
       console.log('PaymentMethod was attached to a Customer!');
       break;
     }
