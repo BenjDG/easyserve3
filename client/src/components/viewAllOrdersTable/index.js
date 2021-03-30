@@ -55,7 +55,6 @@ function ViewAllOrdersTable ({ allOrders, statusNamesList, userNamesList }) {
         ? (
           <div>
             <TableContainer className={classes.root} component={Paper}>
-              {/* table too big on mobile */}
               <Table className={classes.table} aria-label='collapsible table'>
                 <TableHead>
                   <TableRow>

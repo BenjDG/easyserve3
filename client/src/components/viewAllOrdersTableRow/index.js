@@ -42,7 +42,6 @@ function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
             orderId={row.id}
           />
         </TableCell>
-        {/* <TableCell align='center'>{statusNamesList[row.statusId - 1]}</TableCell> */}
         <TableCell align='center'><UpdateButton id={row.id} /></TableCell>
       </TableRow>
       <TableRow>
@@ -70,6 +69,12 @@ function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
                       </TableCell>
                     </TableRow>
                   ))}
+                  <TableRow>
+                    <TableCell align='right'>Total: {row.total && (Math.round(row.total * 100) / 100).toFixed(2)}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell align='right'>Paid:</TableCell>
+                  </TableRow>
                 </TableBody>
               </Table>
             </Box>
