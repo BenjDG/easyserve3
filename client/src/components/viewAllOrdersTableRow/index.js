@@ -10,7 +10,7 @@ import SelectStatus from '../selectStatus';
 function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
   const [open, setOpen] = useState(false);
   const [itemData, setItemData] = useState([]);
-  console.log(row);
+  // console.log(row);
 
   const handleClick = async (event) => {
     // fetch and set order data
