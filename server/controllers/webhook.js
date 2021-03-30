@@ -7,7 +7,8 @@ module.exports = {
     switch (event.type) {
       case 'payment_intent.succeeded': {
         const paymentIntent = event.data.object;
-
+        console.log('#############');
+        console.log(paymentIntent.metadata);
         db.order.update({
           paid: 1
         }, {
