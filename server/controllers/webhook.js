@@ -15,8 +15,8 @@ module.exports = {
             id: paymentIntent.metadata.orderId
           }
         })
-          .then(result => res.json(result))
-          .catch(err => res.status(500).json(err));
+          .then(result => console.log(result))
+          .catch(err => console.error(err));
         console.log('PaymentIntent was successful!');
         console.log(`Order ${paymentIntent.metadata.orderId} updated!`);
         break;
