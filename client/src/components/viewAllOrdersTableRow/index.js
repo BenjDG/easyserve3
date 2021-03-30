@@ -5,10 +5,12 @@ import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import API from '../../services/API';
 import UpdateButton from '../updateButton';
 import './styles.css';
+import SelectStatus from '../selectStatus';
 
 function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
   const [open, setOpen] = useState(false);
   const [itemData, setItemData] = useState([]);
+  // console.log(row);
 
   const handleClick = async (event) => {
     // fetch and set order data
@@ -24,7 +26,7 @@ function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
 
   return (
     <>
-      <TableRow className='table-row-2'>
+      <TableRow style={row.paid ? { backgroundColor: '#e6f0ff' } : { backgroundColor: '#ffe5e3' }} className='table-row-2'>
         <TableCell>
           <IconButton aria-label='expand row' size='small' onClick={handleClick} id={row.id}>
             {open ? <KeyboardArrowDownIcon /> : <KeyboardArrowRightIcon />}
@@ -34,7 +36,13 @@ function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
           {row.id}
         </TableCell>
         <TableCell align='center'>{userNamesList[row.userId - 1]}</TableCell>
-        <TableCell align='center'>{statusNamesList[row.statusId - 1]}</TableCell>
+        <TableCell align='center'>
+          <SelectStatus
+            currentStatus={row.statusId}
+            statusOptions={statusNamesList}
+            orderId={row.id}
+          />
+        </TableCell>
         <TableCell align='center'><UpdateButton id={row.id} /></TableCell>
       </TableRow>
       <TableRow>
@@ -62,6 +70,12 @@ function ViewAllOrdersTableRow ({ row, statusNamesList, userNamesList }) {
                       </TableCell>
                     </TableRow>
                   ))}
+                  <TableRow>
+                    <TableCell align='right'>Total: {row.total && (Math.round(row.total * 100) / 100).toFixed(2)}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    {row.paid ? (<TableCell align='right'>Paid: yes</TableCell>) : (<TableCell align='right'>Paid: no</TableCell>)}
+                  </TableRow>
                 </TableBody>
               </Table>
             </Box>

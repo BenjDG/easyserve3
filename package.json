@@ -13,8 +13,8 @@
   "scripts": {
     "prestart": "cd server && npm run db:create",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node ./server/server.js",
-    "start:dev": "concurrently \"nodemon ./server/server.js\" \"npm run client\"",
+    "start:prod": "concurrently \"node ./server/server.js\" \"node ./server/serverwebhook.js\"",
+    "start:dev": "concurrently \"nodemon ./server/server.js\" \"nodemon ./server/serverwebhook.js\" \"npm run client\"",
     "client": "cd client && npm run start",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build",
