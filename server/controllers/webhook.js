@@ -7,7 +7,8 @@ module.exports = {
     switch (event.type) {
       case 'payment_intent.succeeded': {
         const paymentIntent = event.data.object;
-
+        console.log('#############');
+        console.log(paymentIntent.metadata);
         db.order.update({
           paid: 1
         }, {
@@ -15,8 +16,8 @@ module.exports = {
             id: paymentIntent.metadata.orderId
           }
         })
-          .then(result => res.json(result))
-          .catch(err => res.status(500).json(err));
+          .then(result => console.log(result))
+          .catch(err => console.error(err));
         console.log('PaymentIntent was successful!');
         console.log(`Order ${paymentIntent.metadata.orderId} updated!`);
         break;
