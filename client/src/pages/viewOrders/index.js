@@ -1,10 +1,12 @@
 import { Box, Grid } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import API from '../../services/API';
 import ViewAllOrdersTable from '../../components/viewAllOrdersTable';
 import './styles.css';
 
 function AllOrders () {
+  const history = useHistory();
   const [allOrders, setAllOrders] = useState([]);
   const [userNames, setUserNames] = useState();
   const [statusNames, setStatusNames] = useState();
@@ -14,6 +16,10 @@ function AllOrders () {
     await loadStatusNameList();
     await loadData();
   }, []);
+
+  setInterval(() => {
+    history.go(0);
+  }, 30000);
 
   const loadData = async () => {
     await API.findAllOrders()
