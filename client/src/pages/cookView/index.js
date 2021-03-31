@@ -1,9 +1,11 @@
 import { Box, Grid } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import API from '../../services/API';
 import ViewOrderCooking from '../../components/viewOrderCooking';
 
 function CookView () {
+  const history = useHistory();
   const [allOrdersCooking, setAllOrdersCooking] = useState([]);
   const [userNames, setUserNames] = useState();
   const [statusNames, setStatusNames] = useState();
@@ -14,6 +16,10 @@ function CookView () {
     await loadStatusNameList();
     await loadData();
   }, [refresh]);
+
+  setInterval(() => {
+    history.go(0);
+  }, 30000);
 
   const loadData = async () => {
     await API.findAllOrdersCooking()
