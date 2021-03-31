@@ -44,19 +44,16 @@ function DemoCredDialog () {
               <h3>Jane</h3>
               <p>Email: 1@1.com</p>
               <p>Password: 1234</p>
-              <p>Role: admin</p>
             </Typography>
             <Typography component='span' variant='body2' gutterBottom>
               <h3>Billy</h3>
               <p>Email: 1@2.com</p>
               <p>Password: 1234</p>
-              <p>Role: server</p>
             </Typography>
             <Typography component='span' variant='body2' gutterBottom>
               <h3>Lloyd</h3>
               <p>Email: 1@3.com</p>
               <p>Password: 1234</p>
-              <p>Role: cook</p>
             </Typography>
           </DialogContentText>
         </DialogContent>

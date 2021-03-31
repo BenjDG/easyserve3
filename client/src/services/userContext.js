@@ -8,15 +8,10 @@ const UserContext = React.createContext(emptyContext);
 
 const UserContextProvider = UserContext.Provider;
 
-// getter?
 const UseUserProvider = () => {
   const res = useContext(UserContext);
   return res || emptyContext;
 };
-
-/**
- * Provider Component
- */
 
 const UserProvider = ({ children }) => {
   const userModel = useUserModel();

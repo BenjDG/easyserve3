@@ -21,10 +21,7 @@ module.exports = {
       })
         .then(async (result) => {
           const data = await result.orderItems.map(item => {
-            // console.log(item.menuItem.title);
-            // console.log(item.menuItem.price);
             const price = +item.menuItem.price * 100;
-            // console.log(price);
             return {
               price_data: {
                 currency: 'usd',
@@ -36,7 +33,6 @@ module.exports = {
               quantity: 1
             };
           });
-          console.log(orderId.id);
           const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             line_items: data,
